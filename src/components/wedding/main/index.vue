@@ -22,6 +22,14 @@
         28|08|2026
       </div>
     </div>
+
+    <div class="bottom-image-container">
+      <img
+        src="/img/up.png"
+        alt="Decoration"
+        class="bottom-image"
+      />
+    </div>
   </div>
 </template>
 
@@ -43,7 +51,23 @@ export default defineComponent({
   height: 1200px;
 }
 
-// Миксины для анимаций
+.bottom-image-container {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 3;
+}
+
+.bottom-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 @mixin text-appear($delay: 0s) {
   opacity: 0;
   transform: translateY(30px);

@@ -1,55 +1,72 @@
 <template>
-  <div
-    ref="container"
-    class="row items-center justify-start bg-image"
-    :class="{ 'animate': isVisible }"
-  >
-    <div class="text-white" :class="{ 'text-center': isMobile }">
-      <div
-        class="font-cormorant-sc q-mt-md text-block"
-        :class="textSizeClass"
-        :style="isMobile ? mobileTextStyle : locationStyle"
-      >
-        НАША СВАДЬБА ПРОЙДЕТ В КАЗАХСТАНЕ, Г. ШУЧИНСК
+  <div class="full-container">
+    <!-- Основной контент -->
+    <div
+      ref="container"
+      class="row items-center justify-start bg-image"
+      :class="{ 'animate': isVisible }"
+    >
+      <div class="top-image-container">
+        <img
+          src="/img/down.png"
+          alt="Decoration"
+          class="top-image"
+        />
       </div>
+      <div class="text-white" :class="{ 'text-center': isMobile }">
+        <div
+          class="font-cormorant-sc q-mt-md text-block"
+          :class="textSizeClass"
+          :style="isMobile ? mobileTextStyle : locationStyle"
+        >
+          НАША СВАДЬБА ПРОЙДЕТ В КАЗАХСТАНЕ, Г. ШУЧИНСК
+        </div>
 
-      <div
-        class="font-cormorant-sc q-mt-md text-block"
-        :class="textSizeClass"
-        :style="isMobile ? mobileTextStyle : banquetStyle"
-      >
-        БАНКЕТ БУДЕТ ПРОХОДИТЬ
+        <div
+          class="font-cormorant-sc q-mt-md text-block"
+          :class="textSizeClass"
+          :style="isMobile ? mobileTextStyle : banquetStyle"
+        >
+          БАНКЕТ БУДЕТ ПРОХОДИТЬ
+        </div>
+
+        <div
+          class="font-cormorant-sc q-mt-lg text-block"
+          :class="nameSizeClass"
+          :style="isMobile ? mobileTextStyle : placeStyle"
+        >
+          «KINZA»
+        </div>
+
+        <div
+          class="font-cormorant-sc q-mt-lg text-block"
+          :class="textSizeClass"
+          :style="isMobile ? mobileTextStyle : addressStyle"
+        >
+          МИКРОРАЙОН ЦРБ, 2в
+        </div>
+
+        <div
+          class="q-mt-xl text-block"
+          :style="isMobile ? { textAlign: 'center' } : buttonStyle"
+        >
+          <q-btn
+            rounded
+            outline
+            class="font-cormorant-sc"
+            color="white"
+            text-color="white"
+            label="Показать на карте"
+            :size="isMobile ? 'lg' : 'xl'"
+            @click="openMap"
+          />
+        </div>
       </div>
-
-      <div
-        class="font-cormorant-sc q-mt-lg text-block"
-        :class="nameSizeClass"
-        :style="isMobile ? mobileTextStyle : placeStyle"
-      >
-        «KINZA»
-      </div>
-
-      <div
-        class="font-cormorant-sc q-mt-lg text-block"
-        :class="textSizeClass"
-        :style="isMobile ? mobileTextStyle : addressStyle"
-      >
-        МИКРОРАЙОН ЦРБ, 2в
-      </div>
-
-      <div
-        class="q-mt-xl text-block"
-        :style="isMobile ? { textAlign: 'center' } : buttonStyle"
-      >
-        <q-btn
-          rounded
-          outline
-          class="font-cormorant-sc"
-          color="white"
-          text-color="white"
-          label="Показать на карте"
-          :size="isMobile ? 'lg' : 'xl'"
-          @click="openMap"
+      <div class="down-image-container">
+        <img
+          src="/img/up.png"
+          alt="Decoration"
+          class="down-image"
         />
       </div>
     </div>
@@ -129,6 +146,39 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.full-container {
+  position: relative;
+  width: 100%;
+}
+
+.top-image-container {
+  position: relative;
+  width: 100%;
+  z-index: 10;
+  top: -110px;
+}
+
+.top-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.down-image-container {
+  position: relative;
+  width: 100%;
+  z-index: 10;
+  bottom: -110px;
+}
+
+.down-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .bg-image {
   background-image: url('/img/place.png');
   background-repeat: no-repeat;
