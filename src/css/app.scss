@@ -1,1 +1,46 @@
 // app global css in SCSS form
+// Глобальные классы шрифтов
+.font-cormorant-sc {
+  font-family: 'Cormorant SC', serif;
+  font-weight: 400;
+}
+
+.font-cormorant-infant {
+  font-family: 'Cormorant Infant', serif;
+  font-weight: 400;
+}
+
+// Дополнительные варианты веса
+.font-cormorant-sc-light {
+  font-family: 'Cormorant SC', serif;
+  font-weight: 300;
+}
+
+.font-cormorant-sc-medium {
+  font-family: 'Cormorant SC', serif;
+  font-weight: 500;
+}
+
+.font-cormorant-sc-bold {
+  font-family: 'Cormorant SC', serif;
+  font-weight: 700;
+}
+
+.font-cormorant-infant-light {
+  font-family: 'Cormorant Infant', serif;
+  font-weight: 300;
+}
+
+.font-cormorant-infant-bold {
+  font-family: 'Cormorant Infant', serif;
+  font-weight: 700;
+}
+
+// Или более семантичные классы
+.font-text {
+  font-family: 'Cormorant SC', serif;
+}
+
+.font-numbers {
+  font-family: 'Cormorant Infant', serif;
+}
