@@ -4,20 +4,22 @@
     class="row items-center justify-center bg-image"
     :class="{ 'animate': isVisible }"
   >
-    <div class="text-white text-center" :class="$q.screen.md ? 'q-pa-xl' : 'q-pa-md'">
-      <div
-        class="font-cormorant-sc q-mb-xl form-title"
-        :class="$q.screen.md ? 'text-h2' : 'text-h3'"
-      >
+    <div class="text-white text-center" :class="!$q.screen.lt.md ? 'q-pa-xl' : 'q-pa-md'">
+      <div class="text-h3 font-cormorant-sc q-mb-xl form-title">
         АНКЕТА ГОСТЯ
       </div>
 
       <div
         class="font-cormorant-sc q-mb-xl form-description"
-        :class="$q.screen.md ? 'text-h4' : 'text-h5'"
+        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
       >
-        Пожалуйста подтвердите свое присутствие<br>
-        до 1 июля 2026 года
+        <span v-if="!$q.screen.lt.md">
+          Пожалуйста подтвердите свое присутствие<br>
+          до 1 июля 2026 года
+        </span>
+        <span v-else>
+          Пожалуйста подтвердите свое присутствие до 1 июля 2026 года
+        </span>
       </div>
 
       <q-btn
@@ -27,7 +29,7 @@
         color="white"
         text-color="white"
         label="Подтвердить"
-        :size="$q.screen.md ? 'xl' : 'lg'"
+        :size="!$q.screen.lt.md ? 'xl' : 'lg'"
         padding="20px 60px"
         @click="openForm"
       />
@@ -37,16 +39,18 @@
 
 <script>
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'FormComponent',
   setup() {
+    const $q = useQuasar()
     const container = ref(null)
     const isVisible = ref(false)
     let observer = null
 
     const openForm = () => {
-      const formUrl = 'https://forms.yandex.ru/ваша_ссылка_на_форму'
+      const formUrl = 'https://forms.yandex.ru/u/696cd036068ff04af0e89f22'
       window.open(formUrl, '_blank')
     }
 
@@ -76,6 +80,7 @@ export default defineComponent({
     })
 
     return {
+      $q,
       container,
       isVisible,
       openForm

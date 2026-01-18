@@ -11,20 +11,19 @@
       </div>
 
       <!-- Текст -->
-      <div class="text-h5 font-cormorant-sc q-mb-md text-block" data-index="1">
-        Мы хотим создать особенную атмосферу на<br>
-        нашем торжестве, поэтому просим вас<br>
-        учесть дресс-код при выборе наряда
+      <div class="dress-text font-cormorant-sc q-mb-md text-block" data-index="1"
+           :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+        Мы хотим создать особенную атмосферу на нашем торжестве, поэтому просим вас учесть дресс-код при выборе наряда
       </div>
 
-      <div class="text-h5 font-cormorant-sc q-mb-lg text-block" data-index="2">
-        Будем признательны, если вы выберете<br>
-        наряды в коктейльном стиле.
+      <div class="dress-text font-cormorant-sc q-mb-lg text-block" data-index="2"
+           :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+        Будем признательны, если вы выберете наряды в коктейльном стиле.
       </div>
 
-      <div class="text-h5 font-cormorant-sc q-mb-xl text-block" data-index="3">
-        Просим избегать белого, молочного цвета<br>
-        при выборе наряда.
+      <div class="dress-text font-cormorant-sc q-mb-xl text-block" data-index="3"
+           :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+        Просим избегать белого, молочного цвета при выборе наряда.
       </div>
 
       <!-- Цветовая палитра -->
@@ -41,7 +40,7 @@
               :style="{ backgroundColor: color.hex }"
               :class="{ 'light-color': color.needsBorder }"
             ></div>
-            <div class="text-h6 font-cormorant-sc color-name">{{ color.name }}</div>
+            <div class="font-cormorant-sc color-name" :class="!$q.screen.lt.md ? 'text-h6' : 'text-h5'">{{ color.name }}</div>
           </div>
         </div>
       </div>
@@ -51,10 +50,12 @@
 
 <script>
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'DressCodeComponent',
   setup() {
+    const $q = useQuasar()
     const container = ref(null)
     const isVisible = ref(false)
     let observer = null
@@ -92,6 +93,7 @@ export default defineComponent({
     })
 
     return {
+      $q,
       container,
       isVisible,
       colors
@@ -106,6 +108,24 @@ export default defineComponent({
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease-out;
+}
+
+/* Контейнер для текстовых блоков */
+.dress-text {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s ease;
+
+  &[data-index="2"] {
+    transform: translateX(30px);
+  }
+
+  &[data-index="3"] {
+    transform: translateX(-30px);
+  }
 }
 
 /* Десктоп - грид с центрированием */
@@ -179,20 +199,6 @@ export default defineComponent({
   transition: all 0.8s ease;
 }
 
-.text-block {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: all 0.6s ease;
-
-  &[data-index="2"] {
-    transform: translateX(30px);
-  }
-
-  &[data-index="3"] {
-    transform: translateX(-30px);
-  }
-}
-
 .dress.animate {
   opacity: 1;
   transform: translateY(0);
@@ -203,19 +209,19 @@ export default defineComponent({
     transition-delay: 0.2s;
   }
 
-  .text-block[data-index="1"] {
+  .dress-text[data-index="1"] {
     opacity: 1;
     transform: translateX(0);
     transition-delay: 0.4s;
   }
 
-  .text-block[data-index="2"] {
+  .dress-text[data-index="2"] {
     opacity: 1;
     transform: translateX(0);
     transition-delay: 0.6s;
   }
 
-  .text-block[data-index="3"] {
+  .dress-text[data-index="3"] {
     opacity: 1;
     transform: translateX(0);
     transition-delay: 0.8s;
@@ -270,54 +276,83 @@ export default defineComponent({
   }
 }
 
-/* Мобильные - исправленное центрирование */
+/* Мобильные - круг слева, текст справа */
 @media (max-width: 768px) {
   .dress {
     height: auto;
     min-height: 800px;
   }
 
+  .dress-text {
+    max-width: 90%;
+  }
+
   .colors-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    grid-template-columns: 1fr;
+    gap: 40px;
     justify-items: center;
-    align-items: start;
+    align-items: center;
   }
 
   .color-item {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 25px;
     align-items: center;
     width: 100%;
+    max-width: 350px;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s ease;
   }
 
   .color-circle {
     width: 120px;
     height: 120px;
-    margin: 0 auto;
+    margin: 0;
+    order: 1;
   }
 
-  /* Центрирование названия цвета под кругом */
+  /* Текст справа от круга */
   .color-name {
-    text-align: center;
-    max-width: 120px;
-    margin: 0 auto;
-    padding: 0 5px;
+    text-align: left;
+    max-width: none;
+    margin: 0;
+    padding: 0;
     word-break: break-word;
-    line-height: 1.2;
+    line-height: 1.3;
+    order: 2;
+    transform: translateX(0);
+    transition: all 0.4s ease 0.2s;
   }
 
   /* Ускоряем анимации на мобильных */
   .dress.animate {
     .title-animate { transition-delay: 0.1s; }
-    .text-block[data-index="1"] { transition-delay: 0.2s; }
-    .text-block[data-index="2"] { transition-delay: 0.3s; }
-    .text-block[data-index="3"] { transition-delay: 0.4s; }
-    .color-item[data-index="0"] { transition-delay: 0.5s; }
-    .color-item[data-index="1"] { transition-delay: 0.6s; }
-    .color-item[data-index="2"] { transition-delay: 0.7s; }
-    .color-item[data-index="3"] { transition-delay: 0.8s; }
+    .dress-text[data-index="1"] { transition-delay: 0.2s; }
+    .dress-text[data-index="2"] { transition-delay: 0.3s; }
+    .dress-text[data-index="3"] { transition-delay: 0.4s; }
+    .color-item[data-index="0"] {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 0.5s;
+    }
+    .color-item[data-index="1"] {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 0.6s;
+    }
+    .color-item[data-index="2"] {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 0.7s;
+    }
+    .color-item[data-index="3"] {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 0.8s;
+    }
     .color-item[data-index="0"] .color-name { transition-delay: 0.55s; }
     .color-item[data-index="1"] .color-name { transition-delay: 0.65s; }
     .color-item[data-index="2"] .color-name { transition-delay: 0.75s; }
@@ -331,9 +366,13 @@ export default defineComponent({
     min-height: 700px;
   }
 
-  .colors-grid {
+  .dress-text {
+    max-width: 95%;
+  }
+
+  .color-item {
+    max-width: 300px;
     gap: 20px;
-    padding: 0 10px;
   }
 
   .color-circle {
@@ -342,11 +381,6 @@ export default defineComponent({
   }
 
   .color-name {
-    max-width: 180px;
-    font-size: 1.1rem;
-  }
-
-  .text-h5 {
     font-size: 1.1rem;
   }
 }
@@ -354,6 +388,11 @@ export default defineComponent({
 /* Очень маленькие экраны */
 @media (max-width: 360px) {
   .colors-grid {
+    gap: 30px;
+  }
+
+  .color-item {
+    max-width: 280px;
     gap: 15px;
   }
 
@@ -363,8 +402,7 @@ export default defineComponent({
   }
 
   .color-name {
-    max-width: 80px;
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 }
 </style>

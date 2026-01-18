@@ -14,12 +14,17 @@
       <div class="centered-container q-mt-xl">
         <!-- Блоки без эффекта волны -->
         <div class="timing-item q-pa-md" data-index="0">
-          <div class="text-h4 font-cormorant-infant">15:00</div>
-          <div class="text-h5 font-cormorant-sc q-mt-sm">ЦЕРЕМОНИЯ БРАКОСОЧЕТАНИЯ</div>
-          <div class="text-body1 font-cormorant-sc q-mt-md">
-            ЦЕРЕМОНИЯ СОСТОИТСЯ В «BURABAY GOLF CLUB»<br>
-            ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б.<br>
-            КАЗАХСТАН, Г. ЩУЧИНСК.
+          <div class="text-h3 font-cormorant-infant">15:00</div>
+          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">ЦЕРЕМОНИЯ БРАКОСОЧЕТАНИЯ</div>
+          <div class="font-cormorant-sc q-mt-md" :class="!$q.screen.lt.md ? 'text-h5' : 'text-h6'">
+            <span v-if="!$q.screen.lt.md">
+              ЦЕРЕМОНИЯ СОСТОИТСЯ В «BURABAY GOLF CLUB»<br>
+              ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б.<br>
+              КАЗАХСТАН, Г. ЩУЧИНСК.
+            </span>
+            <span v-else>
+              ЦЕРЕМОНИЯ СОСТОИТСЯ В «BURABAY GOLF CLUB» ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б. КАЗАХСТАН, Г. ЩУЧИНСК.
+            </span>
           </div>
         </div>
 
@@ -28,11 +33,16 @@
         </div>
 
         <div class="timing-item" data-index="1">
-          <div class="text-h4 font-cormorant-infant">16:30</div>
-          <div class="text-h5 font-cormorant-sc q-mt-sm">НАЧАЛО ФУРШЕТА</div>
-          <div class="text-body1 font-cormorant-sc q-mt-sm">
-            Мухтара Ауэзова, 129<br>
-            «KINZA»
+          <div class="text-h3 font-cormorant-infant">16:30</div>
+          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">НАЧАЛО ФУРШЕТА</div>
+          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h5' : 'text-h6'">
+            <span v-if="!$q.screen.lt.md">
+              Мухтара Ауэзова, 129<br>
+              «KINZA»
+            </span>
+            <span v-else>
+              Мухтара Ауэзова, 129 «KINZA»
+            </span>
           </div>
         </div>
 
@@ -41,8 +51,8 @@
         </div>
 
         <div class="timing-item" data-index="2">
-          <div class="text-h4 font-cormorant-infant">17:30</div>
-          <div class="text-h5 font-cormorant-sc q-mt-sm">НАЧАЛО БАНКЕТА И ВСТРЕЧА МОЛОДОЖЕНОВ</div>
+          <div class="text-h3 font-cormorant-infant">17:30</div>
+          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">НАЧАЛО БАНКЕТА И ВСТРЕЧА МОЛОДОЖЕНОВ</div>
         </div>
 
         <div class="separator-center">
@@ -50,8 +60,8 @@
         </div>
 
         <div class="timing-item" data-index="3">
-          <div class="text-h4 font-cormorant-infant">23:00</div>
-          <div class="text-h5 font-cormorant-sc q-mt-sm">ОКОНЧАНИЕ БАНКЕТА</div>
+          <div class="text-h3 font-cormorant-infant">23:00</div>
+          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">ОКОНЧАНИЕ БАНКЕТА</div>
         </div>
       </div>
     </div>
@@ -60,10 +70,12 @@
 
 <script>
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'TimingComponent',
   setup() {
+    const $q = useQuasar()
     const container = ref(null)
     const isVisible = ref(false)
     let observer = null
@@ -93,6 +105,7 @@ export default defineComponent({
     })
 
     return {
+      $q,
       container,
       isVisible
     }

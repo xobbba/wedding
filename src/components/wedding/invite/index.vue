@@ -5,32 +5,49 @@
     :class="{ 'animate': isVisible }"
   >
     <div class="text-white text-center q-pa-xl">
-      <div
-        class="font-cormorant-sc q-mb-lg text-block"
-        :class="[!$q.screen.lt.md ? 'text-h3' : 'text-h4']"
-      >
-        ДОРОГИЕ РОДНЫЕ<br>И БЛИЗКИЕ!
+      <div class="text-h3 font-cormorant-sc q-mb-lg text-block">
+        <span v-if="!$q.screen.lt.md">
+          ДОРОГИЕ РОДНЫЕ<br>И БЛИЗКИЕ!
+        </span>
+        <span v-else>
+          ДОРОГИЕ РОДНЫЕ И БЛИЗКИЕ!
+        </span>
       </div>
 
       <div
         class="font-cormorant-sc q-mb-md text-block"
         :class="[!$q.screen.lt.md ? 'text-h4' : 'text-h5']"
       >
-        Мы давно ждали этого момента, когда сможем<br>разделить с вами этот важный и счастливый<br>день в нашей жизни.
+        <span v-if="!$q.screen.lt.md">
+          Мы давно ждали этого момента, когда сможем<br>разделить с вами этот важный и счастливый<br>день в нашей жизни.
+        </span>
+        <span v-else>
+          Мы давно ждали этого момента, когда сможем разделить с вами этот важный и счастливый день в нашей жизни.
+        </span>
       </div>
 
       <div
         class="font-cormorant-sc q-mb-lg text-block"
         :class="[!$q.screen.lt.md ? 'text-h4' : 'text-h5']"
       >
-        Совсем скоро состоится<br>наша свадьба!
+        <span v-if="!$q.screen.lt.md">
+          Совсем скоро состоится<br>наша свадьба!
+        </span>
+        <span v-else>
+          Совсем скоро состоится наша свадьба!
+        </span>
       </div>
 
       <div
         class="font-cormorant-sc q-mb-xl text-block"
         :class="[!$q.screen.lt.md ? 'text-h4' : 'text-h5']"
       >
-        Мы рады пригласить вас стать<br>свидетелями этого торжества и разделить с нами<br>самые яркие моменты
+        <span v-if="!$q.screen.lt.md">
+          Мы рады пригласить вас стать<br>свидетелями этого торжества и разделить с нами<br>самые яркие моменты
+        </span>
+        <span v-else>
+          Мы рады пригласить вас стать свидетелями этого торжества и разделить с нами самые яркие моменты
+        </span>
       </div>
 
       <div class="calendar-container">
@@ -42,10 +59,12 @@
 
 <script>
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'InviteComponent',
   setup() {
+    const $q = useQuasar()
     const container = ref(null)
     const isVisible = ref(false)
     let observer = null
@@ -73,6 +92,7 @@ export default defineComponent({
     })
 
     return {
+      $q,
       container,
       isVisible
     }

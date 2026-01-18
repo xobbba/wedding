@@ -6,20 +6,22 @@
   >
     <div class="text-dark text-center q-pa-xl">
       <div class="centered-content">
-        <div
-          class="font-cormorant-sc q-mb-xl chat-title"
-          :class="$q.screen.md ? 'text-h2' : 'text-h3'"
-        >
+        <div class="text-h3 font-cormorant-sc q-mb-xl chat-title">
           ОБЩИЙ ЧАТ
         </div>
 
         <div
           class="font-cormorant-sc q-mb-lg chat-description"
-          :class="$q.screen.md ? 'text-h4' : 'text-h5'"
+          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
         >
-          Присоединяйтесь к нашему чату для гостей<br>
-          в Telegram, чтобы знакомиться и<br>
-          обмениваться фотографиями
+          <span v-if="!$q.screen.lt.md">
+            Присоединяйтесь к нашему чату для гостей<br>
+            в Telegram, чтобы знакомиться и<br>
+            обмениваться фотографиями
+          </span>
+          <span v-else>
+            Присоединяйтесь к нашему чату для гостей в Telegram, чтобы знакомиться и обмениваться фотографиями
+          </span>
         </div>
 
         <div class="q-mb-xl chat-button-container">
@@ -30,7 +32,7 @@
             color="dark"
             text-color="dark"
             label="Присоединиться"
-            :size="$q.screen.md ? 'xl' : 'lg'"
+            :size="!$q.screen.lt.md ? 'xl' : 'lg'"
             padding="20px 60px"
             @click="openChat"
           />
@@ -40,13 +42,13 @@
       <div class="left-aligned-section">
         <div
           class="font-cormorant-sc wait-text wait-animate"
-          :class="$q.screen.md ? 'text-h2' : 'text-h3'"
+          :class="!$q.screen.lt.md ? 'text-h2' : 'text-h3'"
         >
           ЖДЕМ ВАС!
         </div>
         <div
           class="font-cormorant-sc signature-text signature-animate"
-          :class="$q.screen.md ? 'text-h4' : 'text-h5'"
+          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
         >
           с любовью Константин и Николь
         </div>
@@ -57,10 +59,12 @@
 
 <script>
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'ChatComponent',
   setup() {
+    const $q = useQuasar()
     const container = ref(null)
     const isVisible = ref(false)
     let observer = null
@@ -96,6 +100,7 @@ export default defineComponent({
     })
 
     return {
+      $q,
       container,
       isVisible,
       openChat
