@@ -175,7 +175,7 @@ export default defineComponent({
 }
 
 .bg-image {
-  background-image: url('/img/place.png');
+  background-image: url('/img/place.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
