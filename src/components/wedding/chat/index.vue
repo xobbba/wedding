@@ -1,26 +1,25 @@
 <template>
   <div
     ref="container"
-    class="row items-center justify-center bg-white"
-    :class="{ 'animate': isVisible }"
+    class="row items-center justify-center bg-image"
+    :class="{ animate: isVisible }"
   >
-    <div class="text-dark text-center q-pa-xl">
+    <div class="text-white text-center q-pa-xl">
       <div class="centered-content">
-        <div class="text-h3 font-cormorant-sc q-mb-xl chat-title">
-          ОБЩИЙ ЧАТ
-        </div>
+        <div class="text-h3 font-cormorant-sc q-mb-xl chat-title">ОБЩИЙ ЧАТ</div>
 
         <div
           class="font-cormorant-sc q-mb-lg chat-description"
           :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
         >
           <span v-if="!$q.screen.lt.md">
-            Присоединяйтесь к нашему чату для гостей<br>
-            в Telegram, чтобы знакомиться и<br>
+            Присоединяйтесь к нашему чату для гостей<br />
+            в Telegram, чтобы знакомиться и<br />
             обмениваться фотографиями
           </span>
           <span v-else>
-            Присоединяйтесь к нашему чату для гостей в Telegram, чтобы знакомиться и обмениваться фотографиями
+            Присоединяйтесь к нашему чату для гостей в Telegram, чтобы знакомиться и обмениваться
+            фотографиями
           </span>
         </div>
 
@@ -30,7 +29,7 @@
             outline
             class="font-cormorant-sc chat-button"
             color="dark"
-            text-color="dark"
+            text-color="white"
             label="Присоединиться"
             :size="!$q.screen.lt.md ? 'xl' : 'lg'"
             padding="20px 60px"
@@ -59,12 +58,10 @@
 
 <script>
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
-import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'ChatComponent',
   setup() {
-    const $q = useQuasar()
     const container = ref(null)
     const isVisible = ref(false)
     let observer = null
@@ -75,20 +72,23 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            isVisible.value = true
-            if (observer) {
-              observer.disconnect()
-              observer = null
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              isVisible.value = true
+              if (observer) {
+                observer.disconnect()
+                observer = null
+              }
             }
-          }
-        })
-      }, {
-        threshold: 0.2,
-        rootMargin: '50px'
-      })
+          })
+        },
+        {
+          threshold: 0.2,
+          rootMargin: '50px',
+        },
+      )
 
       if (container.value) {
         observer.observe(container.value)
@@ -100,16 +100,23 @@ export default defineComponent({
     })
 
     return {
-      $q,
       container,
       isVisible,
-      openChat
+      openChat,
     }
-  }
+  },
 })
 </script>
 
 <style lang="scss" scoped>
+.bg-image {
+  background-image: url('/img/form.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 800px;
+}
+
 .centered-content {
   max-width: 800px;
   height: 400px;
@@ -166,15 +173,17 @@ export default defineComponent({
 }
 
 @keyframes waitPulse {
-  0%, 100% {
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  0%,
+  100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
   }
   50% {
-    text-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   }
 }
 
-.bg-white.animate {
+/* ИЗМЕНЕНИЕ: Заменяем .bg-white.animate на .bg-image.animate */
+.bg-image.animate {
   .chat-title {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -221,7 +230,8 @@ export default defineComponent({
     margin-left: 40px;
   }
 
-  .bg-white.animate {
+  /* ИЗМЕНЕНИЕ: Здесь тоже меняем */
+  .bg-image.animate {
     .chat-title {
       transition-delay: 0.1s;
     }
@@ -262,7 +272,8 @@ export default defineComponent({
     margin-left: 60px;
   }
 
-  .bg-white.animate {
+  /* ИЗМЕНЕНИЕ: Здесь тоже меняем */
+  .bg-image.animate {
     .chat-title {
       transition-delay: 0.05s;
     }

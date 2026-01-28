@@ -2,27 +2,35 @@
   <div
     ref="container"
     class="dress row items-center justify-center bg-white"
-    :class="{ 'animate': isVisible }"
+    :class="{ animate: isVisible }"
   >
     <div class="text-dark text-center q-pa-xl">
       <!-- Заголовок -->
-      <div class="text-h3 font-cormorant-sc q-mb-lg title-animate">
-        DRESS CODE
-      </div>
+      <div class="text-h3 font-cormorant-sc q-mb-xl q-mt-md title-animate">DRESS CODE</div>
 
       <!-- Текст -->
-      <div class="dress-text font-cormorant-sc q-mb-md text-block" data-index="1"
-           :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
-        Мы хотим создать особенную атмосферу на нашем торжестве, поэтому просим вас учесть дресс-код при выборе наряда
+      <div
+        class="dress-text font-cormorant-sc q-mb-md text-block"
+        data-index="1"
+        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
+      >
+        Мы хотим создать особенную атмосферу на нашем торжестве, поэтому просим вас учесть дресс-код
+        при выборе наряда
       </div>
 
-      <div class="dress-text font-cormorant-sc q-mb-lg text-block" data-index="2"
-           :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+      <div
+        class="dress-text font-cormorant-sc q-mb-lg text-block"
+        data-index="2"
+        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
+      >
         Будем признательны, если вы выберете наряды в коктейльном стиле.
       </div>
 
-      <div class="dress-text font-cormorant-sc q-mb-xl text-block" data-index="3"
-           :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+      <div
+        class="dress-text font-cormorant-sc q-mb-xl text-block"
+        data-index="3"
+        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
+      >
         Просим избегать белого, молочного цвета при выборе наряда.
       </div>
 
@@ -40,7 +48,12 @@
               :style="{ backgroundColor: color.hex }"
               :class="{ 'light-color': color.needsBorder }"
             ></div>
-            <div class="font-cormorant-sc color-name" :class="!$q.screen.lt.md ? 'text-h6' : 'text-h5'">{{ color.name }}</div>
+            <div
+              class="font-cormorant-sc color-name"
+              :class="!$q.screen.lt.md ? 'text-h6' : 'text-h5'"
+            >
+              {{ color.name }}
+            </div>
           </div>
         </div>
       </div>
@@ -50,38 +63,40 @@
 
 <script>
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
-import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'DressCodeComponent',
   setup() {
-    const $q = useQuasar()
     const container = ref(null)
     const isVisible = ref(false)
     let observer = null
 
     const colors = [
-      { name: 'Лесной орех', hex: '#644D42', needsBorder: false },
+      { name: 'Черный', hex: '#000000', needsBorder: false },
       { name: 'Темный шоколад', hex: '#26140C', needsBorder: false },
-      { name: 'Песчаный мед', hex: '#FFF3DF', needsBorder: true },
-      { name: 'Пудровый беж', hex: '#D5C1B8', needsBorder: false }
+      { name: 'Лесной орех', hex: '#644D42', needsBorder: false },
+      { name: 'Пудровый беж', hex: '#D5C1B8', needsBorder: false },
+      { name: 'Песчаный мед', hex: '#FFF3DF', needsBorder: true }
     ]
 
     onMounted(() => {
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            isVisible.value = true
-            if (observer) {
-              observer.disconnect()
-              observer = null
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              isVisible.value = true
+              if (observer) {
+                observer.disconnect()
+                observer = null
+              }
             }
-          }
-        })
-      }, {
-        threshold: 0.2,
-        rootMargin: '50px'
-      })
+          })
+        },
+        {
+          threshold: 0.2,
+          rootMargin: '50px',
+        },
+      )
 
       if (container.value) {
         observer.observe(container.value)
@@ -93,12 +108,11 @@ export default defineComponent({
     })
 
     return {
-      $q,
       container,
       isVisible,
-      colors
+      colors,
     }
-  }
+  },
 })
 </script>
 
@@ -119,11 +133,11 @@ export default defineComponent({
   transform: translateX(-30px);
   transition: all 0.6s ease;
 
-  &[data-index="2"] {
+  &[data-index='2'] {
     transform: translateX(30px);
   }
 
-  &[data-index="3"] {
+  &[data-index='3'] {
     transform: translateX(-30px);
   }
 }
@@ -199,7 +213,7 @@ export default defineComponent({
   transition: all 0.8s ease;
 }
 
-.dress.animate {
+.bg-white.animate {
   opacity: 1;
   transform: translateY(0);
 
@@ -209,70 +223,82 @@ export default defineComponent({
     transition-delay: 0.2s;
   }
 
-  .dress-text[data-index="1"] {
+  .dress-text[data-index='1'] {
     opacity: 1;
     transform: translateX(0);
     transition-delay: 0.4s;
   }
 
-  .dress-text[data-index="2"] {
+  .dress-text[data-index='2'] {
     opacity: 1;
     transform: translateX(0);
     transition-delay: 0.6s;
   }
 
-  .dress-text[data-index="3"] {
+  .dress-text[data-index='3'] {
     opacity: 1;
     transform: translateX(0);
     transition-delay: 0.8s;
   }
 
-  .color-item[data-index="0"] {
+  .color-item[data-index='0'] {
     opacity: 1;
     transform: scale(1) rotate(0);
     transition-delay: 1s;
   }
 
-  .color-item[data-index="1"] {
+  .color-item[data-index='1'] {
     opacity: 1;
     transform: scale(1) rotate(0);
     transition-delay: 1.2s;
   }
 
-  .color-item[data-index="2"] {
+  .color-item[data-index='2'] {
     opacity: 1;
     transform: scale(1) rotate(0);
     transition-delay: 1.4s;
   }
 
-  .color-item[data-index="3"] {
+  .color-item[data-index='3'] {
     opacity: 1;
     transform: scale(1) rotate(0);
     transition-delay: 1.6s;
   }
 
-  .color-item[data-index="0"] .color-name {
+  .color-item[data-index='4'] {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+    transition-delay: 1.8s;
+  }
+
+  .color-item[data-index='0'] .color-name {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 1.1s;
   }
 
-  .color-item[data-index="1"] .color-name {
+  .color-item[data-index='1'] .color-name {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 1.3s;
   }
 
-  .color-item[data-index="2"] .color-name {
+  .color-item[data-index='2'] .color-name {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 1.5s;
   }
 
-  .color-item[data-index="3"] .color-name {
+  .color-item[data-index='3'] .color-name {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 1.7s;
+  }
+
+  .color-item[data-index='4'] .color-name {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.9s;
   }
 }
 
@@ -328,35 +354,59 @@ export default defineComponent({
   }
 
   /* Ускоряем анимации на мобильных */
-  .dress.animate {
-    .title-animate { transition-delay: 0.1s; }
-    .dress-text[data-index="1"] { transition-delay: 0.2s; }
-    .dress-text[data-index="2"] { transition-delay: 0.3s; }
-    .dress-text[data-index="3"] { transition-delay: 0.4s; }
-    .color-item[data-index="0"] {
+  .bg-white.animate {
+    .title-animate {
+      transition-delay: 0.1s;
+    }
+    .dress-text[data-index='1'] {
+      transition-delay: 0.2s;
+    }
+    .dress-text[data-index='2'] {
+      transition-delay: 0.3s;
+    }
+    .dress-text[data-index='3'] {
+      transition-delay: 0.4s;
+    }
+    .color-item[data-index='0'] {
       opacity: 1;
       transform: translateX(0);
       transition-delay: 0.5s;
     }
-    .color-item[data-index="1"] {
+    .color-item[data-index='1'] {
       opacity: 1;
       transform: translateX(0);
       transition-delay: 0.6s;
     }
-    .color-item[data-index="2"] {
+    .color-item[data-index='2'] {
       opacity: 1;
       transform: translateX(0);
       transition-delay: 0.7s;
     }
-    .color-item[data-index="3"] {
+    .color-item[data-index='3'] {
       opacity: 1;
       transform: translateX(0);
       transition-delay: 0.8s;
     }
-    .color-item[data-index="0"] .color-name { transition-delay: 0.55s; }
-    .color-item[data-index="1"] .color-name { transition-delay: 0.65s; }
-    .color-item[data-index="2"] .color-name { transition-delay: 0.75s; }
-    .color-item[data-index="3"] .color-name { transition-delay: 0.85s; }
+    .color-item[data-index='4'] {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 0.9s;
+    }
+    .color-item[data-index='0'] .color-name {
+      transition-delay: 0.55s;
+    }
+    .color-item[data-index='1'] .color-name {
+      transition-delay: 0.65s;
+    }
+    .color-item[data-index='2'] .color-name {
+      transition-delay: 0.75s;
+    }
+    .color-item[data-index='3'] .color-name {
+      transition-delay: 0.85s;
+    }
+    .color-item[data-index='4'] .color-name {
+      transition-delay: 0.95s;
+    }
   }
 }
 

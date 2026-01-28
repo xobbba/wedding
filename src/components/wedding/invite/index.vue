@@ -59,12 +59,10 @@
 
 <script>
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
-import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'InviteComponent',
   setup() {
-    const $q = useQuasar()
     const container = ref(null)
     const isVisible = ref(false)
     let observer = null
@@ -92,7 +90,6 @@ export default defineComponent({
     })
 
     return {
-      $q,
       container,
       isVisible
     }
@@ -173,8 +170,8 @@ export default defineComponent({
 }
 
 .calendar-container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 700px;
+  margin-left: 40px;
 }
 
 .calendar-image {

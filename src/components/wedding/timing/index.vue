@@ -61,7 +61,7 @@
 
         <div class="timing-item" data-index="3">
           <div class="text-h3 font-cormorant-infant">23:00</div>
-          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">ОКОНЧАНИЕ БАНКЕТА</div>
+          <div class="font-cormorant-sc q-mt-sm q-mb-xl" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">ОКОНЧАНИЕ БАНКЕТА</div>
         </div>
       </div>
     </div>
@@ -70,12 +70,10 @@
 
 <script>
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
-import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'TimingComponent',
   setup() {
-    const $q = useQuasar()
     const container = ref(null)
     const isVisible = ref(false)
     let observer = null
@@ -105,7 +103,6 @@ export default defineComponent({
     })
 
     return {
-      $q,
       container,
       isVisible
     }

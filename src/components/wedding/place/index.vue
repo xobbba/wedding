@@ -4,14 +4,10 @@
     <div
       ref="container"
       class="row items-center justify-start bg-image"
-      :class="{ 'animate': isVisible }"
+      :class="{ animate: isVisible }"
     >
       <div class="top-image-container">
-        <img
-          src="/img/down.png"
-          alt="Decoration"
-          class="top-image"
-        />
+        <img src="/img/down.png" alt="Decoration" class="top-image" />
       </div>
       <div class="text-white" :class="{ 'text-center': isMobile }">
         <div
@@ -19,7 +15,7 @@
           :class="textSizeClass"
           :style="isMobile ? mobileTextStyle : locationStyle"
         >
-          НАША СВАДЬБА ПРОЙДЕТ В КАЗАХСТАНЕ, Г. ШУЧИНСК
+          НАША СВАДЬБА ПРОЙДЕТ В КАЗАХСТАНЕ, БОРОВОЕ
         </div>
 
         <div
@@ -35,7 +31,7 @@
           :class="nameSizeClass"
           :style="isMobile ? mobileTextStyle : placeStyle"
         >
-          «KINZA»
+          «Wyndham Garden»
         </div>
 
         <div
@@ -46,10 +42,7 @@
           МИКРОРАЙОН ЦРБ, 2в
         </div>
 
-        <div
-          class="q-mt-xl text-block"
-          :style="isMobile ? { textAlign: 'center' } : buttonStyle"
-        >
+        <div class="q-mt-xl text-block" :style="isMobile ? { textAlign: 'center' } : buttonStyle">
           <q-btn
             rounded
             outline
@@ -63,11 +56,7 @@
         </div>
       </div>
       <div class="down-image-container">
-        <img
-          src="/img/up.png"
-          alt="Decoration"
-          class="down-image"
-        />
+        <img src="/img/up.png" alt="Decoration" class="down-image" />
       </div>
     </div>
   </div>
@@ -86,35 +75,41 @@ export default defineComponent({
     let observer = null
 
     const isMobile = computed(() => $q.screen.lt.md)
-    const textSizeClass = computed(() => !$q.screen.lt.md ? 'text-h4' : 'text-h5')
-    const nameSizeClass = computed(() => !$q.screen.lt.md ? 'text-h3' : 'text-h4')
+    const textSizeClass = computed(() => (!$q.screen.lt.md ? 'text-h4' : 'text-h5'))
+    const nameSizeClass = computed(() => (!$q.screen.lt.md ? 'text-h3' : 'text-h4'))
 
-    const locationStyle = { marginLeft: '180px', maxWidth: '600px' }
+    const locationStyle = { marginLeft: '190px', maxWidth: '600px' }
     const banquetStyle = { marginLeft: '190px' }
-    const placeStyle = { marginLeft: '300px' }
-    const addressStyle = { marginLeft: '220px' }
-    const buttonStyle = { marginLeft: '246px' }
+    const placeStyle = { marginLeft: '210px' }
+    const addressStyle = { marginLeft: '224px' }
+    const buttonStyle = { marginLeft: '266px' }
     const mobileTextStyle = { marginLeft: '0', maxWidth: '90%', margin: '0 auto' }
 
     const openMap = () => {
-      window.open('https://2gis.kz/kokshetau/firm/70000001091595292', '_blank')
+      window.open(
+        'https://2gis.kz/kokshetau/firm/70000001056259878/70.30477%2C53.079132?m=70.310225%2C53.076573%2F13.89',
+        '_blank',
+      )
     }
 
     onMounted(() => {
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            isVisible.value = true
-            if (observer) {
-              observer.disconnect()
-              observer = null
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              isVisible.value = true
+              if (observer) {
+                observer.disconnect()
+                observer = null
+              }
             }
-          }
-        })
-      }, {
-        threshold: 0.3,
-        rootMargin: '50px'
-      })
+          })
+        },
+        {
+          threshold: 0.3,
+          rootMargin: '50px',
+        },
+      )
 
       if (container.value) {
         observer.observe(container.value)
@@ -139,9 +134,9 @@ export default defineComponent({
       addressStyle,
       buttonStyle,
       mobileTextStyle,
-      openMap
+      openMap,
     }
-  }
+  },
 })
 </script>
 
@@ -246,21 +241,41 @@ export default defineComponent({
   }
 
   .bg-image.animate {
-    .text-block:nth-child(1) { transition-delay: 0.1s; }
-    .text-block:nth-child(2) { transition-delay: 0.2s; }
-    .text-block:nth-child(3) { transition-delay: 0.3s; }
-    .text-block:nth-child(4) { transition-delay: 0.4s; }
-    .text-block:nth-child(5) { transition-delay: 0.5s; }
+    .text-block:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+    .text-block:nth-child(2) {
+      transition-delay: 0.2s;
+    }
+    .text-block:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+    .text-block:nth-child(4) {
+      transition-delay: 0.4s;
+    }
+    .text-block:nth-child(5) {
+      transition-delay: 0.5s;
+    }
   }
 }
 
 @media (max-width: 480px) {
   .bg-image.animate {
-    .text-block:nth-child(1) { transition-delay: 0.05s; }
-    .text-block:nth-child(2) { transition-delay: 0.15s; }
-    .text-block:nth-child(3) { transition-delay: 0.25s; }
-    .text-block:nth-child(4) { transition-delay: 0.35s; }
-    .text-block:nth-child(5) { transition-delay: 0.45s; }
+    .text-block:nth-child(1) {
+      transition-delay: 0.05s;
+    }
+    .text-block:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+    .text-block:nth-child(3) {
+      transition-delay: 0.25s;
+    }
+    .text-block:nth-child(4) {
+      transition-delay: 0.35s;
+    }
+    .text-block:nth-child(5) {
+      transition-delay: 0.45s;
+    }
   }
 }
 </style>

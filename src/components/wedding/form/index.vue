@@ -1,33 +1,29 @@
 <template>
   <div
     ref="container"
-    class="row items-center justify-center bg-image"
-    :class="{ 'animate': isVisible }"
+    class="row items-center justify-center bg-white form"
+    :class="{ animate: isVisible }"
   >
-    <div class="text-white text-center" :class="!$q.screen.lt.md ? 'q-pa-xl' : 'q-pa-md'">
-      <div class="text-h3 font-cormorant-sc q-mb-xl form-title">
-        АНКЕТА ГОСТЯ
-      </div>
+    <div class="text-dark text-center" :class="!$q.screen.lt.md ? 'q-pa-xl' : 'q-pa-md'">
+      <div class="text-h3 font-cormorant-sc q-mb-xl form-title">АНКЕТА ГОСТЯ</div>
 
       <div
         class="font-cormorant-sc q-mb-xl form-description"
         :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
       >
         <span v-if="!$q.screen.lt.md">
-          Пожалуйста подтвердите свое присутствие<br>
+          Пожалуйста подтвердите свое присутствие<br />
           до 1 июля 2026 года
         </span>
-        <span v-else>
-          Пожалуйста подтвердите свое присутствие до 1 июля 2026 года
-        </span>
+        <span v-else> Пожалуйста подтвердите свое присутствие до 1 июля 2026 года </span>
       </div>
 
       <q-btn
         rounded
         outline
         class="font-cormorant-sc form-button"
-        color="white"
-        text-color="white"
+        color="dark"
+        text-color="dark"
         label="Подтвердить"
         :size="!$q.screen.lt.md ? 'xl' : 'lg'"
         padding="20px 60px"
@@ -39,12 +35,10 @@
 
 <script>
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
-import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'FormComponent',
   setup() {
-    const $q = useQuasar()
     const container = ref(null)
     const isVisible = ref(false)
     let observer = null
@@ -55,20 +49,23 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            isVisible.value = true
-            if (observer) {
-              observer.disconnect()
-              observer = null
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              isVisible.value = true
+              if (observer) {
+                observer.disconnect()
+                observer = null
+              }
             }
-          }
-        })
-      }, {
-        threshold: 0.3,
-        rootMargin: '50px'
-      })
+          })
+        },
+        {
+          threshold: 0.3,
+          rootMargin: '50px',
+        },
+      )
 
       if (container.value) {
         observer.observe(container.value)
@@ -80,28 +77,18 @@ export default defineComponent({
     })
 
     return {
-      $q,
       container,
       isVisible,
-      openForm
+      openForm,
     }
-  }
+  },
 })
 </script>
 
 <style lang="scss" scoped>
-.bg-image {
-  background-image: url('/img/form.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  min-height: 800px;
-  width: 100%;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
+.form {
+  min-height: 600px;
 }
-
 .form-title,
 .form-description,
 .form-button {
@@ -126,31 +113,38 @@ export default defineComponent({
   transition-delay: 0.6s;
 }
 
+.q-btn {
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
 @keyframes buttonPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
 
 @keyframes textGlow {
-  0%, 100% {
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  0%,
+  100% {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   }
   50% {
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   }
 }
 
-.bg-image.animate {
-  opacity: 1;
-  transform: translateY(0);
-
+.bg-white.animate {
   .form-title {
     opacity: 1;
     transform: translateY(0);
@@ -171,18 +165,14 @@ export default defineComponent({
 
     &:hover {
       transform: scale(1.05);
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(0, 0, 0, 0.05);
       animation: buttonPulse 1.5s infinite;
     }
   }
 }
 
 @media (max-width: 768px) {
-  .bg-image {
-    min-height: 600px;
-  }
-
-  .bg-image.animate {
+  .bg-white.animate {
     .form-title {
       transition-delay: 0.1s;
     }
@@ -198,8 +188,28 @@ export default defineComponent({
 }
 
 @media (max-width: 480px) {
-  .bg-image {
-    min-height: 500px;
+  .bg-white.animate {
+    .form-title {
+      transition-delay: 0.05s;
+    }
+
+    .form-description {
+      transition-delay: 0.1s;
+    }
+
+    .form-button {
+      transition-delay: 0.15s;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .form-description {
+    font-size: 1rem;
   }
 }
 </style>
