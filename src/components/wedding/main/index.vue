@@ -1,34 +1,21 @@
 <template>
-  <div class="fullscreen row items-start justify-start bg-image" :class="{ 'loaded': isLoaded }">
+  <div class="fullscreen row items-start justify-start bg-image" :class="{ loaded: isLoaded }">
     <div class="text-white" :class="!$q.screen.lt.md ? 'q-pt-xl' : 'custom-padding'">
-      <div
-        class="font-cormorant-sc line-1"
-        :class="!$q.screen.lt.md ? 'text-h2' : 'text-h3'"
-      >
+      <div class="font-cormorant-sc line-1" :class="!$q.screen.lt.md ? 'text-h2' : 'text-h3'">
         KONSTANTIN
       </div>
 
-      <div
-        class="font-cormorant-sc line-2"
-        :class="!$q.screen.lt.md ? 'text-h2' : 'text-h3'"
-      >
+      <div class="font-cormorant-sc line-2" :class="!$q.screen.lt.md ? 'text-h2' : 'text-h3'">
         & VERONIKA
       </div>
 
-      <div
-        class="font-cormorant-infant line-3"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
-      >
+      <div class="font-cormorant-infant line-3" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
         28|08|2026
       </div>
     </div>
 
     <div class="bottom-image-container">
-      <img
-        src="/img/up.png"
-        alt="Decoration"
-        class="bottom-image"
-      />
+      <img src="/img/up.png" alt="Decoration" class="bottom-image" />
     </div>
   </div>
 </template>
@@ -48,9 +35,9 @@ export default defineComponent({
     })
 
     return {
-      isLoaded
+      isLoaded,
     }
-  }
+  },
 })
 </script>
 
@@ -58,7 +45,7 @@ export default defineComponent({
 .bg-image {
   background-image: url('/img/we.png');
   background-repeat: no-repeat;
-  background-position: 50% 10%;
+  background-position: 50% 60%;
   background-size: cover;
   position: relative;
   height: 1200px;
@@ -162,7 +149,9 @@ export default defineComponent({
 
 /* Эффект мягкого свечения для текста после появления */
 .bg-image.loaded {
-  .line-1, .line-2, .line-3 {
+  .line-1,
+  .line-2,
+  .line-3 {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     transition: text-shadow 0.5s ease 0.5s;
 
@@ -182,8 +171,12 @@ export default defineComponent({
     margin-left: 100px;
     margin-top: 80px;
   }
-  .line-2 { margin-left: 150px; }
-  .line-3 { margin-left: 125px; }
+  .line-2 {
+    margin-left: 150px;
+  }
+  .line-3 {
+    margin-left: 125px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -195,8 +188,12 @@ export default defineComponent({
     margin-left: 80px;
     margin-top: 60px;
   }
-  .line-2 { margin-left: 120px; }
-  .line-3 { margin-left: 100px; }
+  .line-2 {
+    margin-left: 120px;
+  }
+  .line-3 {
+    margin-left: 100px;
+  }
 
   .line-3 {
     letter-spacing: 6px;
@@ -206,6 +203,7 @@ export default defineComponent({
 @media (max-width: 768px) {
   .bg-image {
     height: 600px;
+    background-size: cover;
   }
 
   .line-1 {
@@ -222,20 +220,22 @@ export default defineComponent({
   }
 
   .line-3 {
-    margin-left: 120px;
+    margin-left: 90px;
     letter-spacing: 4px;
     margin-top: 2px;
     animation-delay: 1.2s !important;
   }
 
   .custom-padding {
-    padding-top: 168px;
+    padding-top: 2px;
   }
 }
 
 @media (max-width: 480px) {
   .bg-image {
     height: 500px;
+    background-size: 150% auto;
+    background-position: 60% 55%;
 
     &.loaded {
       &::before {

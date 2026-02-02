@@ -15,15 +15,18 @@
         <!-- Блоки без эффекта волны -->
         <div class="timing-item q-pa-md" data-index="0">
           <div class="text-h3 font-cormorant-infant">15:00</div>
-          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">ЦЕРЕМОНИЯ БРАКОСОЧЕТАНИЯ</div>
+          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+            ЦЕРЕМОНИЯ БРАКОСОЧЕТАНИЯ
+          </div>
           <div class="font-cormorant-sc q-mt-md" :class="!$q.screen.lt.md ? 'text-h5' : 'text-h6'">
             <span v-if="!$q.screen.lt.md">
-              ЦЕРЕМОНИЯ СОСТОИТСЯ В «BURABAY GOLF CLUB»<br>
-              ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б.<br>
+              ЦЕРЕМОНИЯ СОСТОИТСЯ В «BURABAY GOLF CLUB»<br />
+              ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б.<br />
               КАЗАХСТАН, Г. ЩУЧИНСК.
             </span>
             <span v-else>
-              ЦЕРЕМОНИЯ СОСТОИТСЯ В «BURABAY GOLF CLUB» ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б. КАЗАХСТАН, Г. ЩУЧИНСК.
+              ЦЕРЕМОНИЯ СОСТОИТСЯ В «BURABAY GOLF CLUB» ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б. КАЗАХСТАН, Г.
+              ЩУЧИНСК.
             </span>
           </div>
         </div>
@@ -34,15 +37,15 @@
 
         <div class="timing-item" data-index="1">
           <div class="text-h3 font-cormorant-infant">16:30</div>
-          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">НАЧАЛО ФУРШЕТА</div>
+          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+            НАЧАЛО ФУРШЕТА
+          </div>
           <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h5' : 'text-h6'">
             <span v-if="!$q.screen.lt.md">
-              Мухтара Ауэзова, 129<br>
+              Мухтара Ауэзова, 129<br />
               «KINZA»
             </span>
-            <span v-else>
-              Мухтара Ауэзова, 129 «KINZA»
-            </span>
+            <span v-else> Мухтара Ауэзова, 129 «KINZA» </span>
           </div>
         </div>
 
@@ -52,7 +55,9 @@
 
         <div class="timing-item" data-index="2">
           <div class="text-h3 font-cormorant-infant">17:30</div>
-          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">НАЧАЛО БАНКЕТА И ВСТРЕЧА МОЛОДОЖЕНОВ</div>
+          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+            НАЧАЛО БАНКЕТА И ВСТРЕЧА МОЛОДОЖЕНОВ
+          </div>
         </div>
 
         <div class="separator-center">
@@ -61,7 +66,12 @@
 
         <div class="timing-item" data-index="3">
           <div class="text-h3 font-cormorant-infant">23:00</div>
-          <div class="font-cormorant-sc q-mt-sm q-mb-xl" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">ОКОНЧАНИЕ БАНКЕТА</div>
+          <div
+            class="font-cormorant-sc q-mt-sm q-mb-xl"
+            :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
+          >
+            ОКОНЧАНИЕ БАНКЕТА
+          </div>
         </div>
       </div>
     </div>
@@ -79,19 +89,22 @@ export default defineComponent({
     let observer = null
 
     onMounted(() => {
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            isVisible.value = true
-            if (observer) {
-              observer.disconnect()
-              observer = null
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              isVisible.value = true
+              if (observer) {
+                observer.disconnect()
+                observer = null
+              }
             }
-          }
-        })
-      }, {
-        threshold: 0.2
-      })
+          })
+        },
+        {
+          threshold: 0.2,
+        },
+      )
 
       if (container.value) {
         observer.observe(container.value)
@@ -104,9 +117,9 @@ export default defineComponent({
 
     return {
       container,
-      isVisible
+      isVisible,
     }
-  }
+  },
 })
 </script>
 
@@ -167,25 +180,25 @@ export default defineComponent({
     transform: scale(1);
   }
 
-  .timing-item[data-index="0"] {
+  .timing-item[data-index='0'] {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.2s;
   }
 
-  .timing-item[data-index="1"] {
+  .timing-item[data-index='1'] {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.5s;
   }
 
-  .timing-item[data-index="2"] {
+  .timing-item[data-index='2'] {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.8s;
   }
 
-  .timing-item[data-index="3"] {
+  .timing-item[data-index='3'] {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 1.1s;
@@ -215,14 +228,28 @@ export default defineComponent({
   }
 
   .bg-image.animate {
-    .timing-item[data-index="0"] { transition-delay: 0.1s; }
-    .timing-item[data-index="1"] { transition-delay: 0.3s; }
-    .timing-item[data-index="2"] { transition-delay: 0.5s; }
-    .timing-item[data-index="3"] { transition-delay: 0.7s; }
+    .timing-item[data-index='0'] {
+      transition-delay: 0.1s;
+    }
+    .timing-item[data-index='1'] {
+      transition-delay: 0.3s;
+    }
+    .timing-item[data-index='2'] {
+      transition-delay: 0.5s;
+    }
+    .timing-item[data-index='3'] {
+      transition-delay: 0.7s;
+    }
 
-    .centered-separator:nth-child(2) { transition-delay: 0.2s; }
-    .centered-separator:nth-child(4) { transition-delay: 0.4s; }
-    .centered-separator:nth-child(6) { transition-delay: 0.6s; }
+    .centered-separator:nth-child(2) {
+      transition-delay: 0.2s;
+    }
+    .centered-separator:nth-child(4) {
+      transition-delay: 0.4s;
+    }
+    .centered-separator:nth-child(6) {
+      transition-delay: 0.6s;
+    }
   }
 }
 
