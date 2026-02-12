@@ -148,11 +148,11 @@ export default defineComponent({
 }
 
 .bg-image {
-  background-image: url('/img/place.jpg');
+  background-image: url('/img/place.JPG');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 1200px;
+  height: 900px;
   width: 100%;
   opacity: 0;
   transition: opacity 0.8s ease-out;
