@@ -27,9 +27,34 @@
         label="Подтвердить"
         :size="!$q.screen.lt.md ? 'xl' : 'lg'"
         padding="20px 60px"
-        @click="openForm"
+        @click="modalOpen = true"
       />
     </div>
+
+    <!-- Модальное окно с формой -->
+    <q-dialog v-model="modalOpen" full-width>
+      <q-card style="max-width: 800px; width: 100%; height: 80vh">
+        <q-card-section class="row items-center q-pb-none">
+          <div class="text-h6">Форма подтверждения</div>
+          <q-space />
+          <q-btn icon="close" flat round dense v-close-popup />
+        </q-card-section>
+
+        <q-card-section style="height: calc(100% - 60px); padding: 0">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSetZTMyNnoCh2eVS7CyRMSyZnBOtG770ctuFxcc65W9K_UzWw/viewform?usp=publish-editor"
+            width="100%"
+            height="100%"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            style="border: none"
+          >
+            Загрузка…
+          </iframe>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
@@ -41,12 +66,8 @@ export default defineComponent({
   setup() {
     const container = ref(null)
     const isVisible = ref(false)
+    const modalOpen = ref(false)
     let observer = null
-
-    const openForm = () => {
-      const formUrl = 'https://forms.yandex.ru/u/696cd036068ff04af0e89f22'
-      window.open(formUrl, '_blank')
-    }
 
     onMounted(() => {
       observer = new IntersectionObserver(
@@ -79,7 +100,7 @@ export default defineComponent({
     return {
       container,
       isVisible,
-      openForm,
+      modalOpen,
     }
   },
 })

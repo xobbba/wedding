@@ -146,25 +146,25 @@ export default defineComponent({
   }
 
   @media (min-width: 1440px) and (max-width: 1919px) {
-    background-size: 90% auto;
+    background-size: 176% auto;
   }
 
   @media (min-width: 1024px) and (max-width: 1439px) {
-    background-size: 95% auto;
+    background-size: 214% auto;
   }
 
   @media (min-width: 768px) and (max-width: 1023px) {
-    background-size: 110% auto;
+    background-size: 260% auto;
     min-height: 1200px;
   }
 
   @media (max-width: 767px) {
-    background-size: 130% auto;
+    background-size: 325% auto;
     min-height: 1000px;
   }
 
   @media (max-width: 480px) {
-    background-size: 150% auto;
+    background-size: 594% auto;
     min-height: 800px;
   }
 }

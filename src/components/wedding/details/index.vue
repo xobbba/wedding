@@ -2,7 +2,7 @@
   <div
     ref="container"
     class="details-container bg-image details-overlap"
-    :class="{ 'animate': isVisible }"
+    :class="{ animate: isVisible }"
   >
     <div class="text-h3 text-center font-cormorant-sc q-mb-lg q-mt-xl text-white">DETAILS</div>
 
@@ -49,7 +49,7 @@
         :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
       >
         Обращаем ваше внимание, что мероприятие предназначено исключительно для взрослых гостей -
-        десткий стол и аниматоры не предусмотрены
+        детский стол и аниматоры не предусмотрены
       </div>
     </div>
 
@@ -120,68 +120,77 @@ export default defineComponent({
   background-position: center center;
   min-height: 1400px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 
-  /* Адаптивный подход */
   @media (min-width: 1920px) {
     background-size: 80% auto;
   }
 
   @media (min-width: 1440px) and (max-width: 1919px) {
-    background-size: 90% auto;
+    background-size: 110% auto;
   }
 
   @media (min-width: 1024px) and (max-width: 1439px) {
-    background-size: 95% auto;
+    background-size: 136% auto;
   }
 
   @media (min-width: 768px) and (max-width: 1023px) {
-    background-size: 110% auto;
+    background-size: 150% auto;
     min-height: 1200px;
   }
 
   @media (max-width: 767px) {
-    background-size: 130% auto;
+    background-size: 230% auto;
     min-height: 1000px;
   }
 
   @media (max-width: 480px) {
-    background-size: 150% auto;
+    background-size: 330% auto;
     min-height: 800px;
   }
 }
 
 .details-container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .detail-block {
   width: 100%;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
-  padding: 80px 10%;
+  padding: 20px 10%;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease;
+  box-sizing: border-box;
 }
 
 .block-01 {
   align-items: flex-start;
   text-align: left;
   transition-delay: 0.2s;
+  align-self: flex-start;
 }
 
 .block-02 {
   align-items: flex-end;
   text-align: right;
   transition-delay: 0.4s;
+  align-self: flex-end;
 }
 
 .block-03 {
   align-items: flex-start;
   text-align: left;
   transition-delay: 0.6s;
+  align-self: flex-start;
 }
 
 .image-bottom {
