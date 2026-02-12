@@ -1,7 +1,7 @@
 <template>
   <div
     ref="container"
-    class="row items-center justify-center bg-image"
+    class="row items-center justify-center bg-image timing-overlap"
     :class="{ 'animate': isVisible }"
   >
     <div class="text-white text-center" :class="{
@@ -12,7 +12,6 @@
       </div>
 
       <div class="centered-container q-mt-xl">
-        <!-- Блоки без эффекта волны -->
         <div class="timing-item q-pa-md" data-index="0">
           <div class="text-h3 font-cormorant-infant">15:00</div>
           <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
@@ -124,13 +123,50 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.timing-overlap {
+  position: relative;
+  z-index: 6;
+  margin-top: -120px;
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+
 .bg-image {
   background-image: url('/img/timing.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
-  min-height: 1100px;
-  width: 100%;
+  min-height: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Адаптивный подход */
+  @media (min-width: 1920px) {
+    background-size: 120% auto;
+  }
+
+  @media (min-width: 1440px) and (max-width: 1919px) {
+    background-size: 90% auto;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    background-size: 95% auto;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    background-size: 110% auto;
+    min-height: 1200px;
+  }
+
+  @media (max-width: 767px) {
+    background-size: 130% auto;
+    min-height: 1000px;
+  }
+
+  @media (max-width: 480px) {
+    background-size: 150% auto;
+    min-height: 800px;
+  }
 }
 
 .centered-container {
@@ -223,8 +259,10 @@ export default defineComponent({
 }
 
 @media (max-width: 768px) {
-  .bg-image {
-    min-height: 900px;
+  .timing-overlap {
+    margin-top: -80px;
+    padding-top: 100px;
+    padding-bottom: 100px;
   }
 
   .bg-image.animate {
@@ -254,8 +292,10 @@ export default defineComponent({
 }
 
 @media (max-width: 480px) {
-  .bg-image {
-    min-height: 800px;
+  .timing-overlap {
+    margin-top: -60px;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 
   .timing-item {

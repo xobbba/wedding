@@ -1,5 +1,9 @@
 <template>
-  <div ref="container" class="details-container bg-image q-mt-xl q-mb-xl">
+  <div
+    ref="container"
+    class="details-container bg-image details-overlap"
+    :class="{ 'animate': isVisible }"
+  >
     <div class="text-h3 text-center font-cormorant-sc q-mb-lg q-mt-xl text-white">DETAILS</div>
 
     <div class="detail-block block-01">
@@ -102,19 +106,54 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.details-overlap {
+  position: relative;
+  z-index: 8;
+  margin-top: -120px;
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+
 .bg-image {
-  background-image: url('/img/timing.png');
+  background-image: url('/img/details.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
-  width: 100%;
-  min-height: 1200px;
+  min-height: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Адаптивный подход */
+  @media (min-width: 1920px) {
+    background-size: 80% auto;
+  }
+
+  @media (min-width: 1440px) and (max-width: 1919px) {
+    background-size: 90% auto;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    background-size: 95% auto;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    background-size: 110% auto;
+    min-height: 1200px;
+  }
+
+  @media (max-width: 767px) {
+    background-size: 130% auto;
+    min-height: 1000px;
+  }
+
+  @media (max-width: 480px) {
+    background-size: 150% auto;
+    min-height: 800px;
+  }
 }
 
 .details-container {
   width: 100%;
-  padding-top: 40px; /* Добавляем отступ сверху */
-  padding-bottom: 40px; /* Добавляем отступ снизу */
 }
 
 .detail-block {
@@ -122,21 +161,27 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   padding: 80px 10%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
 }
 
 .block-01 {
   align-items: flex-start;
   text-align: left;
+  transition-delay: 0.2s;
 }
 
 .block-02 {
   align-items: flex-end;
   text-align: right;
+  transition-delay: 0.4s;
 }
 
 .block-03 {
   align-items: flex-start;
   text-align: left;
+  transition-delay: 0.6s;
 }
 
 .image-bottom {
@@ -144,6 +189,9 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   padding: 80px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease 0.8s;
 }
 
 .bottom-image {
@@ -152,11 +200,23 @@ export default defineComponent({
   height: auto;
 }
 
-/* Медиа-запросы для адаптивности */
+.details-container.animate {
+  .detail-block {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .image-bottom {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 768px) {
-  .details-container {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  .details-overlap {
+    margin-top: -80px;
+    padding-top: 100px;
+    padding-bottom: 100px;
   }
 
   .detail-block {
@@ -166,12 +226,29 @@ export default defineComponent({
   .image-bottom {
     padding: 60px 0;
   }
+
+  .block-01 {
+    transition-delay: 0.1s;
+  }
+
+  .block-02 {
+    transition-delay: 0.2s;
+  }
+
+  .block-03 {
+    transition-delay: 0.3s;
+  }
+
+  .image-bottom {
+    transition-delay: 0.4s;
+  }
 }
 
 @media (max-width: 480px) {
-  .details-container {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  .details-overlap {
+    margin-top: -60px;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 
   .detail-block {

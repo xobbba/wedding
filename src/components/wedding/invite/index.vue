@@ -1,7 +1,7 @@
 <template>
   <div
     ref="container"
-    class="row items-center justify-center bg-image"
+    class="row items-center justify-center bg-image invite-overlap"
     :class="{ 'animate': isVisible }"
   >
     <div class="text-white text-center q-pa-xl">
@@ -98,23 +98,104 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.invite-overlap {
+  position: relative;
+  z-index: 6;
+  margin-top: -100px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
 .bg-image {
   background-image: url('/img/invite.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
-  min-height: 1200px;
+  min-height: 1400px;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  animation: fadeIn 0.8s ease-out forwards;
+
+  /* Вариант 4: Адаптивный подход с разными значениями */
+  @media (min-width: 1920px) {
+    background-size: 120% auto;
+  }
+
+  @media (min-width: 1440px) and (max-width: 1919px) {
+    background-size: 140% auto;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    background-size: 184% auto;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    background-size: 210% auto;
+    min-height: 1200px;
+  }
+
+  @media (max-width: 767px) {
+    background-size: 250% auto;
+    min-height: 1000px;
+  }
+
+  @media (max-width: 480px) {
+    background-size: 444% auto;
+    min-height: 800px;
+  }
 }
 
-// Анимации
-@keyframes fadeIn {
-  to {
+.text-block {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.calendar-container {
+  max-width: 700px;
+  margin-left: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.calendar-image {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+}
+
+.bg-image.animate {
+  .text-block:nth-child(1) {
     opacity: 1;
+    transform: translateY(0);
+    animation: textAppear 0.8s ease 0.2s forwards;
+  }
+
+  .text-block:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    animation: textAppear 0.8s ease 0.4s forwards;
+  }
+
+  .text-block:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    animation: textAppear 0.8s ease 0.6s forwards;
+  }
+
+  .text-block:nth-child(4) {
+    opacity: 1;
+    transform: translateY(0);
+    animation: textAppear 0.8s ease 0.8s forwards;
+  }
+
+  .calendar-container {
+    opacity: 1;
+    transform: translateY(0);
+    animation: calendarAppear 1s ease 1s forwards;
   }
 }
 
@@ -140,81 +221,40 @@ export default defineComponent({
   }
 }
 
-// Блоки текста
-.text-block {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.bg-image.animate {
-  .text-block:nth-child(1) {
-    animation: textAppear 0.8s ease 0.2s forwards;
-  }
-
-  .text-block:nth-child(2) {
-    animation: textAppear 0.8s ease 0.4s forwards;
-  }
-
-  .text-block:nth-child(3) {
-    animation: textAppear 0.8s ease 0.6s forwards;
-  }
-
-  .text-block:nth-child(4) {
-    animation: textAppear 0.8s ease 0.8s forwards;
-  }
-
-  .calendar-image {
-    opacity: 0;
-    animation: calendarAppear 1s ease 1s forwards;
-  }
-}
-
-.calendar-container {
-  max-width: 700px;
-  margin-left: 40px;
-}
-
-.calendar-image {
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.01);
-  }
-}
-
-// Адаптивность
 @media (max-width: 1024px) {
-  .bg-image {
-    min-height: 1000px;
-    padding: 40px 20px;
+  .invite-overlap {
+    margin-top: -80px;
+    padding-top: 100px;
+    padding-bottom: 100px;
   }
 
   .bg-image.animate {
-    .text-block:nth-child(1) { animation-delay: 0.1s !important; }
-    .text-block:nth-child(2) { animation-delay: 0.2s !important; }
-    .text-block:nth-child(3) { animation-delay: 0.3s !important; }
-    .text-block:nth-child(4) { animation-delay: 0.4s !important; }
-    .calendar-image { animation-delay: 0.5s !important; }
+    .text-block:nth-child(1) { animation-delay: 0.1s; }
+    .text-block:nth-child(2) { animation-delay: 0.2s; }
+    .text-block:nth-child(3) { animation-delay: 0.3s; }
+    .text-block:nth-child(4) { animation-delay: 0.4s; }
+    .calendar-container { animation-delay: 0.5s; }
   }
 }
 
 @media (max-width: 768px) {
-  .bg-image {
-    min-height: 800px;
-    padding: 30px 15px;
+  .invite-overlap {
+    margin-top: -60px;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 
   .calendar-container {
     max-width: 500px;
+    margin-left: 0;
   }
 }
 
 @media (max-width: 480px) {
-  .bg-image {
-    min-height: 700px;
+  .invite-overlap {
+    margin-top: -40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 
   .calendar-container {

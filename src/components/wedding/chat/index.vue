@@ -1,7 +1,7 @@
 <template>
   <div
     ref="container"
-    class="row items-center justify-center bg-image"
+    class="row items-center justify-center bg-image chat-overlap"
     :class="{ animate: isVisible }"
   >
     <div class="text-white text-center q-pa-xl">
@@ -109,12 +109,50 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.chat-overlap {
+  position: relative;
+  z-index: 10;
+  margin-top: -100px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
 .bg-image {
-  background-image: url('/img/form.png');
+  background-image: url('/img/chat.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
-  min-height: 800px;
+  min-height: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Адаптивный подход */
+  @media (min-width: 1920px) {
+    background-size: 120% auto;
+  }
+
+  @media (min-width: 1440px) and (max-width: 1919px) {
+    background-size: 95% auto;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    background-size: 100% auto;
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    background-size: 115% auto;
+    min-height: 900px;
+  }
+
+  @media (max-width: 767px) {
+    background-size: 135% auto;
+    min-height: 800px;
+  }
+
+  @media (max-width: 480px) {
+    background-size: 155% auto;
+    min-height: 700px;
+  }
 }
 
 .centered-content {
@@ -182,7 +220,6 @@ export default defineComponent({
   }
 }
 
-/* ИЗМЕНЕНИЕ: Заменяем .bg-white.animate на .bg-image.animate */
 .bg-image.animate {
   .chat-title {
     opacity: 1;
@@ -217,6 +254,12 @@ export default defineComponent({
 }
 
 @media (max-width: 768px) {
+  .chat-overlap {
+    margin-top: -60px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
   .centered-content,
   .left-aligned-section {
     max-width: 600px;
@@ -230,7 +273,6 @@ export default defineComponent({
     margin-left: 40px;
   }
 
-  /* ИЗМЕНЕНИЕ: Здесь тоже меняем */
   .bg-image.animate {
     .chat-title {
       transition-delay: 0.1s;
@@ -255,6 +297,12 @@ export default defineComponent({
 }
 
 @media (max-width: 480px) {
+  .chat-overlap {
+    margin-top: -40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
   .centered-content {
     height: auto;
     min-height: 300px;
@@ -272,7 +320,6 @@ export default defineComponent({
     margin-left: 60px;
   }
 
-  /* ИЗМЕНЕНИЕ: Здесь тоже меняем */
   .bg-image.animate {
     .chat-title {
       transition-delay: 0.05s;
@@ -296,7 +343,6 @@ export default defineComponent({
   }
 }
 
-/* Для очень маленьких экранов */
 @media (max-width: 360px) {
   .signature-text {
     margin-left: 10px;

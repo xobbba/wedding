@@ -1,14 +1,10 @@
 <template>
   <div class="full-container">
-    <!-- Основной контент -->
     <div
       ref="container"
-      class="row items-center justify-start bg-image"
+      class="row items-center justify-start bg-image place-overlap"
       :class="{ animate: isVisible }"
     >
-      <div class="top-image-container">
-        <img src="/img/down.png" alt="Decoration" class="top-image" />
-      </div>
       <div class="text-white" :class="{ 'text-center': isMobile }">
         <div
           class="font-cormorant-sc q-mt-md text-block"
@@ -54,9 +50,6 @@
             @click="openMap"
           />
         </div>
-      </div>
-      <div class="down-image-container">
-        <img src="/img/up.png" alt="Decoration" class="down-image" />
       </div>
     </div>
   </div>
@@ -146,32 +139,12 @@ export default defineComponent({
   width: 100%;
 }
 
-.top-image-container {
+.place-overlap {
   position: relative;
-  width: 100%;
-  z-index: 10;
-  top: -110px;
-}
-
-.top-image {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-.down-image-container {
-  position: relative;
-  width: 100%;
-  z-index: 10;
-  bottom: -110px;
-}
-
-.down-image {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
+  z-index: 5;
+  margin-top: -100px;
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 .bg-image {
@@ -234,8 +207,13 @@ export default defineComponent({
   }
 }
 
-// Адаптивность
 @media (max-width: 768px) {
+  .place-overlap {
+    margin-top: -80px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
   .bg-image {
     height: 800px;
   }
@@ -260,6 +238,12 @@ export default defineComponent({
 }
 
 @media (max-width: 480px) {
+  .place-overlap {
+    margin-top: -60px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
   .bg-image.animate {
     .text-block:nth-child(1) {
       transition-delay: 0.05s;

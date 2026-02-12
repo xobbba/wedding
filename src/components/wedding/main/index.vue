@@ -13,10 +13,6 @@
         28|08|2026
       </div>
     </div>
-
-    <div class="bottom-image-container">
-      <img src="/img/up.png" alt="Decoration" class="bottom-image" />
-    </div>
   </div>
 </template>
 
@@ -49,13 +45,12 @@ export default defineComponent({
   background-size: cover;
   position: relative;
   height: 1200px;
+  z-index: 2;
 
-  /* Начальное состояние для анимации */
   opacity: 0;
   transform: scale(1.05);
   transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Эффект затемнения в начале */
   &::before {
     content: '';
     position: absolute;
@@ -89,7 +84,6 @@ export default defineComponent({
   align-items: flex-end;
   z-index: 3;
 
-  /* Анимация для нижнего изображения */
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.8s ease 1.2s;
@@ -120,7 +114,6 @@ export default defineComponent({
   }
 }
 
-// Стили с анимациями
 .line-1 {
   margin-left: 120px;
   margin-bottom: 5px;
@@ -128,7 +121,6 @@ export default defineComponent({
   margin-top: 100px;
   @include text-appear(0.3s);
 
-  /* Добавляем задержку до появления фона */
   animation-delay: 0.8s !important;
 }
 
@@ -147,7 +139,6 @@ export default defineComponent({
   animation-delay: 1.4s !important;
 }
 
-/* Эффект мягкого свечения для текста после появления */
 .bg-image.loaded {
   .line-1,
   .line-2,
@@ -161,7 +152,6 @@ export default defineComponent({
   }
 }
 
-// Адаптивность
 @media (max-width: 1440px) {
   .bg-image {
     height: 900px;
@@ -249,7 +239,6 @@ export default defineComponent({
   }
 }
 
-/* Оптимизация анимации */
 @media (prefers-reduced-motion: reduce) {
   .bg-image,
   .bottom-image-container,
