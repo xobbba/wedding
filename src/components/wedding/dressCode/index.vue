@@ -118,7 +118,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .dress {
-  height: 800px;
+  height: 1000px;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease-out;

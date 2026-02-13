@@ -117,7 +117,7 @@ export default defineComponent({
 
   /* Вариант 4: Адаптивный подход с разными значениями */
   @media (min-width: 1920px) {
-    background-size: 120% auto;
+    background-size: 134% auto;
   }
 
   @media (min-width: 1440px) and (max-width: 1919px) {

@@ -1,15 +1,15 @@
 <template>
   <div class="fullscreen row items-start justify-start bg-image" :class="{ loaded: isLoaded }">
     <div class="text-white" :class="!$q.screen.lt.md ? 'q-pt-xl' : 'custom-padding'">
-      <div class="font-cormorant-sc line-1" :class="!$q.screen.lt.md ? 'text-h2' : 'text-h3'">
+      <div class="font-cormorant-sc line-1" :class="!$q.screen.lt.md ? 'text-h2' : 'text-h4'">
         KONSTANTIN
       </div>
 
-      <div class="font-cormorant-sc line-2" :class="!$q.screen.lt.md ? 'text-h2' : 'text-h3'">
+      <div class="font-cormorant-sc line-2" :class="!$q.screen.lt.md ? 'text-h2' : 'text-h4'">
         & VERONIKA
       </div>
 
-      <div class="font-cormorant-infant line-3" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+      <div class="font-cormorant-infant line-3" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'">
         28|08|2026
       </div>
     </div>
