@@ -1,31 +1,32 @@
 <template>
   <div
     ref="container"
-    class="row items-center justify-center bg-image timing-overlap"
+    class="row items-center justify-center timing-overlap"
     :class="{ 'animate': isVisible }"
   >
-    <div class="text-white text-center" :class="{
+    <div class="bg-image"></div>
+    <div class="text-white text-center content" :class="{
       'q-mt-xl q-mb-xl': $q.screen.lt.md
     }">
-      <div class="text-h3 font-cormorant-sc q-mb-xl timing-title">
+      <div class="font-cormorant-sc q-mb-xl timing-title" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">
         TIMING
       </div>
 
       <div class="centered-container q-mt-xl">
         <div class="timing-item q-pa-md" data-index="0">
-          <div class="text-h3 font-cormorant-infant">15:00</div>
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">15:00</div>
           <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
             ЦЕРЕМОНИЯ БРАКОСОЧЕТАНИЯ
           </div>
-          <div class="font-cormorant-sc q-mt-md" :class="!$q.screen.lt.md ? 'text-h5' : 'text-h6'">
+          <div class="font-cormorant-sc q-mt-md q-mr-xl q-ml-xl" :class="!$q.screen.lt.md ? 'text-h5' : 'text-body1'">
             <span v-if="!$q.screen.lt.md">
-              ЦЕРЕМОНИЯ СОСТОИТСЯ В «BURABAY GOLF CLUB»<br />
-              ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б.<br />
-              КАЗАХСТАН, Г. ЩУЧИНСК.
+              ЦЕРЕМОНИЯ СОСТОИТСЯ В «АЙНАКӨЛ»<br />
+              ПО АДРЕСУ: АК-ЖАЙЫК, 1/3<br />
+              КАЗАХСТАН, БОРОВОЕ.
             </span>
             <span v-else>
-              ЦЕРЕМОНИЯ СОСТОИТСЯ В «BURABAY GOLF CLUB» ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б. КАЗАХСТАН, Г.
-              ЩУЧИНСК.
+              ЦЕРЕМОНИЯ СОСТОИТСЯ В «АЙНАКӨЛ» ПО АДРЕСУ: АК-ЖАЙЫК, 1/3. КАЗАХСТАН,
+              БОРОВОЕ.
             </span>
           </div>
         </div>
@@ -35,16 +36,9 @@
         </div>
 
         <div class="timing-item" data-index="1">
-          <div class="text-h3 font-cormorant-infant">16:30</div>
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">16:30</div>
           <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
             НАЧАЛО ФУРШЕТА
-          </div>
-          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h5' : 'text-h6'">
-            <span v-if="!$q.screen.lt.md">
-              Мухтара Ауэзова, 129<br />
-              «KINZA»
-            </span>
-            <span v-else> Мухтара Ауэзова, 129 «KINZA» </span>
           </div>
         </div>
 
@@ -53,7 +47,7 @@
         </div>
 
         <div class="timing-item" data-index="2">
-          <div class="text-h3 font-cormorant-infant">17:30</div>
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">17:30</div>
           <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
             НАЧАЛО БАНКЕТА И ВСТРЕЧА МОЛОДОЖЕНОВ
           </div>
@@ -64,7 +58,7 @@
         </div>
 
         <div class="timing-item" data-index="3">
-          <div class="text-h3 font-cormorant-infant">23:00</div>
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">23:00</div>
           <div
             class="font-cormorant-sc q-mt-sm q-mb-xl"
             :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
@@ -129,44 +123,64 @@ export default defineComponent({
   margin-top: -120px;
   padding-top: 140px;
   padding-bottom: 140px;
+  overflow: hidden;
 }
 
 .bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url('/img/timing.png');
   background-repeat: no-repeat;
   background-position: center center;
-  min-height: 1400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  opacity: 1;
+  will-change: opacity;
+  background-size: cover;
 
-  /* Адаптивный подход */
-  @media (min-width: 1920px) {
-    background-size: 134% auto;
+  @media (max-width: 2200px) {
+    background-size: 107% 96%;
+    background-position: center 40%;
   }
 
-  @media (min-width: 1440px) and (max-width: 1919px) {
-    background-size: 176% auto;
+  @media (max-width: 1950px) {
+    background-size: 110% auto;
   }
 
-  @media (min-width: 1024px) and (max-width: 1439px) {
-    background-size: 214% auto;
+  @media (max-width: 1800px) {
+    background-size: 120% auto;
   }
 
-  @media (min-width: 768px) and (max-width: 1023px) {
-    background-size: 260% auto;
-    min-height: 1200px;
+  @media (max-width: 1600px) {
+    background-size: 140% auto;
   }
 
-  @media (max-width: 767px) {
-    background-size: 325% auto;
-    min-height: 1000px;
+  @media (max-width: 1450px) {
+    background-size: 160% auto;
   }
 
-  @media (max-width: 480px) {
-    background-size: 594% auto;
-    min-height: 800px;
+  @media (max-width: 1200px) {
+    background-size: 200% auto;
   }
+
+  @media (max-width: 1023px) {
+    background-size: 450% auto;
+  }
+
+  @media (max-width: 400px) {
+    background-size: 450% auto;
+  }
+
+  @media screen and (max-width: 1400px) and (min-height: 1020px) {
+    background-size: 450% auto;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
 }
 
 .centered-container {
@@ -181,79 +195,117 @@ export default defineComponent({
   text-align: center;
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover {
-    transform: translateY(-2px);
-  }
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity;
 }
 
 .separator-center {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 20px 0;
+  margin: 2px 0;
 }
 
 .centered-separator {
   height: 60px;
   width: 2px;
   opacity: 0;
-  transform: scaleY(0);
-  transform-origin: top center;
-  transition: all 0.6s ease;
+  transition: opacity 0.6s ease;
+  will-change: opacity;
 }
 
 .timing-title {
   opacity: 0;
-  transform: scale(0.9);
-  transition: all 0.8s ease;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity;
 }
 
-.bg-image.animate {
+.timing-overlap.animate {
   .timing-title {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .timing-item[data-index='0'] {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 0.2s;
   }
 
+  .timing-item[data-index='0'] {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+  }
+
+  .centered-separator:nth-of-type(1) {
+    opacity: 0.7;
+    transition-delay: 0.55s;
+  }
+
   .timing-item[data-index='1'] {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.5s;
+    transition-delay: 0.7s;
+  }
+
+  .centered-separator:nth-of-type(2) {
+    opacity: 0.7;
+    transition-delay: 0.85s;
   }
 
   .timing-item[data-index='2'] {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 0.8s;
+    transition-delay: 1s;
+  }
+
+  .centered-separator:nth-of-type(3) {
+    opacity: 0.7;
+    transition-delay: 1.15s;
   }
 
   .timing-item[data-index='3'] {
     opacity: 1;
     transform: translateY(0);
-    transition-delay: 1.1s;
+    transition-delay: 1.3s;
+  }
+}
+
+@media (max-width: 1024px) {
+  .timing-overlap {
+    margin-top: -100px;
+    padding-top: 120px;
+    padding-bottom: 120px;
   }
 
-  .centered-separator {
-    opacity: 0.7;
-    transform: scaleY(1);
-
-    &:nth-child(2) {
-      transition-delay: 0.35s;
+  .timing-overlap.animate {
+    .timing-title {
+      transition-delay: 0.1s;
     }
 
-    &:nth-child(4) {
-      transition-delay: 0.65s;
+    .timing-item[data-index='0'] {
+      transition-delay: 0.3s;
     }
 
-    &:nth-child(6) {
-      transition-delay: 0.95s;
+    .centered-separator:nth-of-type(1) {
+      transition-delay: 0.4s;
+    }
+
+    .timing-item[data-index='1'] {
+      transition-delay: 0.5s;
+    }
+
+    .centered-separator:nth-of-type(2) {
+      transition-delay: 0.6s;
+    }
+
+    .timing-item[data-index='2'] {
+      transition-delay: 0.7s;
+    }
+
+    .centered-separator:nth-of-type(3) {
+      transition-delay: 0.8s;
+    }
+
+    .timing-item[data-index='3'] {
+      transition-delay: 0.9s;
     }
   }
 }
@@ -265,29 +317,38 @@ export default defineComponent({
     padding-bottom: 100px;
   }
 
-  .bg-image.animate {
+  .timing-overlap.animate {
     .timing-item[data-index='0'] {
-      transition-delay: 0.1s;
+      transition-delay: 0.2s;
     }
-    .timing-item[data-index='1'] {
+
+    .centered-separator:nth-of-type(1) {
       transition-delay: 0.3s;
     }
-    .timing-item[data-index='2'] {
+
+    .timing-item[data-index='1'] {
+      transition-delay: 0.4s;
+    }
+
+    .centered-separator:nth-of-type(2) {
       transition-delay: 0.5s;
     }
-    .timing-item[data-index='3'] {
+
+    .timing-item[data-index='2'] {
+      transition-delay: 0.6s;
+    }
+
+    .centered-separator:nth-of-type(3) {
       transition-delay: 0.7s;
     }
 
-    .centered-separator:nth-child(2) {
-      transition-delay: 0.2s;
+    .timing-item[data-index='3'] {
+      transition-delay: 0.8s;
     }
-    .centered-separator:nth-child(4) {
-      transition-delay: 0.4s;
-    }
-    .centered-separator:nth-child(6) {
-      transition-delay: 0.6s;
-    }
+  }
+
+  .centered-separator {
+    height: 50px;
   }
 }
 
@@ -304,6 +365,32 @@ export default defineComponent({
 
   .centered-separator {
     height: 40px;
+  }
+
+  .bg-image {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-image,
+  .timing-title,
+  .timing-item,
+  .centered-separator {
+    transition: none !important;
+  }
+
+  .timing-overlap.animate {
+    .bg-image {
+      opacity: 1;
+    }
+
+    .timing-title,
+    .timing-item,
+    .centered-separator {
+      opacity: 1;
+      transform: none;
+    }
   }
 }
 </style>

@@ -7,12 +7,13 @@
     <div
       class="text-dark text-center form-content"
       :class="!$q.screen.lt.md ? 'q-pa-xl' : 'q-pa-md'"
+      style="margin-top: -120px;"
     >
-      <div class="text-h3 font-cormorant-sc q-mb-xl form-title">АНКЕТА ГОСТЯ</div>
+      <div class="font-cormorant-sc q-mb-xl form-title" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">АНКЕТА ГОСТЯ</div>
 
       <div
         class="font-cormorant-sc q-mb-xl form-description"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
+        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
       >
         <span v-if="!$q.screen.lt.md">
           Пожалуйста подтвердите свое присутствие<br />
@@ -28,7 +29,7 @@
         color="dark"
         text-color="dark"
         label="Заполнить анкету"
-        :size="!$q.screen.lt.md ? 'xl' : 'lg'"
+        :size="!$q.screen.lt.md ? 'xl' : 'md'"
         padding="20px 60px"
         @click="modalOpen = true"
       />
@@ -37,7 +38,7 @@
     <q-dialog v-model="modalOpen" persistent>
       <q-card class="form-modal">
         <q-card-section class="row items-center q-pb-none bg-white">
-          <div class="text-h5 font-cormorant-sc">ПОДТВЕРЖДЕНИЕ ПРИСУТСТВИЯ</div>
+          <div class="font-cormorant-sc" :class="!$q.screen.lt.md ? 'text-h5' : 'text-h6'">ПОДТВЕРЖДЕНИЕ</div>
           <q-space />
           <q-btn icon="close" flat round dense v-close-popup class="close-btn" />
         </q-card-section>
@@ -372,7 +373,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .form {
-  min-height: 600px;
+  min-height: 700px;
   background: white;
 }
 

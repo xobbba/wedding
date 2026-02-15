@@ -1,60 +1,63 @@
 <template>
   <div
     ref="container"
-    class="details-container bg-image details-overlap"
+    class="details-container details-overlap"
     :class="{ animate: isVisible }"
   >
-    <div class="text-h3 text-center font-cormorant-sc q-mb-lg q-mt-xl text-white">DETAILS</div>
+    <div class="bg-image"></div>
+    <div class="content-wrapper">
+      <div class="text-center font-cormorant-sc q-mb-lg q-mt-xl text-white details-title" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">DETAILS</div>
 
-    <div class="detail-block block-01">
-      <div
-        class="font-cormorant-infant text-white"
-        :class="!$q.screen.lt.md ? 'text-h1' : 'text-h2'"
-      >
-        01
+      <div class="detail-block block-01">
+        <div
+          class="font-cormorant-infant text-white"
+          :class="!$q.screen.lt.md ? 'text-h1' : 'text-h2'"
+        >
+          01
+        </div>
+        <div
+          class="font-cormorant-sc q-mt-sm text-white"
+          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+        >
+          Чтобы ваши руки были свободны для объятий, будем рады легким подаркам в конвертах
+        </div>
       </div>
-      <div
-        class="font-cormorant-sc q-mt-sm text-white"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
-      >
-        Чтобы ваши руки были свободны для объятий, будем рады легким подаркам в конвертах
-      </div>
-    </div>
 
-    <div class="detail-block block-02">
-      <div
-        class="font-cormorant-infant text-white"
-        :class="!$q.screen.lt.md ? 'text-h1' : 'text-h2'"
-      >
-        02
+      <div class="detail-block block-02">
+        <div
+          class="font-cormorant-infant text-white"
+          :class="!$q.screen.lt.md ? 'text-h1' : 'text-h2'"
+        >
+          02
+        </div>
+        <div
+          class="font-cormorant-sc q-mt-sm text-white"
+          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+        >
+          Наша свадьба состоится в другой стране и мы к сожалению, не сможем забрать цветы домой. Будем рады
+          другим подаркам, которые останутся с нами навсегда
+        </div>
       </div>
-      <div
-        class="font-cormorant-sc q-mt-sm text-white"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
-      >
-        Приятным комплиментом для нас будет, если вместо цветов вы решите подарить нам бутылочку
-        вина для нашей семейной винотеки
-      </div>
-    </div>
 
-    <div class="detail-block block-03">
-      <div
-        class="font-cormorant-infant text-white"
-        :class="!$q.screen.lt.md ? 'text-h1' : 'text-h2'"
-      >
-        03
+      <div class="detail-block block-03">
+        <div
+          class="font-cormorant-infant text-white"
+          :class="!$q.screen.lt.md ? 'text-h1' : 'text-h2'"
+        >
+          03
+        </div>
+        <div
+          class="font-cormorant-sc q-mt-sm text-white"
+          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+        >
+          Обращаем ваше внимание, что мероприятие предназначено исключительно для взрослых гостей -
+          детский стол и аниматоры не предусмотрены
+        </div>
       </div>
-      <div
-        class="font-cormorant-sc q-mt-sm text-white"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
-      >
-        Обращаем ваше внимание, что мероприятие предназначено исключительно для взрослых гостей -
-        детский стол и аниматоры не предусмотрены
-      </div>
-    </div>
 
-    <div class="image-bottom">
-      <img src="/public/img/wedding.png" alt="Деталь" class="bottom-image" />
+      <div class="image-bottom">
+        <img src="/public/img/wedding.png" alt="Деталь" class="bottom-image" />
+      </div>
     </div>
   </div>
 </template>
@@ -84,7 +87,6 @@ export default defineComponent({
         },
         {
           threshold: 0.2,
-          rootMargin: '50px',
         },
       )
 
@@ -112,52 +114,70 @@ export default defineComponent({
   margin-top: -120px;
   padding-top: 140px;
   padding-bottom: 140px;
+  overflow: hidden;
 }
 
 .bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url('/img/details.png');
   background-repeat: no-repeat;
   background-position: center center;
-  min-height: 1400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  opacity: 1;
+  transform: scale(1);
+  will-change: transform, opacity;
+  background-size: cover;
 
-  @media (min-width: 1920px) {
-    background-size: 100% auto;
+  @media (max-width: 1950px) {
+    background-size: 140% auto;
   }
 
-  @media (min-width: 1440px) and (max-width: 1919px) {
-    background-size: 110% auto;
+  @media (max-width: 1800px) {
+    background-size: 155% auto;
   }
 
-  @media (min-width: 1024px) and (max-width: 1439px) {
-    background-size: 136% auto;
+  @media (max-width: 1600px) {
+    background-size: 170% auto;
   }
 
-  @media (min-width: 768px) and (max-width: 1023px) {
-    background-size: 150% auto;
-    min-height: 1200px;
+  @media (max-width: 1450px) {
+    background-size: 190% auto;
   }
 
-  @media (max-width: 767px) {
-    background-size: 230% auto;
-    min-height: 1000px;
+  @media (max-width: 1200px) {
+    background-size: 210% auto;
   }
 
-  @media (max-width: 480px) {
-    background-size: 330% auto;
-    min-height: 800px;
+  @media (max-width: 1023px) {
+    background-size: 500% auto;
+  }
+
+  @media (max-width: 400px) {
+    background-size: 530% auto;
+  }
+
+  @media screen and (max-width: 1400px) and (min-height: 1020px) {
+    background-size: 530% auto;
   }
 }
 
-.details-container {
+.content-wrapper {
+  position: relative;
+  z-index: 2;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.details-title {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity;
 }
 
 .detail-block {
@@ -166,31 +186,31 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   padding: 20px 10%;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
   box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity;
 }
 
 .block-01 {
   align-items: flex-start;
   text-align: left;
-  transition-delay: 0.2s;
   align-self: flex-start;
+  transform: translateX(-50px);
 }
 
 .block-02 {
   align-items: flex-end;
   text-align: right;
-  transition-delay: 0.4s;
   align-self: flex-end;
+  transform: translateX(50px);
 }
 
 .block-03 {
   align-items: flex-start;
   text-align: left;
-  transition-delay: 0.6s;
   align-self: flex-start;
+  transform: translateX(-50px);
 }
 
 .image-bottom {
@@ -200,7 +220,8 @@ export default defineComponent({
   padding: 80px 0;
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s ease 0.8s;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity;
 }
 
 .bottom-image {
@@ -210,14 +231,70 @@ export default defineComponent({
 }
 
 .details-container.animate {
-  .detail-block {
+  .details-title {
     opacity: 1;
     transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+
+  .block-01 {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.4s;
+  }
+
+  .block-02 {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.6s;
+  }
+
+  .block-03 {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.8s;
   }
 
   .image-bottom {
     opacity: 1;
     transform: translateY(0);
+    transition-delay: 1s;
+  }
+}
+
+@media (max-width: 1024px) {
+  .details-overlap {
+    margin-top: -100px;
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  .details-container.animate {
+    .details-title {
+      transition-delay: 0.1s;
+    }
+
+    .block-01 {
+      transition-delay: 0.3s;
+    }
+    .block-02 {
+      transition-delay: 0.5s;
+    }
+    .block-03 {
+      transition-delay: 0.7s;
+    }
+    .image-bottom {
+      transition-delay: 0.9s;
+    }
+  }
+
+  .block-01,
+  .block-03 {
+    transform: translateX(-30px);
+  }
+
+  .block-02 {
+    transform: translateX(30px);
   }
 }
 
@@ -236,20 +313,28 @@ export default defineComponent({
     padding: 60px 0;
   }
 
-  .block-01 {
-    transition-delay: 0.1s;
+  .details-container.animate {
+    .block-01 {
+      transition-delay: 0.2s;
+    }
+    .block-02 {
+      transition-delay: 0.4s;
+    }
+    .block-03 {
+      transition-delay: 0.6s;
+    }
+    .image-bottom {
+      transition-delay: 0.8s;
+    }
+  }
+
+  .block-01,
+  .block-03 {
+    transform: translateX(-20px);
   }
 
   .block-02 {
-    transition-delay: 0.2s;
-  }
-
-  .block-03 {
-    transition-delay: 0.3s;
-  }
-
-  .image-bottom {
-    transition-delay: 0.4s;
+    transform: translateX(20px);
   }
 }
 
@@ -270,6 +355,47 @@ export default defineComponent({
 
   .text-h3 {
     font-size: 2rem;
+  }
+
+  .bg-image {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .block-01,
+  .block-02,
+  .block-03 {
+    transform: translateY(20px);
+  }
+
+  .details-container.animate {
+    .block-01,
+    .block-02,
+    .block-03 {
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-image,
+  .details-title,
+  .detail-block,
+  .image-bottom {
+    transition: none !important;
+  }
+
+  .details-container.animate {
+    .bg-image {
+      opacity: 1;
+    }
+
+    .details-title,
+    .detail-block,
+    .image-bottom {
+      opacity: 1;
+      transform: none;
+    }
   }
 }
 </style>

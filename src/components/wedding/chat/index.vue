@@ -1,55 +1,55 @@
 <template>
   <div
     ref="container"
-    class="row items-center justify-center bg-image chat-overlap"
+    class="chat-overlap"
     :class="{ animate: isVisible }"
   >
-    <div class="text-white text-center q-pa-xl">
-      <div class="centered-content">
-        <div class="text-h3 font-cormorant-sc q-mb-xl chat-title">ОБЩИЙ ЧАТ</div>
+    <div class="bg-image"></div>
+    <div class="content">
+      <div class="text-white text-center q-pa-xl content-inner">
+        <div class="centered-content">
+          <div class="font-cormorant-sc q-mb-xl chat-title" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">ОБЩИЙ ЧАТ</div>
 
-        <div
-          class="font-cormorant-sc q-mb-lg chat-description"
-          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
-        >
-          <span v-if="!$q.screen.lt.md">
-            Присоединяйтесь к нашему чату для гостей<br />
-            в Telegram, чтобы знакомиться и<br />
-            обмениваться фотографиями
-          </span>
-          <span v-else>
-            Присоединяйтесь к нашему чату для гостей в Telegram, чтобы знакомиться и обмениваться
-            фотографиями
-          </span>
+          <div
+            class="font-cormorant-sc q-mb-lg chat-description"
+            :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+          >
+            <span v-if="!$q.screen.lt.md">
+              Присоединяйтесь к нашему чату для гостей<br />
+              в Telegram, чтобы знакомиться и<br />
+              обмениваться фотографиями
+            </span>
+            <span v-else>
+              Присоединяйтесь к нашему чату для гостей в Telegram, чтобы знакомиться и обмениваться
+              фотографиями
+            </span>
+          </div>
+
+          <div class="q-mb-xl chat-button-container">
+            <q-btn
+              rounded
+              outline
+              class="font-cormorant-sc chat-button"
+              color="dark"
+              text-color="white"
+              label="Присоединиться"
+              :size="!$q.screen.lt.md ? 'xl' : 'md'"
+              padding="20px 60px"
+              @click="openChat"
+            />
+          </div>
         </div>
 
-        <div class="q-mb-xl chat-button-container">
-          <q-btn
-            rounded
-            outline
-            class="font-cormorant-sc chat-button"
-            color="dark"
-            text-color="white"
-            label="Присоединиться"
-            :size="!$q.screen.lt.md ? 'xl' : 'lg'"
-            padding="20px 60px"
-            @click="openChat"
-          />
-        </div>
-      </div>
-
-      <div class="left-aligned-section">
-        <div
-          class="font-cormorant-sc wait-text wait-animate"
-          :class="!$q.screen.lt.md ? 'text-h2' : 'text-h3'"
-        >
-          ЖДЕМ ВАС!
-        </div>
-        <div
-          class="font-cormorant-sc signature-text signature-animate"
-          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
-        >
-          с любовью Константин и Николь
+        <div class="left-aligned-section">
+          <div class="font-cormorant-sc wait-text" :class="!$q.screen.lt.md ? 'text-h2' : 'text-h4'">
+            ЖДЕМ ВАС!
+          </div>
+          <div
+            class="font-cormorant-sc signature-text"
+            :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+          >
+            с любовью Константин и Николь
+          </div>
         </div>
       </div>
     </div>
@@ -86,7 +86,6 @@ export default defineComponent({
         },
         {
           threshold: 0.2,
-          rootMargin: '50px',
         },
       )
 
@@ -111,60 +110,109 @@ export default defineComponent({
 <style lang="scss" scoped>
 .chat-overlap {
   position: relative;
-  z-index: 10;
-  margin-top: -100px;
-  padding-top: 120px;
-  padding-bottom: 120px;
+  z-index: 15;
+  margin-top: -150px;
+  padding-top: 200px;
+  padding-bottom: 150px;
+  overflow: hidden;
+  width: 100%;
+  pointer-events: none;
+
+  .content {
+    pointer-events: auto;
+  }
 }
 
 .bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url('/img/chat.png');
   background-repeat: no-repeat;
   background-position: center center;
-  min-height: 1000px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  opacity: 1;
+  transform: scale(1);
+  will-change: transform, opacity;
+  background-size: 110% auto;
 
-  /* Адаптивный подход */
-  @media (min-width: 1920px) {
+  @media (max-width: 1950px) {
     background-size: 110% auto;
   }
 
-  @media (min-width: 1440px) and (max-width: 1919px) {
+  @media (max-width: 1800px) {
     background-size: 120% auto;
   }
 
-  @media (min-width: 1024px) and (max-width: 1439px) {
+  @media (max-width: 1600px) {
+    background-size: 140% auto;
+  }
+
+  @media (max-width: 1450px) {
     background-size: 160% auto;
   }
 
-  @media (min-width: 768px) and (max-width: 1023px) {
-    background-size: 180% auto;
-    min-height: 900px;
+  @media (max-width: 1200px) {
+    background-size: 260% auto;
   }
 
-  @media (max-width: 767px) {
-    background-size: 230% auto;
-    min-height: 800px;
+  @media (max-width: 1023px) {
+    background-size: 395% auto;
   }
 
-  @media (max-width: 480px) {
-    background-size: 355% auto;
-    min-height: 700px;
+  @media (max-width: 400px) {
+    background-size: 395% auto;
   }
+
+  @media screen and (max-width: 1400px) and (min-height: 1020px) {
+    background-size: 395% auto;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .centered-content {
   max-width: 800px;
   height: 400px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 350px;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 300px;
+  }
 }
 
 .left-aligned-section {
   max-width: 800px;
   margin: 80px auto 0 auto;
   text-align: left;
+
+  @media (max-width: 768px) {
+    max-width: 600px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 40px auto 0 auto;
+  }
 }
 
 .wait-text {
@@ -172,7 +220,16 @@ export default defineComponent({
   margin-bottom: 20px;
   opacity: 0;
   transform: translateX(-50px);
-  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+
+  @media (max-width: 768px) {
+    margin-left: 5px;
+  }
+
+  @media (max-width: 480px) {
+    margin-left: 0;
+  }
 }
 
 .signature-text {
@@ -180,25 +237,42 @@ export default defineComponent({
   margin-top: 40px;
   opacity: 0;
   transform: translateX(50px);
-  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+
+  @media (max-width: 768px) {
+    margin-left: 40px;
+  }
+
+  @media (max-width: 480px) {
+    margin-left: 60px;
+  }
+
+  @media (max-width: 360px) {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
 }
 
 .chat-title {
   opacity: 0;
   transform: translateY(-30px) scale(0.95);
-  transition: all 0.8s ease;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: transform, opacity;
 }
 
 .chat-description {
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.8s ease 0.2s;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: transform, opacity;
 }
 
 .chat-button {
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.8s ease 0.4s;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: transform, opacity;
 }
 
 .q-btn {
@@ -210,147 +284,124 @@ export default defineComponent({
   }
 }
 
-@keyframes waitPulse {
-  0%,
-  100% {
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-  }
-  50% {
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-  }
-}
-
-.bg-image.animate {
+.chat-overlap.animate {
   .chat-title {
     opacity: 1;
     transform: translateY(0) scale(1);
+    transition-delay: 0.2s;
   }
 
   .chat-description {
     opacity: 1;
     transform: translateY(0);
+    transition-delay: 0.4s;
   }
 
   .chat-button {
     opacity: 1;
     transform: translateY(0);
-  }
-
-  .wait-animate {
-    opacity: 1;
-    transform: translateX(0);
     transition-delay: 0.6s;
-
-    &:hover {
-      animation: waitPulse 2s infinite;
-    }
   }
 
-  .signature-animate {
+  .wait-text {
     opacity: 1;
     transform: translateX(0);
     transition-delay: 0.8s;
+  }
+
+  .signature-text {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 1s;
+  }
+}
+
+@media (max-width: 1024px) {
+  .chat-overlap {
+    margin-top: -120px;
+    padding-top: 170px;
+    padding-bottom: 120px;
+    z-index: 15;
+  }
+
+  .chat-overlap.animate {
+    .chat-title { transition-delay: 0.1s; }
+    .chat-description { transition-delay: 0.2s; }
+    .chat-button { transition-delay: 0.3s; }
+    .wait-text { transition-delay: 0.4s; }
+    .signature-text { transition-delay: 0.5s; }
   }
 }
 
 @media (max-width: 768px) {
   .chat-overlap {
-    margin-top: -60px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-
-  .centered-content,
-  .left-aligned-section {
-    max-width: 600px;
+    margin-top: -100px;
+    padding-top: 150px;
+    padding-bottom: 100px;
+    z-index: 15;
   }
 
   .wait-text {
-    margin-left: 5px;
+    transform: translateX(-30px);
   }
 
   .signature-text {
-    margin-left: 40px;
-  }
-
-  .bg-image.animate {
-    .chat-title {
-      transition-delay: 0.1s;
-    }
-
-    .chat-description {
-      transition-delay: 0.2s;
-    }
-
-    .chat-button {
-      transition-delay: 0.3s;
-    }
-
-    .wait-animate {
-      transition-delay: 0.4s;
-    }
-
-    .signature-animate {
-      transition-delay: 0.5s;
-    }
+    transform: translateX(30px);
   }
 }
 
 @media (max-width: 480px) {
   .chat-overlap {
-    margin-top: -40px;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    margin-top: -80px;
+    padding-top: 130px;
+    padding-bottom: 80px;
+    z-index: 15;
   }
 
-  .centered-content {
-    height: auto;
-    min-height: 300px;
+  .chat-overlap.animate {
+    .chat-title { transition-delay: 0.05s; }
+    .chat-description { transition-delay: 0.1s; }
+    .chat-button { transition-delay: 0.15s; }
+    .wait-text { transition-delay: 0.2s; }
+    .signature-text { transition-delay: 0.25s; }
   }
 
-  .left-aligned-section {
-    margin: 40px auto 0 auto;
-  }
-
-  .wait-text {
-    margin-left: 0;
-  }
-
+  .wait-text,
   .signature-text {
-    margin-left: 60px;
+    transform: translateY(20px);
   }
 
-  .bg-image.animate {
-    .chat-title {
-      transition-delay: 0.05s;
-    }
-
-    .chat-description {
-      transition-delay: 0.1s;
-    }
-
-    .chat-button {
-      transition-delay: 0.15s;
-    }
-
-    .wait-animate {
-      transition-delay: 0.2s;
-    }
-
-    .signature-animate {
-      transition-delay: 0.25s;
+  .chat-overlap.animate {
+    .wait-text,
+    .signature-text {
+      transform: translateY(0);
     }
   }
 }
 
-@media (max-width: 360px) {
+@media (prefers-reduced-motion: reduce) {
+  .bg-image,
+  .chat-title,
+  .chat-description,
+  .chat-button,
+  .wait-text,
   .signature-text {
-    margin-left: 10px;
-    font-size: 1rem;
+    transition: none !important;
   }
 
-  .wait-text {
-    font-size: 1.5rem;
+  .chat-overlap.animate {
+    .bg-image {
+      opacity: 1;
+    }
+
+    .chat-title,
+    .chat-description,
+    .chat-button,
+    .wait-text,
+    .signature-text {
+      opacity: 1;
+      transform: none;
+    }
   }
 }
 </style>

@@ -15,19 +15,11 @@
         </div>
 
         <div
-          class="font-cormorant-sc q-mt-md text-block"
-          :class="textSizeClass"
-          :style="isMobile ? mobileTextStyle : banquetStyle"
-        >
-          БАНКЕТ БУДЕТ ПРОХОДИТЬ
-        </div>
-
-        <div
           class="font-cormorant-sc q-mt-lg text-block"
           :class="nameSizeClass"
           :style="isMobile ? mobileTextStyle : placeStyle"
         >
-          «Wyndham Garden»
+          «АЙНАКӨЛ»
         </div>
 
         <div
@@ -35,7 +27,7 @@
           :class="textSizeClass"
           :style="isMobile ? mobileTextStyle : addressStyle"
         >
-          МИКРОРАЙОН ЦРБ, 2в
+          АК-ЖАЙЫК, 1/3
         </div>
 
         <div class="q-mt-xl text-block" :style="isMobile ? { textAlign: 'center' } : buttonStyle">
@@ -72,15 +64,14 @@ export default defineComponent({
     const nameSizeClass = computed(() => (!$q.screen.lt.md ? 'text-h3' : 'text-h4'))
 
     const locationStyle = { marginLeft: '190px', maxWidth: '600px' }
-    const banquetStyle = { marginLeft: '190px' }
-    const placeStyle = { marginLeft: '210px' }
-    const addressStyle = { marginLeft: '224px' }
-    const buttonStyle = { marginLeft: '266px' }
+    const placeStyle = { marginLeft: '250px' }
+    const addressStyle = { marginLeft: '264px' }
+    const buttonStyle = { marginLeft: '246px' }
     const mobileTextStyle = { marginLeft: '0', maxWidth: '90%', margin: '0 auto' }
 
     const openMap = () => {
       window.open(
-        'https://2gis.kz/kokshetau/firm/70000001056259878/70.30477%2C53.079132?m=70.310225%2C53.076573%2F13.89',
+        'https://2gis.kz/kokshetau/firm/70000001098912655',
         '_blank',
       )
     }
@@ -99,8 +90,7 @@ export default defineComponent({
           })
         },
         {
-          threshold: 0.3,
-          rootMargin: '50px',
+          threshold: 0.2,
         },
       )
 
@@ -122,7 +112,6 @@ export default defineComponent({
       textSizeClass,
       nameSizeClass,
       locationStyle,
-      banquetStyle,
       placeStyle,
       addressStyle,
       buttonStyle,
@@ -154,14 +143,38 @@ export default defineComponent({
   background-size: cover;
   height: 900px;
   width: 100%;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.8s ease-out;
+
+  @media (max-width: 768px) {
+    background-position: 30% center;
+  }
+
+  @media (max-width: 480px) {
+    background-position: 25% center;
+  }
 }
 
 .text-block {
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease-out;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.text-block:nth-child(1) {
+  transform: translateX(-50px);
+}
+
+.text-block:nth-child(2) {
+  transform: translateX(50px);
+}
+
+.text-block:nth-child(3) {
+  transform: translateX(-50px);
+}
+
+.text-block:nth-child(4) {
+  transform: translateY(30px);
 }
 
 .q-btn {
@@ -174,23 +187,21 @@ export default defineComponent({
 }
 
 .bg-image.animate {
-  opacity: 1;
-
   .text-block:nth-child(1) {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
     transition-delay: 0.2s;
   }
 
   .text-block:nth-child(2) {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
     transition-delay: 0.4s;
   }
 
   .text-block:nth-child(3) {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
     transition-delay: 0.6s;
   }
 
@@ -199,11 +210,33 @@ export default defineComponent({
     transform: translateY(0);
     transition-delay: 0.8s;
   }
+}
 
-  .text-block:nth-child(5) {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 1s;
+@media (max-width: 1024px) {
+  .place-overlap {
+    margin-top: -100px;
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  .bg-image {
+    height: 850px;
+  }
+
+  .bg-image.animate {
+    .text-block:nth-child(1) { transition-delay: 0.15s; }
+    .text-block:nth-child(2) { transition-delay: 0.3s; }
+    .text-block:nth-child(3) { transition-delay: 0.45s; }
+    .text-block:nth-child(4) { transition-delay: 0.6s; }
+  }
+
+  .text-block:nth-child(1),
+  .text-block:nth-child(3) {
+    transform: translateX(-30px);
+  }
+
+  .text-block:nth-child(2) {
+    transform: translateX(30px);
   }
 }
 
@@ -219,20 +252,23 @@ export default defineComponent({
   }
 
   .bg-image.animate {
-    .text-block:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-    .text-block:nth-child(2) {
-      transition-delay: 0.2s;
-    }
+    .text-block:nth-child(1) { transition-delay: 0.1s; }
+    .text-block:nth-child(2) { transition-delay: 0.2s; }
+    .text-block:nth-child(3) { transition-delay: 0.3s; }
+    .text-block:nth-child(4) { transition-delay: 0.4s; }
+  }
+
+  .text-block:nth-child(1),
+  .text-block:nth-child(2),
+  .text-block:nth-child(3) {
+    transform: translateY(20px);
+  }
+
+  .bg-image.animate {
+    .text-block:nth-child(1),
+    .text-block:nth-child(2),
     .text-block:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-    .text-block:nth-child(4) {
-      transition-delay: 0.4s;
-    }
-    .text-block:nth-child(5) {
-      transition-delay: 0.5s;
+      transform: translateY(0);
     }
   }
 }
@@ -244,21 +280,29 @@ export default defineComponent({
     padding-bottom: 80px;
   }
 
+  .bg-image {
+    background-position: 20% center;
+    height: 700px;
+  }
+
   .bg-image.animate {
-    .text-block:nth-child(1) {
-      transition-delay: 0.05s;
-    }
-    .text-block:nth-child(2) {
-      transition-delay: 0.15s;
-    }
-    .text-block:nth-child(3) {
-      transition-delay: 0.25s;
-    }
-    .text-block:nth-child(4) {
-      transition-delay: 0.35s;
-    }
-    .text-block:nth-child(5) {
-      transition-delay: 0.45s;
+    .text-block:nth-child(1) { transition-delay: 0.05s; }
+    .text-block:nth-child(2) { transition-delay: 0.15s; }
+    .text-block:nth-child(3) { transition-delay: 0.25s; }
+    .text-block:nth-child(4) { transition-delay: 0.35s; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-image,
+  .text-block {
+    transition: none !important;
+  }
+
+  .bg-image.animate {
+    .text-block {
+      opacity: 1;
+      transform: none;
     }
   }
 }

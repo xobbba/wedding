@@ -4,24 +4,24 @@
     class="dress row items-center justify-center bg-white"
     :class="{ animate: isVisible }"
   >
-    <div class="text-dark text-center q-pa-xl">
+    <div class="text-dark text-center q-pa-xs" :style="!$q.screen.lt.md ? 'margin-top: -120px;' : ''">
       <!-- Заголовок -->
-      <div class="text-h3 font-cormorant-sc q-mb-xl q-mt-md title-animate">DRESS CODE</div>
+      <div class="font-cormorant-sc q-mb-xl q-mt-xl q-mt-md title-animate" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">DRESS CODE</div>
 
       <!-- Текст -->
       <div
         class="dress-text font-cormorant-sc q-mb-md text-block"
         data-index="1"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
+        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
       >
         Мы хотим создать особенную атмосферу на нашем торжестве, поэтому просим вас учесть дресс-код
         при выборе наряда
       </div>
 
       <div
-        class="dress-text font-cormorant-sc q-mb-lg text-block"
+        class="dress-text font-cormorant-sc q-mb-md text-block"
         data-index="2"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
+        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
       >
         Будем признательны, если вы выберете наряды в коктейльном стиле.
       </div>
@@ -29,7 +29,7 @@
       <div
         class="dress-text font-cormorant-sc q-mb-xl text-block"
         data-index="3"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
+        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
       >
         Просим избегать белого, молочного цвета при выборе наряда.
       </div>
@@ -76,7 +76,7 @@ export default defineComponent({
       { name: 'Темный шоколад', hex: '#26140C', needsBorder: false },
       { name: 'Лесной орех', hex: '#644D42', needsBorder: false },
       { name: 'Пудровый беж', hex: '#D5C1B8', needsBorder: false },
-      { name: 'Песчаный мед', hex: '#FFF3DF', needsBorder: true }
+      { name: 'Песчаный мед', hex: '#FFF3DF', needsBorder: false }
     ]
 
     onMounted(() => {
@@ -316,7 +316,7 @@ export default defineComponent({
   .colors-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 12px;
     justify-items: center;
     align-items: center;
   }
