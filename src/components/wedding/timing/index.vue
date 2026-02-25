@@ -2,31 +2,58 @@
   <div
     ref="container"
     class="row items-center justify-center timing-overlap"
-    :class="{ 'animate': isVisible }"
+    :class="{ animate: isVisible }"
   >
     <div class="bg-image"></div>
-    <div class="text-white text-center content" :class="{
-      'q-mt-xl q-mb-xl': $q.screen.lt.md
-    }">
-      <div class="font-cormorant-sc q-mb-xl timing-title" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">
+    <div
+      class="text-white text-center content"
+      :class="{
+        'q-mt-xl q-mb-xl': $q.screen.lt.md,
+      }"
+    >
+      <div
+        class="font-cormorant-sc q-mb-xl timing-title"
+        :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'"
+      >
         TIMING
       </div>
 
       <div class="centered-container q-mt-xl">
         <div class="timing-item q-pa-md" data-index="0">
-          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">15:00</div>
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">
+            15:00
+          </div>
           <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
             ЦЕРЕМОНИЯ БРАКОСОЧЕТАНИЯ
           </div>
-          <div class="font-cormorant-sc q-mt-md q-mr-xl q-ml-xl" :class="!$q.screen.lt.md ? 'text-h5' : 'text-body1'">
+          <div
+            class="font-cormorant-sc q-mt-md q-mr-xl q-ml-xl"
+            :class="!$q.screen.lt.md ? 'text-h5' : 'text-body1'"
+          >
             <span v-if="!$q.screen.lt.md">
-              ЦЕРЕМОНИЯ СОСТОИТСЯ В «АЙНАКӨЛ»<br />
-              ПО АДРЕСУ: АК-ЖАЙЫК, 1/3<br />
-              КАЗАХСТАН, БОРОВОЕ.
+              ЦЕРЕМОНИЯ СОСТОИТСЯ В
+              <a
+                href="https://2gis.kz/kokshetau/firm/70000001054929415/70.231365%2C52.955337"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white location-link"
+              >
+                «BURABAY ГОЛЬФ-КЛУБ» </a
+              ><br />
+              ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б<br />
+              КАЗАХСТАН, ЩУЧИНСК.
             </span>
             <span v-else>
-              ЦЕРЕМОНИЯ СОСТОИТСЯ В «АЙНАКӨЛ» ПО АДРЕСУ: АК-ЖАЙЫК, 1/3. КАЗАХСТАН,
-              БОРОВОЕ.
+              ЦЕРЕМОНИЯ СОСТОИТСЯ В
+              <a
+                href="https://2gis.kz/kokshetau/firm/70000001054929415/70.231365%2C52.955337"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white location-link"
+              >
+                «BURABAY ГОЛЬФ-КЛУБ»
+              </a>
+              ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б КАЗАХСТАН, ЩУЧИНСК.
             </span>
           </div>
         </div>
@@ -36,9 +63,25 @@
         </div>
 
         <div class="timing-item" data-index="1">
-          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">16:30</div>
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">
+            16:30
+          </div>
           <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
             НАЧАЛО ФУРШЕТА
+          </div>
+          <div
+            class="font-cormorant-sc q-mt-md q-mr-xl q-ml-xl"
+            :class="!$q.screen.lt.md ? 'text-h5' : 'text-body1'"
+          >
+            <span v-if="!$q.screen.lt.md">
+              БАНКЕТ СОСТОИТСЯ В «ROYAL»<br />
+              ПО АДРЕСУ: АЛИМЖАНА БАЙМУКАНОВА 61В<br />
+              КАЗАХСТАН, КОКШЕТАУ.
+            </span>
+            <span v-else>
+              ЦЕРЕМОНИЯ СОСТОИТСЯ В «ROYAL» ПО АДРЕСУ: АЛИМЖАНА БАЙМУКАНОВА 61В. КАЗАХСТАН,
+              КОКШЕТАУ.
+            </span>
           </div>
         </div>
 
@@ -47,7 +90,9 @@
         </div>
 
         <div class="timing-item" data-index="2">
-          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">17:30</div>
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">
+            17:30
+          </div>
           <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
             НАЧАЛО БАНКЕТА И ВСТРЕЧА МОЛОДОЖЕНОВ
           </div>
@@ -58,7 +103,9 @@
         </div>
 
         <div class="timing-item" data-index="3">
-          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">23:00</div>
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">
+            23:00
+          </div>
           <div
             class="font-cormorant-sc q-mt-sm q-mb-xl"
             :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
@@ -165,15 +212,15 @@ export default defineComponent({
   }
 
   @media (max-width: 1023px) {
-    background-size: 450% auto;
+    background-size: 500% auto;
   }
 
   @media (max-width: 400px) {
-    background-size: 450% auto;
+    background-size: 500% auto;
   }
 
   @media screen and (max-width: 1400px) and (min-height: 1020px) {
-    background-size: 450% auto;
+    background-size: 500% auto;
   }
 }
 
@@ -195,7 +242,9 @@ export default defineComponent({
   text-align: center;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
   will-change: transform, opacity;
 }
 
@@ -217,8 +266,37 @@ export default defineComponent({
 .timing-title {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
   will-change: transform, opacity;
+}
+
+.location-link {
+  position: relative;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover {
+    border-bottom-color: #ffffff;
+    transform: scale(1.02);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  }
+
+  &::after {
+    font-size: 0.8em;
+    margin-left: 4px;
+    display: inline-block;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover::after {
+    transform: translate(2px, -2px);
+  }
 }
 
 .timing-overlap.animate {

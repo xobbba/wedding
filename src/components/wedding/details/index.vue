@@ -1,12 +1,13 @@
 <template>
-  <div
-    ref="container"
-    class="details-container details-overlap"
-    :class="{ animate: isVisible }"
-  >
+  <div ref="container" class="details-container details-overlap" :class="{ animate: isVisible }">
     <div class="bg-image"></div>
     <div class="content-wrapper">
-      <div class="text-center font-cormorant-sc q-mb-lg q-mt-xl text-white details-title" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">DETAILS</div>
+      <div
+        class="text-center font-cormorant-sc q-mb-lg q-mt-xl text-white details-title"
+        :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'"
+      >
+        DETAILS
+      </div>
 
       <div class="detail-block block-01">
         <div
@@ -34,8 +35,8 @@
           class="font-cormorant-sc q-mt-sm text-white"
           :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
         >
-          Наша свадьба состоится в другой стране и мы к сожалению, не сможем забрать цветы домой. Будем рады
-          другим подаркам, которые останутся с нами навсегда
+          Наша свадьба состоится в другой стране и мы к сожалению, не сможем забрать цветы домой.
+          Будем рады другим подаркам, которые останутся с нами навсегда
         </div>
       </div>
 
@@ -50,13 +51,26 @@
           class="font-cormorant-sc q-mt-sm text-white"
           :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
         >
-          Обращаем ваше внимание, что мероприятие предназначено исключительно для взрослых гостей -
-          детский стол и аниматоры не предусмотрены
+          Церемония бракосочетания и банкет пройдут в разных локациях. Чтобы вы могли расслабиться и
+          насладиться праздником, мы организовали трансфер от места церемонии до банкетного зала и
+          обратно
         </div>
       </div>
 
-      <div class="image-bottom">
-        <img src="/public/img/wedding.png" alt="Деталь" class="bottom-image" />
+      <div class="detail-block block-02">
+        <div
+          class="font-cormorant-infant text-white"
+          :class="!$q.screen.lt.md ? 'text-h1' : 'text-h2'"
+        >
+          04
+        </div>
+        <div
+          class="font-cormorant-sc q-mt-sm text-white"
+          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+        >
+          Обращаем ваше внимание, что мероприятие предназначено исключительно для взрослых гостей -
+          детский стол и аниматоры не предусмотрены
+        </div>
       </div>
     </div>
   </div>
@@ -152,15 +166,15 @@ export default defineComponent({
   }
 
   @media (max-width: 1023px) {
-    background-size: 500% auto;
+    background-size: 550% auto;
   }
 
   @media (max-width: 400px) {
-    background-size: 530% auto;
+    background-size: 550% auto;
   }
 
   @media screen and (max-width: 1400px) and (min-height: 1020px) {
-    background-size: 530% auto;
+    background-size: 550% auto;
   }
 }
 
@@ -176,7 +190,9 @@ export default defineComponent({
 .details-title {
   opacity: 0;
   transform: translateY(-30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
   will-change: transform, opacity;
 }
 
@@ -188,7 +204,9 @@ export default defineComponent({
   padding: 20px 10%;
   box-sizing: border-box;
   opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
   will-change: transform, opacity;
 }
 
@@ -220,7 +238,9 @@ export default defineComponent({
   padding: 80px 0;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
   will-change: transform, opacity;
 }
 

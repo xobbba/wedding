@@ -7,9 +7,14 @@
     <div
       class="text-dark text-center form-content"
       :class="!$q.screen.lt.md ? 'q-pa-xl' : 'q-pa-md'"
-      style="margin-top: -120px;"
+      style="margin-top: -120px"
     >
-      <div class="font-cormorant-sc q-mb-xl form-title" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">АНКЕТА ГОСТЯ</div>
+      <div
+        class="font-cormorant-sc q-mb-xl form-title"
+        :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'"
+      >
+        АНКЕТА ГОСТЯ
+      </div>
 
       <div
         class="font-cormorant-sc q-mb-xl form-description"
@@ -38,7 +43,9 @@
     <q-dialog v-model="modalOpen" persistent>
       <q-card class="form-modal">
         <q-card-section class="row items-center q-pb-none bg-white">
-          <div class="font-cormorant-sc" :class="!$q.screen.lt.md ? 'text-h5' : 'text-h6'">ПОДТВЕРЖДЕНИЕ</div>
+          <div class="font-cormorant-sc" :class="!$q.screen.lt.md ? 'text-h5' : 'text-h6'">
+            ПОДТВЕРЖДЕНИЕ
+          </div>
           <q-space />
           <q-btn icon="close" flat round dense v-close-popup class="close-btn" />
         </q-card-section>
@@ -46,6 +53,7 @@
         <q-card-section class="form-container">
           <div class="custom-form">
             <form @submit.prevent="submitToGoogleSheet">
+              <!-- 1. ФИО -->
               <div class="form-group">
                 <label class="font-cormorant-sc">1. Ваше ФИО *</label>
                 <q-input
@@ -60,8 +68,9 @@
                 />
               </div>
 
+              <!-- 2. Присутствие -->
               <div class="form-group">
-                <label class="font-cormorant-sc">2. Будете на свадьбе? *</label>
+                <label class="font-cormorant-sc">2. Сможете ли Вы присутствовать? *</label>
                 <q-option-group
                   v-model="formData.attendance"
                   :options="attendanceOptions"
@@ -74,47 +83,110 @@
                 </div>
               </div>
 
+              <!-- 3. Семья с подсказкой -->
               <div class="form-group">
-                <label class="font-cormorant-sc">3. Что будете пить?</label>
+                <label class="font-cormorant-sc">
+                  3. Если Вы придете с семьей, внесите все имена, а также возраст детей
+                  <q-icon
+                    name="info"
+                    size="18px"
+                    class="q-ml-xs text-grey-6 cursor-help"
+                    style="vertical-align: middle"
+                  >
+                    <q-tooltip
+                      anchor="center right"
+                      self="center left"
+                      :offset="[5, 5]"
+                      class="bg-dark text-white tooltip-text"
+                      style="
+                        font-size: 14px;
+                        width: 320px;
+                        white-space: normal;
+                        line-height: 1.3;
+                        word-break: break-word;
+                      "
+                    >
+                      Обращаем ваше внимание, что мероприятие предназначено исключительно для
+                      взрослых гостей - детский стол и аниматоры не предусмотрены
+                    </q-tooltip>
+                  </q-icon>
+                </label>
+                <q-input
+                  v-model="formData.familyMembers"
+                  outlined
+                  dense
+                  type="textarea"
+                  placeholder="ФИО (возраст)"
+                  class="q-mb-md"
+                  autogrow
+                />
+              </div>
+
+              <!-- 4. Напитки -->
+              <div class="form-group">
+                <label class="font-cormorant-sc"
+                  >4. Что будете пить? (можно выбрать несколько)</label
+                >
 
                 <div class="drink-option">
                   <q-checkbox
-                    v-model="formData.drinks.strong"
-                    label="Крепкий алкоголь (виски, водка)"
+                    v-model="formData.drinks.champagne"
+                    label="Шампанское"
                     color="dark"
                     dense
-                    :disable="formData.drinks.none"
                   />
                 </div>
 
                 <div class="drink-option">
                   <q-checkbox
-                    v-model="formData.drinks.redWine"
-                    label="Вино красное"
+                    v-model="formData.drinks.whiteDry"
+                    label="Белое вино сухое"
                     color="dark"
                     dense
-                    :disable="formData.drinks.none"
                   />
                 </div>
 
                 <div class="drink-option">
                   <q-checkbox
-                    v-model="formData.drinks.whiteWine"
-                    label="Вино белое"
+                    v-model="formData.drinks.whiteSemiSweet"
+                    label="Белое вино полусладкое"
                     color="dark"
                     dense
-                    :disable="formData.drinks.none"
                   />
                 </div>
 
                 <div class="drink-option">
                   <q-checkbox
-                    v-model="formData.drinks.other"
-                    label="Другое"
+                    v-model="formData.drinks.redSemiSweet"
+                    label="Красное вино полусладкое"
                     color="dark"
                     dense
-                    :disable="formData.drinks.none"
                   />
+                </div>
+
+                <div class="drink-option">
+                  <q-checkbox
+                    v-model="formData.drinks.redDry"
+                    label="Красное вино сухое"
+                    color="dark"
+                    dense
+                  />
+                </div>
+
+                <div class="drink-option">
+                  <q-checkbox v-model="formData.drinks.whiskey" label="Виски" color="dark" dense />
+                </div>
+
+                <div class="drink-option">
+                  <q-checkbox v-model="formData.drinks.vodka" label="Водка" color="dark" dense />
+                </div>
+
+                <div class="drink-option">
+                  <q-checkbox v-model="formData.drinks.cognac" label="Коньяк" color="dark" dense />
+                </div>
+
+                <div class="drink-option">
+                  <q-checkbox v-model="formData.drinks.other" label="Другое" color="dark" dense />
                   <q-input
                     v-if="formData.drinks.other"
                     v-model="formData.drinks.otherText"
@@ -122,23 +194,47 @@
                     dense
                     placeholder="Укажите ваш вариант"
                     class="q-mt-sm q-mb-md"
-                    :disable="formData.drinks.none"
-                  />
-                </div>
-
-                <div class="drink-option">
-                  <q-checkbox
-                    v-model="formData.drinks.none"
-                    label="Не пью"
-                    color="dark"
-                    dense
-                    @update:model-value="onNoneDrinkSelected"
                   />
                 </div>
               </div>
 
+              <!-- 5. Аллергии -->
               <div class="form-group">
-                <label class="font-cormorant-sc">4. Комментарий</label>
+                <label class="font-cormorant-sc"
+                  >5. Есть ли у вас аллергия на какие-то продукты?</label
+                >
+                <q-option-group
+                  v-model="formData.allergy.hasAllergy"
+                  :options="allergyOptions"
+                  color="dark"
+                  inline
+                  class="q-mb-md"
+                />
+                <q-input
+                  v-if="formData.allergy.hasAllergy === 'yes'"
+                  v-model="formData.allergy.allergyDetails"
+                  outlined
+                  dense
+                  placeholder="Укажите на какие продукты у вас аллергия"
+                  class="q-mt-sm"
+                />
+              </div>
+
+              <!-- 6. Любимый трек -->
+              <div class="form-group">
+                <label class="font-cormorant-sc">6. Оставьте свой любимый музыкальный трек</label>
+                <q-input
+                  v-model="formData.favoriteTrack"
+                  outlined
+                  dense
+                  placeholder="Исполнитель - Название трека"
+                  class="q-mb-md"
+                />
+              </div>
+
+              <!-- 7. Комментарий -->
+              <div class="form-group">
+                <label class="font-cormorant-sc">7. Комментарий</label>
                 <q-input
                   v-model="formData.comment"
                   outlined
@@ -186,14 +282,24 @@ export default defineComponent({
     const formData = reactive({
       name: '',
       attendance: null,
+      familyMembers: '',
       drinks: {
-        strong: false,
-        redWine: false,
-        whiteWine: false,
+        champagne: false,
+        whiteDry: false,
+        whiteSemiSweet: false,
+        redSemiSweet: false,
+        redDry: false,
+        whiskey: false,
+        vodka: false,
+        cognac: false,
         other: false,
         otherText: '',
-        none: false,
       },
+      allergy: {
+        hasAllergy: null,
+        allergyDetails: '',
+      },
+      favoriteTrack: '',
       comment: '',
     })
 
@@ -207,25 +313,23 @@ export default defineComponent({
       { label: 'Нет', value: 'no' },
     ]
 
-    const onNoneDrinkSelected = (value) => {
-      if (value) {
-        formData.drinks.strong = false
-        formData.drinks.redWine = false
-        formData.drinks.whiteWine = false
-        formData.drinks.other = false
-        formData.drinks.otherText = ''
-      }
-    }
+    const allergyOptions = [
+      { label: 'Да', value: 'yes' },
+      { label: 'Нет', value: 'no' },
+    ]
 
     const formatDrinks = () => {
-      if (formData.drinks.none) {
-        return 'Не пью'
-      }
-
       const selected = []
-      if (formData.drinks.strong) selected.push('Крепкий алкоголь')
-      if (formData.drinks.redWine) selected.push('Вино красное')
-      if (formData.drinks.whiteWine) selected.push('Вино белое')
+
+      if (formData.drinks.champagne) selected.push('Шампанское')
+      if (formData.drinks.whiteDry) selected.push('Белое вино сухое')
+      if (formData.drinks.whiteSemiSweet) selected.push('Белое вино полусладкое')
+      if (formData.drinks.redSemiSweet) selected.push('Красное вино полусладкое')
+      if (formData.drinks.redDry) selected.push('Красное вино сухое')
+      if (formData.drinks.whiskey) selected.push('Виски')
+      if (formData.drinks.vodka) selected.push('Водка')
+      if (formData.drinks.cognac) selected.push('Коньяк')
+
       if (formData.drinks.other) {
         if (formData.drinks.otherText.trim()) {
           selected.push(`Другое: ${formData.drinks.otherText.trim()}`)
@@ -275,13 +379,21 @@ export default defineComponent({
 
       try {
         const scriptURL =
-          'https://script.google.com/macros/s/AKfycbzKuW8ocNThP_Df3MSDSxn8mVh_59zAhExUN9pvTmVUUeNGUmkiEkq4XYn-NLuCzKyJ/exec'
+          'https://script.google.com/macros/s/AKfycbx6LJXexp7HEO4gmCVj2Rk5VYpARCXWNIcql8zmc7Kxj_1R-eDHO8ZnCyPkTgjeJgV-/exec'
 
         const formDataToSend = new FormData()
         formDataToSend.append('timestamp', new Date().toLocaleString('ru-RU'))
         formDataToSend.append('name', formData.name.trim())
         formDataToSend.append('attendance', formData.attendance === 'yes' ? 'Да' : 'Нет')
+        formDataToSend.append('familyMembers', formData.familyMembers.trim() || '-')
         formDataToSend.append('drinks', formatDrinks())
+        formDataToSend.append(
+          'allergy',
+          formData.allergy.hasAllergy === 'yes'
+            ? `Да: ${formData.allergy.allergyDetails || 'не указано'}`
+            : 'Нет',
+        )
+        formDataToSend.append('favoriteTrack', formData.favoriteTrack.trim() || '-')
         formDataToSend.append('comment', formData.comment.trim() || '-')
 
         await fetch(scriptURL, {
@@ -303,14 +415,24 @@ export default defineComponent({
 
         formData.name = ''
         formData.attendance = null
+        formData.familyMembers = ''
         formData.drinks = {
-          strong: false,
-          redWine: false,
-          whiteWine: false,
+          champagne: false,
+          whiteDry: false,
+          whiteSemiSweet: false,
+          redSemiSweet: false,
+          redDry: false,
+          whiskey: false,
+          vodka: false,
+          cognac: false,
           other: false,
           otherText: '',
-          none: false,
         }
+        formData.allergy = {
+          hasAllergy: null,
+          allergyDetails: '',
+        }
+        formData.favoriteTrack = ''
         formData.comment = ''
       } catch (error) {
         console.error('Error:', error)
@@ -364,7 +486,7 @@ export default defineComponent({
       formData,
       errors,
       attendanceOptions,
-      onNoneDrinkSelected,
+      allergyOptions,
       submitToGoogleSheet,
     }
   },
@@ -486,6 +608,13 @@ export default defineComponent({
   color: #c10015;
   font-size: 0.85rem;
   margin-top: 4px;
+}
+
+.tooltip-text {
+  white-space: normal;
+  line-height: 1.4;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 @keyframes buttonPulse {

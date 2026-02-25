@@ -11,7 +11,7 @@
           :class="textSizeClass"
           :style="isMobile ? mobileTextStyle : locationStyle"
         >
-          НАША СВАДЬБА ПРОЙДЕТ В КАЗАХСТАНЕ, БОРОВОЕ
+          НАША СВАДЬБА ПРОЙДЕТ В КАЗАХСТАНЕ, Г. КОКШЕТАУ
         </div>
 
         <div
@@ -19,15 +19,15 @@
           :class="nameSizeClass"
           :style="isMobile ? mobileTextStyle : placeStyle"
         >
-          «АЙНАКӨЛ»
+          «ROYAL»
         </div>
 
         <div
           class="font-cormorant-sc q-mt-lg text-block"
-          :class="textSizeClass"
+          :class="placeSizeClass"
           :style="isMobile ? mobileTextStyle : addressStyle"
         >
-          АК-ЖАЙЫК, 1/3
+          АЛИМЖАНА БАЙМУКАНОВА 61В
         </div>
 
         <div class="q-mt-xl text-block" :style="isMobile ? { textAlign: 'center' } : buttonStyle">
@@ -60,20 +60,18 @@ export default defineComponent({
     let observer = null
 
     const isMobile = computed(() => $q.screen.lt.md)
-    const textSizeClass = computed(() => (!$q.screen.lt.md ? 'text-h4' : 'text-h5'))
-    const nameSizeClass = computed(() => (!$q.screen.lt.md ? 'text-h3' : 'text-h4'))
+    const textSizeClass = computed(() => (!$q.screen.lt.md ? 'text-h4' : 'text-h6'))
+    const placeSizeClass = computed(() => (!$q.screen.lt.md ? 'text-h5' : 'text-subtitle1'))
+    const nameSizeClass = computed(() => (!$q.screen.lt.md ? 'text-h3' : 'text-h5'))
 
     const locationStyle = { marginLeft: '190px', maxWidth: '600px' }
-    const placeStyle = { marginLeft: '250px' }
-    const addressStyle = { marginLeft: '264px' }
-    const buttonStyle = { marginLeft: '246px' }
+    const placeStyle = { marginLeft: '310px' }
+    const addressStyle = { marginLeft: '216px' }
+    const buttonStyle = { marginLeft: '266px' }
     const mobileTextStyle = { marginLeft: '0', maxWidth: '90%', margin: '0 auto' }
 
     const openMap = () => {
-      window.open(
-        'https://2gis.kz/kokshetau/firm/70000001098912655',
-        '_blank',
-      )
+      window.open('https://2gis.kz/kokshetau/firm/70000001033670090', '_blank')
     }
 
     onMounted(() => {
@@ -110,6 +108,7 @@ export default defineComponent({
       isVisible,
       isMobile,
       textSizeClass,
+      placeSizeClass,
       nameSizeClass,
       locationStyle,
       placeStyle,
@@ -147,6 +146,7 @@ export default defineComponent({
   transition: opacity 0.8s ease-out;
 
   @media (max-width: 768px) {
+    background-image: url('/img/place2.JPG');
     background-position: 30% center;
   }
 
@@ -224,10 +224,18 @@ export default defineComponent({
   }
 
   .bg-image.animate {
-    .text-block:nth-child(1) { transition-delay: 0.15s; }
-    .text-block:nth-child(2) { transition-delay: 0.3s; }
-    .text-block:nth-child(3) { transition-delay: 0.45s; }
-    .text-block:nth-child(4) { transition-delay: 0.6s; }
+    .text-block:nth-child(1) {
+      transition-delay: 0.15s;
+    }
+    .text-block:nth-child(2) {
+      transition-delay: 0.3s;
+    }
+    .text-block:nth-child(3) {
+      transition-delay: 0.45s;
+    }
+    .text-block:nth-child(4) {
+      transition-delay: 0.6s;
+    }
   }
 
   .text-block:nth-child(1),
@@ -252,10 +260,18 @@ export default defineComponent({
   }
 
   .bg-image.animate {
-    .text-block:nth-child(1) { transition-delay: 0.1s; }
-    .text-block:nth-child(2) { transition-delay: 0.2s; }
-    .text-block:nth-child(3) { transition-delay: 0.3s; }
-    .text-block:nth-child(4) { transition-delay: 0.4s; }
+    .text-block:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+    .text-block:nth-child(2) {
+      transition-delay: 0.2s;
+    }
+    .text-block:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+    .text-block:nth-child(4) {
+      transition-delay: 0.4s;
+    }
   }
 
   .text-block:nth-child(1),
@@ -286,10 +302,18 @@ export default defineComponent({
   }
 
   .bg-image.animate {
-    .text-block:nth-child(1) { transition-delay: 0.05s; }
-    .text-block:nth-child(2) { transition-delay: 0.15s; }
-    .text-block:nth-child(3) { transition-delay: 0.25s; }
-    .text-block:nth-child(4) { transition-delay: 0.35s; }
+    .text-block:nth-child(1) {
+      transition-delay: 0.05s;
+    }
+    .text-block:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+    .text-block:nth-child(3) {
+      transition-delay: 0.25s;
+    }
+    .text-block:nth-child(4) {
+      transition-delay: 0.35s;
+    }
   }
 }
 
