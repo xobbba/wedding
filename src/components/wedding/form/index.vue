@@ -125,7 +125,7 @@
               <!-- 4. Напитки -->
               <div class="form-group">
                 <label class="font-cormorant-sc"
-                  >4. Что будете пить? (можно выбрать несколько)</label
+                  >4. Предпочтения по напиткам (можно выбрать несколько)</label
                 >
 
                 <div class="drink-option">
