@@ -1,0 +1,15 @@
+name: Deploy
+
+on: # чтоб не дрочить эти тесты при каждом комите, запуск при комитах отключен
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: [self-hosted]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy Docker Compose
+        run: docker compose up -d --build --force-recreate && docker image prune -a
