@@ -6,21 +6,21 @@
   >
     <div
       class="text-dark text-center form-content"
-      :class="!$q.screen.lt.md ? 'q-pa-xl' : 'q-pa-md'"
+      :class="!$q.screen.lt.sm ? 'q-pa-xl' : 'q-pa-md'"
       style="margin-top: -120px"
     >
       <div
         class="font-cormorant-sc q-mb-xl form-title"
-        :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'"
+        :class="!$q.screen.lt.sm ? 'text-h3' : 'text-h4'"
       >
         АНКЕТА ГОСТЯ
       </div>
 
       <div
         class="font-cormorant-sc q-mb-xl form-description"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+        :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
       >
-        <span v-if="!$q.screen.lt.md">
+        <span v-if="!$q.screen.lt.sm">
           Пожалуйста подтвердите свое присутствие<br />
           до 1 июля 2026 года
         </span>
@@ -34,7 +34,7 @@
         color="dark"
         text-color="dark"
         label="Заполнить анкету"
-        :size="!$q.screen.lt.md ? 'xl' : 'md'"
+        :size="!$q.screen.lt.sm ? 'xl' : 'md'"
         padding="20px 60px"
         @click="modalOpen = true"
       />
@@ -43,7 +43,7 @@
     <q-dialog v-model="modalOpen" persistent>
       <q-card class="form-modal">
         <q-card-section class="row items-center q-pb-none bg-white">
-          <div class="font-cormorant-sc" :class="!$q.screen.lt.md ? 'text-h5' : 'text-h6'">
+          <div class="font-cormorant-sc" :class="!$q.screen.lt.sm ? 'text-h5' : 'text-h6'">
             ПОДТВЕРЖДЕНИЕ
           </div>
           <q-space />

@@ -13,24 +13,24 @@
     >
       <div
         class="font-cormorant-sc q-mb-xl timing-title"
-        :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'"
+        :class="!$q.screen.lt.sm ? 'text-h3' : 'text-h4'"
       >
         TIMING
       </div>
 
       <div class="centered-container q-mt-xl">
         <div class="timing-item q-pa-md" data-index="0">
-          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.sm ? 'text-h3' : 'text-h4'">
             15:00
           </div>
-          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h5'">
             ЦЕРЕМОНИЯ БРАКОСОЧЕТАНИЯ
           </div>
           <div
             class="font-cormorant-sc q-mt-md q-mr-xl q-ml-xl"
-            :class="!$q.screen.lt.md ? 'text-h5' : 'text-body1'"
+            :class="!$q.screen.lt.sm ? 'text-h5' : 'text-body1'"
           >
-            <span v-if="!$q.screen.lt.md">
+            <span v-if="!$q.screen.lt.sm">
               ЦЕРЕМОНИЯ СОСТОИТСЯ В
               <a
                 href="https://2gis.kz/kokshetau/firm/70000001054929415/70.231365%2C52.955337"
@@ -63,17 +63,17 @@
         </div>
 
         <div class="timing-item" data-index="1">
-          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.sm ? 'text-h3' : 'text-h4'">
             16:30
           </div>
-          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h5'">
             НАЧАЛО ФУРШЕТА
           </div>
           <div
             class="font-cormorant-sc q-mt-md q-mr-xl q-ml-xl"
-            :class="!$q.screen.lt.md ? 'text-h5' : 'text-body1'"
+            :class="!$q.screen.lt.sm ? 'text-h5' : 'text-body1'"
           >
-            <span v-if="!$q.screen.lt.md">
+            <span v-if="!$q.screen.lt.sm">
               БАНКЕТ СОСТОИТСЯ В «ROYAL»<br />
               ПО АДРЕСУ: АЛИМЖАНА БАЙМУКАНОВА 61В<br />
               КАЗАХСТАН, КОКШЕТАУ.
@@ -90,10 +90,10 @@
         </div>
 
         <div class="timing-item" data-index="2">
-          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.sm ? 'text-h3' : 'text-h4'">
             17:30
           </div>
-          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'">
+          <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h5'">
             НАЧАЛО БАНКЕТА И ВСТРЕЧА МОЛОДОЖЕНОВ
           </div>
         </div>
@@ -103,12 +103,12 @@
         </div>
 
         <div class="timing-item" data-index="3">
-          <div class="font-cormorant-infant" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">
+          <div class="font-cormorant-infant" :class="!$q.screen.lt.sm ? 'text-h3' : 'text-h4'">
             23:00
           </div>
           <div
             class="font-cormorant-sc q-mt-sm q-mb-xl"
-            :class="!$q.screen.lt.md ? 'text-h4' : 'text-h5'"
+            :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h5'"
           >
             ОКОНЧАНИЕ БАНКЕТА
           </div>
@@ -208,19 +208,31 @@ export default defineComponent({
   }
 
   @media (max-width: 1200px) {
-    background-size: 200% auto;
+    background-size: 210% auto;
   }
 
   @media (max-width: 1023px) {
     background-size: 500% auto;
   }
 
-  @media (max-width: 400px) {
-    background-size: 500% auto;
+  @media (max-width: 420px) {
+    background-size: 520% auto;
   }
 
-  @media screen and (max-width: 1400px) and (min-height: 1020px) {
-    background-size: 500% auto;
+  @media (max-width: 400px) {
+    background-size: 580% auto;
+  }
+
+  @media (max-width: 390px) {
+    background-size: 580% auto;
+  }
+
+  @media screen and (max-width: 820px) and (min-height: 1180px) {
+    background-size: 290% auto;
+  }
+
+  @media screen and (max-width: 768px) and (min-height: 1024px) {
+    background-size: 300% auto;
   }
 }
 

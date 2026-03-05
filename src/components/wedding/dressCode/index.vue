@@ -4,15 +4,23 @@
     class="dress row items-center justify-center bg-white"
     :class="{ animate: isVisible }"
   >
-    <div class="text-dark text-center q-pa-xs" :style="!$q.screen.lt.md ? 'margin-top: -120px;' : ''">
+    <div
+      class="text-dark text-center q-pa-xs"
+      :style="!$q.screen.lt.sm ? 'margin-top: -120px;' : ''"
+    >
       <!-- Заголовок -->
-      <div class="font-cormorant-sc q-mb-xl q-mt-xl q-mt-md title-animate" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">DRESS CODE</div>
+      <div
+        class="font-cormorant-sc q-mb-xl q-mt-xl q-mt-md title-animate"
+        :class="!$q.screen.lt.sm ? 'text-h3' : 'text-h4'"
+      >
+        DRESS CODE
+      </div>
 
       <!-- Текст -->
       <div
         class="dress-text font-cormorant-sc q-mb-md text-block"
         data-index="1"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+        :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
       >
         Мы хотим создать особенную атмосферу на нашем торжестве, поэтому просим вас учесть дресс-код
         при выборе наряда
@@ -21,7 +29,7 @@
       <div
         class="dress-text font-cormorant-sc q-mb-md text-block"
         data-index="2"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+        :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
       >
         Будем признательны, если вы выберете наряды в коктейльном стиле.
       </div>
@@ -29,7 +37,7 @@
       <div
         class="dress-text font-cormorant-sc q-mb-xl text-block"
         data-index="3"
-        :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+        :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
       >
         Просим избегать белого, молочного цвета при выборе наряда.
       </div>
@@ -50,7 +58,7 @@
             ></div>
             <div
               class="font-cormorant-sc color-name"
-              :class="!$q.screen.lt.md ? 'text-h6' : 'text-h5'"
+              :class="!$q.screen.lt.sm ? 'text-h6' : 'text-h5'"
             >
               {{ color.name }}
             </div>
@@ -76,7 +84,7 @@ export default defineComponent({
       { name: 'Темный шоколад', hex: '#26140C', needsBorder: false },
       { name: 'Лесной орех', hex: '#644D42', needsBorder: false },
       { name: 'Пудровый беж', hex: '#D5C1B8', needsBorder: false },
-      { name: 'Песчаный мед', hex: '#FFF3DF', needsBorder: false }
+      { name: 'Песчаный мед', hex: '#FFF3DF', needsBorder: false },
     ]
 
     onMounted(() => {
@@ -299,6 +307,76 @@ export default defineComponent({
     opacity: 1;
     transform: translateY(0);
     transition-delay: 1.9s;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dress {
+    height: auto;
+    min-height: 800px;
+  }
+
+  .dress-text {
+    max-width: 90%;
+  }
+
+  /* 🔥 нормальный адаптивный grid */
+  .colors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  /* карточка растягивается по колонке */
+  .color-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: center;
+
+    width: 100%;
+    max-width: none;
+
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s ease;
+  }
+
+  .color-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0;
+  }
+
+  .color-name {
+    text-align: left;
+    line-height: 1.3;
+    transform: none;
+  }
+
+  /* ===============================
+     анимации (чище через nth-child)
+     =============================== */
+
+  .bg-white.animate .color-item {
+    opacity: 1;
+    transform: none;
+  }
+
+  .bg-white.animate .color-item:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .bg-white.animate .color-item:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  .bg-white.animate .color-item:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  .bg-white.animate .color-item:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+  .bg-white.animate .color-item:nth-child(5) {
+    transition-delay: 0.5s;
   }
 }
 

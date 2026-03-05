@@ -1,20 +1,21 @@
 <template>
-  <div
-    ref="container"
-    class="chat-overlap"
-    :class="{ animate: isVisible }"
-  >
+  <div ref="container" class="chat-overlap" :class="{ animate: isVisible }">
     <div class="bg-image"></div>
     <div class="content">
       <div class="text-white text-center q-pa-xl content-inner">
         <div class="centered-content">
-          <div class="font-cormorant-sc q-mb-xl chat-title" :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'">ОБЩИЙ ЧАТ</div>
+          <div
+            class="font-cormorant-sc q-mb-xl chat-title"
+            :class="!$q.screen.lt.sm ? 'text-h3' : 'text-h4'"
+          >
+            ОБЩИЙ ЧАТ
+          </div>
 
           <div
             class="font-cormorant-sc q-mb-lg chat-description"
-            :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+            :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
           >
-            <span v-if="!$q.screen.lt.md">
+            <span v-if="!$q.screen.lt.sm">
               Присоединяйтесь к нашему чату для гостей<br />
               в Telegram, чтобы знакомиться и<br />
               обмениваться фотографиями
@@ -33,7 +34,7 @@
               color="dark"
               text-color="white"
               label="Присоединиться"
-              :size="!$q.screen.lt.md ? 'xl' : 'md'"
+              :size="!$q.screen.lt.sm ? 'xl' : 'md'"
               padding="20px 60px"
               @click="openChat"
             />
@@ -41,12 +42,15 @@
         </div>
 
         <div class="left-aligned-section">
-          <div class="font-cormorant-sc wait-text" :class="!$q.screen.lt.md ? 'text-h2' : 'text-h4'">
+          <div
+            class="font-cormorant-sc wait-text"
+            :class="!$q.screen.lt.sm ? 'text-h2' : 'text-h4'"
+          >
             ЖДЕМ ВАС!
           </div>
           <div
             class="font-cormorant-sc signature-text"
-            :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+            :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
           >
             с любовью Константин и Николь
           </div>
@@ -67,7 +71,7 @@ export default defineComponent({
     let observer = null
 
     const openChat = () => {
-      const chatUrl = 'https://t.me/ваша_ссылка_на_чат'
+      const chatUrl = 'https://t.me/+1QMfN1fyjh1hYjMy'
       window.open(chatUrl, '_blank')
     }
 
@@ -154,7 +158,7 @@ export default defineComponent({
   }
 
   @media (max-width: 1200px) {
-    background-size: 260% auto;
+    background-size: 190% auto;
   }
 
   @media (max-width: 1023px) {
@@ -165,8 +169,12 @@ export default defineComponent({
     background-size: 395% auto;
   }
 
-  @media screen and (max-width: 1400px) and (min-height: 1020px) {
-    background-size: 395% auto;
+  @media screen and (max-width: 820px) and (min-height: 1180px) {
+    background-size: 250% auto;
+  }
+
+  @media screen and (max-width: 768px) and (min-height: 1024px) {
+    background-size: 240% auto;
   }
 }
 
@@ -220,7 +228,9 @@ export default defineComponent({
   margin-bottom: 20px;
   opacity: 0;
   transform: translateX(-50px);
-  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition:
+    opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   will-change: transform, opacity;
 
   @media (max-width: 768px) {
@@ -237,7 +247,9 @@ export default defineComponent({
   margin-top: 40px;
   opacity: 0;
   transform: translateX(50px);
-  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition:
+    opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   will-change: transform, opacity;
 
   @media (max-width: 768px) {
@@ -257,21 +269,27 @@ export default defineComponent({
 .chat-title {
   opacity: 0;
   transform: translateY(-30px) scale(0.95);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
   will-change: transform, opacity;
 }
 
 .chat-description {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
   will-change: transform, opacity;
 }
 
 .chat-button {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
   will-change: transform, opacity;
 }
 
@@ -325,11 +343,21 @@ export default defineComponent({
   }
 
   .chat-overlap.animate {
-    .chat-title { transition-delay: 0.1s; }
-    .chat-description { transition-delay: 0.2s; }
-    .chat-button { transition-delay: 0.3s; }
-    .wait-text { transition-delay: 0.4s; }
-    .signature-text { transition-delay: 0.5s; }
+    .chat-title {
+      transition-delay: 0.1s;
+    }
+    .chat-description {
+      transition-delay: 0.2s;
+    }
+    .chat-button {
+      transition-delay: 0.3s;
+    }
+    .wait-text {
+      transition-delay: 0.4s;
+    }
+    .signature-text {
+      transition-delay: 0.5s;
+    }
   }
 }
 
@@ -359,11 +387,21 @@ export default defineComponent({
   }
 
   .chat-overlap.animate {
-    .chat-title { transition-delay: 0.05s; }
-    .chat-description { transition-delay: 0.1s; }
-    .chat-button { transition-delay: 0.15s; }
-    .wait-text { transition-delay: 0.2s; }
-    .signature-text { transition-delay: 0.25s; }
+    .chat-title {
+      transition-delay: 0.05s;
+    }
+    .chat-description {
+      transition-delay: 0.1s;
+    }
+    .chat-button {
+      transition-delay: 0.15s;
+    }
+    .wait-text {
+      transition-delay: 0.2s;
+    }
+    .signature-text {
+      transition-delay: 0.25s;
+    }
   }
 
   .wait-text,

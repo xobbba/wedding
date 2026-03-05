@@ -59,10 +59,10 @@ export default defineComponent({
     const isVisible = ref(false)
     let observer = null
 
-    const isMobile = computed(() => $q.screen.lt.md)
-    const textSizeClass = computed(() => (!$q.screen.lt.md ? 'text-h4' : 'text-h6'))
-    const placeSizeClass = computed(() => (!$q.screen.lt.md ? 'text-h5' : 'text-subtitle1'))
-    const nameSizeClass = computed(() => (!$q.screen.lt.md ? 'text-h3' : 'text-h5'))
+    const isMobile = computed(() => $q.screen.lt.sm)
+    const textSizeClass = computed(() => (!$q.screen.lt.sm ? 'text-h4' : 'text-h6'))
+    const placeSizeClass = computed(() => (!$q.screen.lt.sm ? 'text-h5' : 'text-subtitle1'))
+    const nameSizeClass = computed(() => (!$q.screen.lt.sm ? 'text-h3' : 'text-h5'))
 
     const locationStyle = { marginLeft: '190px', maxWidth: '600px' }
     const placeStyle = { marginLeft: '310px' }

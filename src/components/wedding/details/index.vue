@@ -4,7 +4,7 @@
     <div class="content-wrapper">
       <div
         class="text-center font-cormorant-sc q-mb-lg q-mt-xl text-white details-title"
-        :class="!$q.screen.lt.md ? 'text-h3' : 'text-h4'"
+        :class="!$q.screen.lt.sm ? 'text-h3' : 'text-h4'"
       >
         DETAILS
       </div>
@@ -12,13 +12,13 @@
       <div class="detail-block block-01">
         <div
           class="font-cormorant-infant text-white"
-          :class="!$q.screen.lt.md ? 'text-h1' : 'text-h2'"
+          :class="!$q.screen.lt.sm ? 'text-h1' : 'text-h2'"
         >
           01
         </div>
         <div
           class="font-cormorant-sc q-mt-sm text-white"
-          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+          :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
         >
           Чтобы ваши руки были свободны для объятий, будем рады легким подаркам в конвертах
         </div>
@@ -27,13 +27,13 @@
       <div class="detail-block block-02">
         <div
           class="font-cormorant-infant text-white"
-          :class="!$q.screen.lt.md ? 'text-h1' : 'text-h2'"
+          :class="!$q.screen.lt.sm ? 'text-h1' : 'text-h2'"
         >
           02
         </div>
         <div
           class="font-cormorant-sc q-mt-sm text-white"
-          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+          :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
         >
           Наша свадьба состоится в другой стране и мы к сожалению, не сможем забрать цветы домой.
           Будем рады другим подаркам, которые останутся с нами навсегда
@@ -43,13 +43,13 @@
       <div class="detail-block block-03">
         <div
           class="font-cormorant-infant text-white"
-          :class="!$q.screen.lt.md ? 'text-h1' : 'text-h2'"
+          :class="!$q.screen.lt.sm ? 'text-h1' : 'text-h2'"
         >
           03
         </div>
         <div
           class="font-cormorant-sc q-mt-sm text-white"
-          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+          :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
         >
           Церемония бракосочетания и банкет пройдут в разных локациях. Чтобы вы могли расслабиться и
           насладиться праздником, мы организовали трансфер от места церемонии до банкетного зала и
@@ -60,13 +60,13 @@
       <div class="detail-block block-02">
         <div
           class="font-cormorant-infant text-white"
-          :class="!$q.screen.lt.md ? 'text-h1' : 'text-h2'"
+          :class="!$q.screen.lt.sm ? 'text-h1' : 'text-h2'"
         >
           04
         </div>
         <div
           class="font-cormorant-sc q-mt-sm text-white"
-          :class="!$q.screen.lt.md ? 'text-h4' : 'text-h6'"
+          :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
         >
           Обращаем ваше внимание, что мероприятие предназначено исключительно для взрослых гостей -
           детский стол и аниматоры не предусмотрены
@@ -162,19 +162,31 @@ export default defineComponent({
   }
 
   @media (max-width: 1200px) {
-    background-size: 210% auto;
+    background-size: 240% auto;
   }
 
   @media (max-width: 1023px) {
     background-size: 550% auto;
   }
 
-  @media (max-width: 400px) {
-    background-size: 550% auto;
+  @media (max-width: 420px) {
+    background-size: 590% auto;
   }
 
-  @media screen and (max-width: 1400px) and (min-height: 1020px) {
-    background-size: 550% auto;
+  @media (max-width: 400px) {
+    background-size: 660% auto;
+  }
+
+  @media (max-width: 390px) {
+    background-size: 650% auto;
+  }
+
+  @media screen and (max-width: 820px) and (min-height: 1180px) {
+    background-size: 340% auto;
+  }
+
+  @media screen and (max-width: 768px) and (min-height: 1024px) {
+    background-size: 390% auto;
   }
 }
 
