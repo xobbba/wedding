@@ -193,7 +193,7 @@ export default defineComponent({
     background-size: 815% auto;
   }
 
-  @media (max-width: 310px) {
+  @media (max-width: 330px) {
     background-size: 885% auto;
   }
 
