@@ -50,7 +50,10 @@
         </span>
       </div>
 
-      <div class="calendar-container" :class="{ 'mobile-center': $q.screen.lt.sm }">
+      <div
+        class="calendar-container"
+        :style="$q.screen.lt.sm ? 'margin-left: 30px;' : 'margin-left: 80px;'"
+      >
         <img src="/img/calendar.png" alt="Календарь" class="calendar-image" />
       </div>
     </div>
@@ -119,7 +122,79 @@ export default defineComponent({
   background-image: url('/img/invite.png');
   background-repeat: no-repeat;
   background-position: center center;
+  opacity: 1;
+  will-change: opacity;
   background-size: cover;
+
+  @media (max-width: 2200px) {
+    background-size: 107% 98%;
+    background-position: center 50%;
+  }
+
+  @media (max-width: 1950px) {
+    background-size: 110% auto;
+    background-position: center 30%;
+  }
+
+  @media (max-width: 1800px) {
+    background-size: 120% auto;
+  }
+
+  @media (max-width: 1600px) {
+    background-size: 140% auto;
+  }
+
+  @media (max-width: 1450px) {
+    background-size: 160% auto;
+  }
+
+  @media (max-width: 1200px) {
+    background-size: 200% auto;
+  }
+
+  @media (max-width: 1023px) {
+    background-size: 320% auto;
+  }
+
+  @media (max-width: 420px) {
+    background-size: 330% auto;
+  }
+
+  @media (max-width: 400px) {
+    background-size: 320% auto;
+  }
+
+  @media (max-width: 390px) {
+    background-size: 360% auto;
+  }
+
+  @media (max-width: 375px) {
+    background-size: 400% auto;
+  }
+
+  @media (max-width: 380px) {
+    background-size: 435% auto;
+  }
+
+  @media (max-width: 345px) {
+    background-size: 450% auto;
+  }
+
+  @media (max-width: 335px) {
+    background-size: 465% auto;
+  }
+
+  @media (max-width: 330px) {
+    background-size: 500% auto;
+  }
+
+  @media screen and (max-width: 820px) and (min-height: 1180px) {
+    background-size: 220% auto;
+  }
+
+  @media screen and (max-width: 768px) and (min-height: 1024px) {
+    background-size: 230% auto;
+  }
 }
 
 .content {
@@ -133,16 +208,18 @@ export default defineComponent({
   transition:
     opacity 0.6s ease,
     transform 0.6s ease;
+  will-change: transform, opacity;
 }
 
 .calendar-container {
   max-width: 700px;
-  margin-left: 80px;
+  margin-left: 40px;
   opacity: 0;
   transform: translateY(30px);
   transition:
     opacity 0.8s ease,
     transform 0.8s ease;
+  will-change: transform, opacity;
 }
 
 .calendar-image {
@@ -156,7 +233,6 @@ export default defineComponent({
   }
 }
 
-/* Анимация */
 .invite-overlap.animate {
   .text-block:nth-child(1) {
     opacity: 1;
@@ -189,19 +265,11 @@ export default defineComponent({
   }
 }
 
-/* ========== УПРОЩЁННАЯ АДАПТИВНОСТЬ ========== */
-
-/* Планшеты и ноутбуки (до 1024px) */
 @media (max-width: 1024px) {
   .invite-overlap {
-    margin-top: -100px;
+    margin-top: -80px;
     padding-top: 100px;
     padding-bottom: 100px;
-  }
-
-  .calendar-container {
-    max-width: 550px;
-    margin-left: 60px;
   }
 
   .invite-overlap.animate {
@@ -223,10 +291,9 @@ export default defineComponent({
   }
 }
 
-/* Мобилки (до 768px) */
 @media (max-width: 768px) {
   .invite-overlap {
-    margin-top: -100px;
+    margin-top: -60px;
     padding-top: 80px;
     padding-bottom: 80px;
   }
@@ -234,8 +301,6 @@ export default defineComponent({
   .calendar-container {
     max-width: 500px;
     margin-left: 0;
-    display: flex;
-    justify-content: center;
   }
 
   .text-block {
@@ -243,7 +308,6 @@ export default defineComponent({
   }
 }
 
-/* Маленькие телефоны (до 480px) */
 @media (max-width: 480px) {
   .invite-overlap {
     margin-top: -40px;
@@ -260,21 +324,8 @@ export default defineComponent({
   }
 }
 
-/* Очень маленькие телефоны (до 375px) */
-@media (max-width: 375px) {
-  .invite-overlap {
-    margin-top: -100px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-
-  .calendar-container {
-    max-width: 280px;
-  }
-}
-
-/* Для пользователей с отключённой анимацией */
 @media (prefers-reduced-motion: reduce) {
+  .bg-image,
   .text-block,
   .calendar-container,
   .calendar-image {
@@ -282,6 +333,7 @@ export default defineComponent({
   }
 
   .invite-overlap.animate {
+    .bg-image,
     .text-block,
     .calendar-container {
       opacity: 1;

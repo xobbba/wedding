@@ -75,7 +75,7 @@
             15:40
           </div>
           <div class="font-cormorant-sc q-mt-sm" :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h5'">
-            СБОР ГОСТЕЙ НА ТРАНСФЕР ДО МЕСТА ПРОВЕДЕНИЯ БАНКЕТА
+            СБОР ГОСТЕЙ НА ТРАНСФЕР ДО МЕСТО ПРОВЕДЕНИЯ БАНКЕТА
           </div>
         </div>
 
@@ -100,7 +100,8 @@
               КАЗАХСТАН, КОКШЕТАУ.
             </span>
             <span v-else>
-              БАНКЕТ СОСТОИТСЯ В «ROYAL» ПО АДРЕСУ: АЛИМЖАНА БАЙМУКАНОВА 61В. КАЗАХСТАН, КОКШЕТАУ.
+              ЦЕРЕМОНИЯ СОСТОИТСЯ В «ROYAL» ПО АДРЕСУ: АЛИМЖАНА БАЙМУКАНОВА 61В. КАЗАХСТАН,
+              КОКШЕТАУ.
             </span>
           </div>
         </div>
@@ -189,7 +190,74 @@ export default defineComponent({
   background-image: url('/img/timing.png');
   background-repeat: no-repeat;
   background-position: center center;
+  opacity: 1;
+  will-change: opacity;
   background-size: cover;
+
+  @media (max-width: 2200px) {
+    background-size: 107% 96%;
+    background-position: center 40%;
+  }
+
+  @media (max-width: 1950px) {
+    background-size: 110% auto;
+  }
+
+  @media (max-width: 1800px) {
+    background-size: 140% auto;
+  }
+
+  @media (max-width: 1600px) {
+    background-size: 164% auto;
+  }
+
+  @media (max-width: 1450px) {
+    background-size: 176% auto;
+  }
+
+  @media (max-width: 1200px) {
+    background-size: 210% auto;
+  }
+
+  @media (max-width: 1023px) {
+    background-size: 500% auto;
+  }
+
+  @media (max-width: 420px) {
+    background-size: 590% auto;
+  }
+
+  @media (max-width: 400px) {
+    background-size: 650% auto;
+  }
+
+  @media (max-width: 390px) {
+    background-size: 670% auto;
+  }
+
+  @media (max-width: 380px) {
+    background-size: 690% auto;
+  }
+
+  @media (max-width: 345px) {
+    background-size: 800% auto;
+  }
+
+  @media (max-width: 335px) {
+    background-size: 840% auto;
+  }
+
+  @media (max-width: 330px) {
+    background-size: 870% auto;
+  }
+
+  @media screen and (max-width: 820px) and (min-height: 1180px) {
+    background-size: 320% auto;
+  }
+
+  @media screen and (max-width: 768px) and (min-height: 1024px) {
+    background-size: 320% auto;
+  }
 }
 
 .content {
@@ -213,6 +281,7 @@ export default defineComponent({
   transition:
     opacity 0.6s ease,
     transform 0.6s ease;
+  will-change: transform, opacity;
 }
 
 .separator-center {
@@ -227,6 +296,7 @@ export default defineComponent({
   width: 2px;
   opacity: 0;
   transition: opacity 0.6s ease;
+  will-change: opacity;
 }
 
 .timing-title {
@@ -235,18 +305,33 @@ export default defineComponent({
   transition:
     opacity 0.6s ease,
     transform 0.6s ease;
+  will-change: transform, opacity;
 }
 
 .location-link {
+  position: relative;
   text-decoration: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
   display: inline-block;
+  cursor: pointer;
 
   &:hover {
     border-bottom-color: #ffffff;
     transform: scale(1.02);
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  }
+
+  &::after {
+    font-size: 0.8em;
+    margin-left: 4px;
+    display: inline-block;
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover::after {
+    transform: translate(2px, -2px);
   }
 }
 
@@ -304,32 +389,35 @@ export default defineComponent({
     padding-bottom: 120px;
   }
 
-  .centered-separator {
-    height: 50px;
-  }
-
   .timing-overlap.animate {
     .timing-title {
       transition-delay: 0.1s;
     }
+
     .timing-item[data-index='0'] {
       transition-delay: 0.3s;
     }
+
     .centered-separator:nth-of-type(1) {
       transition-delay: 0.4s;
     }
+
     .timing-item[data-index='1'] {
       transition-delay: 0.5s;
     }
+
     .centered-separator:nth-of-type(2) {
       transition-delay: 0.6s;
     }
+
     .timing-item[data-index='2'] {
       transition-delay: 0.7s;
     }
+
     .centered-separator:nth-of-type(3) {
       transition-delay: 0.8s;
     }
+
     .timing-item[data-index='3'] {
       transition-delay: 0.9s;
     }
@@ -338,33 +426,68 @@ export default defineComponent({
 
 @media (max-width: 768px) {
   .timing-overlap {
-    margin-top: -100px;
+    margin-top: -80px;
     padding-top: 100px;
     padding-bottom: 100px;
+  }
+
+  .timing-overlap.animate {
+    .timing-item[data-index='0'] {
+      transition-delay: 0.2s;
+    }
+
+    .centered-separator:nth-of-type(1) {
+      transition-delay: 0.3s;
+    }
+
+    .timing-item[data-index='1'] {
+      transition-delay: 0.4s;
+    }
+
+    .centered-separator:nth-of-type(2) {
+      transition-delay: 0.5s;
+    }
+
+    .timing-item[data-index='2'] {
+      transition-delay: 0.6s;
+    }
+
+    .centered-separator:nth-of-type(3) {
+      transition-delay: 0.7s;
+    }
+
+    .timing-item[data-index='3'] {
+      transition-delay: 0.8s;
+    }
+  }
+
+  .centered-separator {
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timing-overlap {
+    margin-top: -60px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .timing-item {
+    padding: 10px;
   }
 
   .centered-separator {
     height: 40px;
   }
 
-  .timing-item {
-    padding: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .timing-overlap {
-    margin-top: -100px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-  }
-
-  .centered-separator {
-    height: 30px;
+  .bg-image {
+    opacity: 1;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .bg-image,
   .timing-title,
   .timing-item,
   .centered-separator {
@@ -372,6 +495,10 @@ export default defineComponent({
   }
 
   .timing-overlap.animate {
+    .bg-image {
+      opacity: 1;
+    }
+
     .timing-title,
     .timing-item,
     .centered-separator {

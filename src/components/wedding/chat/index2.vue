@@ -136,7 +136,50 @@ export default defineComponent({
   background-image: url('/img/chat.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover;
+  opacity: 1;
+  transform: scale(1);
+  will-change: transform, opacity;
+  background-size: 110% auto;
+
+  @media (max-width: 1950px) {
+    background-size: 110% auto;
+  }
+
+  @media (max-width: 1800px) {
+    background-size: 120% auto;
+  }
+
+  @media (max-width: 1600px) {
+    background-size: 140% auto;
+  }
+
+  @media (max-width: 1450px) {
+    background-size: 160% auto;
+  }
+
+  @media (max-width: 1200px) {
+    background-size: 190% auto;
+  }
+
+  @media (max-width: 1023px) {
+    background-size: 395% auto;
+  }
+
+  @media (max-width: 400px) {
+    background-size: 395% auto;
+  }
+
+  @media (max-width: 330px) {
+    background-size: 495% auto;
+  }
+
+  @media screen and (max-width: 820px) and (min-height: 1180px) {
+    background-size: 250% auto;
+  }
+
+  @media screen and (max-width: 768px) and (min-height: 1024px) {
+    background-size: 240% auto;
+  }
 }
 
 .content {
@@ -159,12 +202,29 @@ export default defineComponent({
   max-width: 800px;
   height: 400px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 350px;
+  }
+
+  @media (max-width: 480px) {
+    min-height: 300px;
+  }
 }
 
 .left-aligned-section {
   max-width: 800px;
   margin: 80px auto 0 auto;
   text-align: left;
+
+  @media (max-width: 768px) {
+    max-width: 600px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 40px auto 0 auto;
+  }
 }
 
 .wait-text {
@@ -175,6 +235,15 @@ export default defineComponent({
   transition:
     opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
     transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+
+  @media (max-width: 768px) {
+    margin-left: 5px;
+  }
+
+  @media (max-width: 480px) {
+    margin-left: 0;
+  }
 }
 
 .signature-text {
@@ -185,6 +254,20 @@ export default defineComponent({
   transition:
     opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
     transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+
+  @media (max-width: 768px) {
+    margin-left: 40px;
+  }
+
+  @media (max-width: 480px) {
+    margin-left: 60px;
+  }
+
+  @media (max-width: 360px) {
+    margin-left: 10px;
+    font-size: 1rem;
+  }
 }
 
 .chat-title {
@@ -193,6 +276,7 @@ export default defineComponent({
   transition:
     opacity 0.8s ease,
     transform 0.8s ease;
+  will-change: transform, opacity;
 }
 
 .chat-description {
@@ -201,6 +285,7 @@ export default defineComponent({
   transition:
     opacity 0.8s ease,
     transform 0.8s ease;
+  will-change: transform, opacity;
 }
 
 .chat-button {
@@ -209,6 +294,7 @@ export default defineComponent({
   transition:
     opacity 0.8s ease,
     transform 0.8s ease;
+  will-change: transform, opacity;
 }
 
 .q-btn {
@@ -220,7 +306,6 @@ export default defineComponent({
   }
 }
 
-/* Анимация */
 .chat-overlap.animate {
   .chat-title {
     opacity: 1;
@@ -253,31 +338,12 @@ export default defineComponent({
   }
 }
 
-/* ========== УПРОЩЁННАЯ АДАПТИВНОСТЬ ========== */
-
-/* Планшеты (до 1024px) */
 @media (max-width: 1024px) {
   .chat-overlap {
     margin-top: -120px;
     padding-top: 170px;
     padding-bottom: 120px;
-  }
-
-  .centered-content {
-    height: auto;
-    min-height: 350px;
-  }
-
-  .left-aligned-section {
-    margin: 60px auto 0 auto;
-  }
-
-  .signature-text {
-    margin-left: 40px;
-  }
-
-  .wait-text {
-    margin-left: 5px;
+    z-index: 15;
   }
 
   .chat-overlap.animate {
@@ -299,50 +365,29 @@ export default defineComponent({
   }
 }
 
-/* Мобилки (до 768px) */
 @media (max-width: 768px) {
   .chat-overlap {
     margin-top: -100px;
     padding-top: 150px;
     padding-bottom: 100px;
-  }
-
-  .centered-content {
-    min-height: auto;
-  }
-
-  .left-aligned-section {
-    margin: 40px auto 0 auto;
-    text-align: center;
+    z-index: 15;
   }
 
   .wait-text {
-    margin-left: 0;
-    transform: translateY(-20px);
+    transform: translateX(-30px);
   }
 
   .signature-text {
-    margin-left: 0;
-    margin-top: 20px;
-    transform: translateY(20px);
-  }
-
-  .chat-overlap.animate {
-    .wait-text {
-      transform: translateY(0);
-    }
-    .signature-text {
-      transform: translateY(0);
-    }
+    transform: translateX(30px);
   }
 }
 
-/* Маленькие телефоны (до 480px) */
 @media (max-width: 480px) {
   .chat-overlap {
     margin-top: -80px;
     padding-top: 130px;
     padding-bottom: 80px;
+    z-index: 15;
   }
 
   .chat-overlap.animate {
@@ -362,17 +407,22 @@ export default defineComponent({
       transition-delay: 0.25s;
     }
   }
-}
 
-/* Очень маленькие телефоны (до 360px) */
-@media (max-width: 360px) {
+  .wait-text,
   .signature-text {
-    font-size: 1rem;
+    transform: translateY(20px);
+  }
+
+  .chat-overlap.animate {
+    .wait-text,
+    .signature-text {
+      transform: translateY(0);
+    }
   }
 }
 
-/* Для пользователей с отключённой анимацией */
 @media (prefers-reduced-motion: reduce) {
+  .bg-image,
   .chat-title,
   .chat-description,
   .chat-button,
@@ -382,6 +432,10 @@ export default defineComponent({
   }
 
   .chat-overlap.animate {
+    .bg-image {
+      opacity: 1;
+    }
+
     .chat-title,
     .chat-description,
     .chat-button,

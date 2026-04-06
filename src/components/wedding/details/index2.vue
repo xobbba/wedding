@@ -35,7 +35,7 @@
           class="font-cormorant-sc q-mt-sm text-white"
           :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
         >
-          Наша свадьба состоится в другой стране и мы, к сожалению, не сможем забрать цветы домой.
+          Наша свадьба состоится в другой стране и мы к сожалению, не сможем забрать цветы домой.
           Будем рады другим подаркам, которые останутся с нами навсегда
         </div>
       </div>
@@ -68,7 +68,7 @@
           class="font-cormorant-sc q-mt-sm text-white"
           :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
         >
-          Обращаем ваше внимание, что мероприятие предназначено исключительно для взрослых гостей —
+          Обращаем ваше внимание, что мероприятие предназначено исключительно для взрослых гостей -
           детский стол и аниматоры не предусмотрены
         </div>
       </div>
@@ -140,7 +140,70 @@ export default defineComponent({
   background-image: url('/img/details.png');
   background-repeat: no-repeat;
   background-position: center center;
+  opacity: 1;
+  transform: scale(1);
+  will-change: transform, opacity;
   background-size: cover;
+
+  @media (max-width: 1950px) {
+    background-size: 140% auto;
+  }
+
+  @media (max-width: 1800px) {
+    background-size: 155% auto;
+  }
+
+  @media (max-width: 1600px) {
+    background-size: 170% auto;
+  }
+
+  @media (max-width: 1450px) {
+    background-size: 190% auto;
+  }
+
+  @media (max-width: 1200px) {
+    background-size: 240% auto;
+  }
+
+  @media (max-width: 1023px) {
+    background-size: 550% auto;
+  }
+
+  @media (max-width: 420px) {
+    background-size: 590% auto;
+  }
+
+  @media (max-width: 400px) {
+    background-size: 660% auto;
+  }
+
+  @media (max-width: 390px) {
+    background-size: 650% auto;
+  }
+
+  @media (max-width: 380px) {
+    background-size: 720% auto;
+  }
+
+  @media (max-width: 345px) {
+    background-size: 760% auto;
+  }
+
+  @media (max-width: 335px) {
+    background-size: 815% auto;
+  }
+
+  @media (max-width: 330px) {
+    background-size: 885% auto;
+  }
+
+  @media screen and (max-width: 820px) and (min-height: 1180px) {
+    background-size: 340% auto;
+  }
+
+  @media screen and (max-width: 768px) and (min-height: 1024px) {
+    background-size: 390% auto;
+  }
 }
 
 .content-wrapper {
@@ -158,6 +221,7 @@ export default defineComponent({
   transition:
     opacity 0.6s ease,
     transform 0.6s ease;
+  will-change: transform, opacity;
 }
 
 .detail-block {
@@ -171,6 +235,7 @@ export default defineComponent({
   transition:
     opacity 0.6s ease,
     transform 0.6s ease;
+  will-change: transform, opacity;
 }
 
 .block-01 {
@@ -194,7 +259,25 @@ export default defineComponent({
   transform: translateX(-50px);
 }
 
-/* Анимация */
+.image-bottom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 80px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  will-change: transform, opacity;
+}
+
+.bottom-image {
+  max-width: 800px;
+  width: 100%;
+  height: auto;
+}
+
 .details-container.animate {
   .details-title {
     opacity: 1;
@@ -220,16 +303,13 @@ export default defineComponent({
     transition-delay: 0.8s;
   }
 
-  .block-02:last-of-type {
+  .image-bottom {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
     transition-delay: 1s;
   }
 }
 
-/* ========== УПРОЩЁННАЯ АДАПТИВНОСТЬ ========== */
-
-/* Планшеты (до 1024px) */
 @media (max-width: 1024px) {
   .details-overlap {
     margin-top: -100px;
@@ -237,8 +317,23 @@ export default defineComponent({
     padding-bottom: 120px;
   }
 
-  .detail-block {
-    padding: 20px 8%;
+  .details-container.animate {
+    .details-title {
+      transition-delay: 0.1s;
+    }
+
+    .block-01 {
+      transition-delay: 0.3s;
+    }
+    .block-02 {
+      transition-delay: 0.5s;
+    }
+    .block-03 {
+      transition-delay: 0.7s;
+    }
+    .image-bottom {
+      transition-delay: 0.9s;
+    }
   }
 
   .block-01,
@@ -249,54 +344,24 @@ export default defineComponent({
   .block-02 {
     transform: translateX(30px);
   }
-
-  .details-container.animate {
-    .details-title {
-      transition-delay: 0.1s;
-    }
-    .block-01 {
-      transition-delay: 0.3s;
-    }
-    .block-02 {
-      transition-delay: 0.5s;
-    }
-    .block-03 {
-      transition-delay: 0.7s;
-    }
-    .block-02:last-of-type {
-      transition-delay: 0.9s;
-    }
-  }
 }
 
-/* Мобилки (до 768px) */
 @media (max-width: 768px) {
   .details-overlap {
-    margin-top: -20px;
+    margin-top: -80px;
     padding-top: 100px;
     padding-bottom: 100px;
   }
 
   .detail-block {
-    padding: 30px 6%;
+    padding: 60px 5%;
   }
 
-  .block-01,
-  .block-02,
-  .block-03 {
-    align-items: center;
-    text-align: center;
-    align-self: center;
-    transform: translateY(20px);
+  .image-bottom {
+    padding: 60px 0;
   }
 
   .details-container.animate {
-    .block-01,
-    .block-02,
-    .block-03,
-    .block-02:last-of-type {
-      transform: translateY(0);
-    }
     .block-01 {
       transition-delay: 0.2s;
     }
@@ -306,48 +371,76 @@ export default defineComponent({
     .block-03 {
       transition-delay: 0.6s;
     }
-    .block-02:last-of-type {
+    .image-bottom {
       transition-delay: 0.8s;
     }
   }
+
+  .block-01,
+  .block-03 {
+    transform: translateX(-20px);
+  }
+
+  .block-02 {
+    transform: translateX(20px);
+  }
 }
 
-/* Маленькие телефоны (до 480px) */
 @media (max-width: 480px) {
   .details-overlap {
-    margin-top: -30px;
+    margin-top: -60px;
     padding-top: 80px;
     padding-bottom: 80px;
   }
 
   .detail-block {
-    padding: 20px 16px;
+    padding: 40px 20px;
+  }
+
+  .image-bottom {
+    padding: 40px 0;
+  }
+
+  .text-h3 {
+    font-size: 2rem;
+  }
+
+  .bg-image {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .block-01,
+  .block-02,
+  .block-03 {
+    transform: translateY(20px);
+  }
+
+  .details-container.animate {
+    .block-01,
+    .block-02,
+    .block-03 {
+      transform: translateY(0);
+    }
   }
 }
 
-/* Очень маленькие телефоны (до 375px) */
-@media (max-width: 375px) {
-  .details-overlap {
-    margin-top: -30px;
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-
-  .detail-block {
-    padding: 16px 12px;
-  }
-}
-
-/* Для пользователей с отключённой анимацией */
 @media (prefers-reduced-motion: reduce) {
+  .bg-image,
   .details-title,
-  .detail-block {
+  .detail-block,
+  .image-bottom {
     transition: none !important;
   }
 
   .details-container.animate {
+    .bg-image {
+      opacity: 1;
+    }
+
     .details-title,
-    .detail-block {
+    .detail-block,
+    .image-bottom {
       opacity: 1;
       transform: none;
     }
