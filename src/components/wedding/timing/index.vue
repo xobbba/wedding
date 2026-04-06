@@ -180,21 +180,6 @@ export default defineComponent({
   overflow: hidden;
 }
 
-.transfer-box {
-  backdrop-filter: blur(4px);
-  border-radius: 60px;
-  padding: 12px 24px;
-  display: inline-block;
-  width: 420px;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  color: white;
-  opacity: 0.9;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 245, 215, 0.4);
-}
-
 .bg-image {
   position: absolute;
   top: 0;
@@ -263,6 +248,20 @@ export default defineComponent({
     transform: scale(1.02);
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
   }
+}
+
+.transfer-box {
+  border-radius: 60px;
+  padding: 12px 24px;
+  display: inline-block;
+  width: 620px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 245, 215, 0.4);
 }
 
 .timing-overlap.animate {
@@ -358,18 +357,19 @@ export default defineComponent({
     padding-bottom: 100px;
   }
 
-  .transfer-box {
-    padding: 10px 18px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-  }
-
   .centered-separator {
     height: 40px;
   }
 
   .timing-item {
     padding: 10px;
+  }
+
+  .transfer-box {
+    padding: 10px 18px;
+    border-radius: 50px;
+    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -382,6 +382,13 @@ export default defineComponent({
 
   .centered-separator {
     height: 30px;
+  }
+
+  .transfer-box {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 16px;
+    border-radius: 40px;
   }
 }
 
