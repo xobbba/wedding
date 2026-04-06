@@ -83,7 +83,7 @@
                 </div>
               </div>
 
-              <!-- 3. Семья с подсказкой -->
+              <!-- 3. Семья с подсказкой (исправлено для мобильных) -->
               <div class="form-group">
                 <label class="font-cormorant-sc">
                   3. Если Вы придете с семьей, внесите все имена, а также возраст детей
@@ -92,8 +92,10 @@
                     size="18px"
                     class="q-ml-xs text-grey-6 cursor-help"
                     style="vertical-align: middle"
+                    @click="showTooltipDialog = true"
                   >
                     <q-tooltip
+                      v-if="!isMobile"
                       anchor="center right"
                       self="center left"
                       :offset="[5, 5]"
@@ -262,6 +264,19 @@
         </q-card-section>
       </q-card>
     </q-dialog>
+
+    <q-dialog v-model="showTooltipDialog">
+      <q-card class="bg-dark text-white" style="max-width: 90vw; border-radius: 12px">
+        <q-card-section class="row items-center justify-between">
+          <div class="text-h6">Внимание</div>
+          <q-btn v-close-popup flat round dense icon="close" color="white" />
+        </q-card-section>
+        <q-card-section style="font-size: 16px; line-height: 1.4">
+          Обращаем ваше внимание, что мероприятие предназначено исключительно для взрослых гостей -
+          детский стол и аниматоры не предусмотрены
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
@@ -277,6 +292,8 @@ export default defineComponent({
     const isVisible = ref(false)
     const modalOpen = ref(false)
     const submitting = ref(false)
+    const showTooltipDialog = ref(false)
+    const isMobile = ref(false)
     let observer = null
 
     const formData = reactive({
@@ -450,7 +467,17 @@ export default defineComponent({
       }
     }
 
+    const checkMobile = () => {
+      isMobile.value =
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent,
+        ) || window.innerWidth <= 768
+    }
+
     onMounted(() => {
+      checkMobile()
+      window.addEventListener('resize', checkMobile)
+
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -476,6 +503,7 @@ export default defineComponent({
 
     onUnmounted(() => {
       if (observer) observer.disconnect()
+      window.removeEventListener('resize', checkMobile)
     })
 
     return {
@@ -483,6 +511,8 @@ export default defineComponent({
       isVisible,
       modalOpen,
       submitting,
+      showTooltipDialog,
+      isMobile,
       formData,
       errors,
       attendanceOptions,

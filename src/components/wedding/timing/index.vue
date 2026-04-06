@@ -56,8 +56,8 @@
               ПО АДРЕСУ: МИКРОРАЙОН ЦРБ, 2Б КАЗАХСТАН, ЩУЧИНСК.
             </span>
             <div
-              class="q-mt-md font-cormorant-sc"
-              :class="!$q.screen.lt.sm ? 'text-h5' : 'text-h6'"
+              class="q-mt-md transfer-box font-cormorant-sc"
+              :class="!$q.screen.lt.sm ? 'text-h6' : 'text-body1'"
               style="opacity: 0.7"
             >
               Для тех, кто не сможет присутствовать на церемонии, ждём в гольф-клубе к 15:30 для
@@ -178,6 +178,21 @@ export default defineComponent({
   padding-top: 140px;
   padding-bottom: 140px;
   overflow: hidden;
+}
+
+.transfer-box {
+  backdrop-filter: blur(4px);
+  border-radius: 60px;
+  padding: 12px 24px;
+  display: inline-block;
+  width: auto;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 245, 215, 0.4);
 }
 
 .bg-image {
@@ -341,6 +356,12 @@ export default defineComponent({
     margin-top: -100px;
     padding-top: 100px;
     padding-bottom: 100px;
+  }
+
+  .transfer-box {
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 0.9rem;
   }
 
   .centered-separator {

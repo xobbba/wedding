@@ -83,8 +83,8 @@ export default defineComponent({
       { name: 'Черный', hex: '#000000', needsBorder: false },
       { name: 'Темный шоколад', hex: '#26140C', needsBorder: false },
       { name: 'Лесной орех', hex: '#644D42', needsBorder: false },
-      { name: 'Пудровый беж', hex: '#D5C1B8', needsBorder: true },
-      { name: 'Песчаный мед', hex: '#FFF3DF', needsBorder: true },
+      { name: 'Пудровый беж', hex: '#D5C1B8', needsBorder: false },
+      { name: 'Песчаный мед', hex: '#FFF3DF', needsBorder: false },
     ]
 
     onMounted(() => {
