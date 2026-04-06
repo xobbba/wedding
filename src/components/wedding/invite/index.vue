@@ -233,7 +233,7 @@ export default defineComponent({
 
   .calendar-container {
     max-width: 500px;
-    margin-left: 0;
+    margin-left: 46px;
     display: flex;
     justify-content: center;
   }

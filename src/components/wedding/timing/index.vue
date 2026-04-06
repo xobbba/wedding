@@ -185,7 +185,7 @@ export default defineComponent({
   border-radius: 60px;
   padding: 12px 24px;
   display: inline-block;
-  width: auto;
+  width: 420px;
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
