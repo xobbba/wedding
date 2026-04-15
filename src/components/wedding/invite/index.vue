@@ -106,7 +106,7 @@ export default defineComponent({
   z-index: 6;
   margin-top: -100px;
   padding-top: 120px;
-  padding-bottom: 120px;
+  padding-bottom: 200px;
   overflow: hidden;
 }
 
