@@ -60,8 +60,7 @@
               :class="!$q.screen.lt.sm ? 'text-h6' : 'text-body1'"
               style="opacity: 0.7"
             >
-              Для тех, кто не сможет присутствовать на церемонии, ждём в гольф-клубе к 15:30 для
-              трансфера на банкет
+              Для тех, кто не сможет присутствовать на церемонии, в 15:30 вас будет ждать трансфер
             </div>
           </div>
         </div>
@@ -111,13 +110,13 @@
 
         <div class="timing-item" data-index="3">
           <div class="font-cormorant-infant" :class="!$q.screen.lt.sm ? 'text-h3' : 'text-h4'">
-            23:00
+            23:30
           </div>
           <div
             class="font-cormorant-sc q-mt-sm q-mb-xl"
             :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h5'"
           >
-            ОКОНЧАНИЕ БАНКЕТА
+            ЗАВЕРШЕНИЕ ВЕЧЕРА
           </div>
         </div>
       </div>
