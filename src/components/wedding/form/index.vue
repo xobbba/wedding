@@ -284,6 +284,9 @@
 import { defineComponent, ref, onMounted, onUnmounted, reactive } from 'vue'
 import { useQuasar } from 'quasar'
 
+const RSVP_STORAGE_KEY = 'wedding-rsvp-submissions'
+const MAX_STORED_SUBMISSIONS = 20
+
 export default defineComponent({
   name: 'FormComponent',
   setup() {
@@ -335,6 +338,27 @@ export default defineComponent({
       { label: 'Нет', value: 'no' },
     ]
 
+    const normalizeText = (value) => value.trim().replace(/\s+/g, ' ').toLowerCase()
+
+    const getStoredSubmissions = () => {
+      try {
+        const rawValue = localStorage.getItem(RSVP_STORAGE_KEY)
+        const parsedValue = rawValue ? JSON.parse(rawValue) : []
+        return Array.isArray(parsedValue) ? parsedValue : []
+      } catch (error) {
+        console.error('Failed to read RSVP submissions from localStorage', error)
+        return []
+      }
+    }
+
+    const saveStoredSubmissions = (submissions) => {
+      try {
+        localStorage.setItem(RSVP_STORAGE_KEY, JSON.stringify(submissions.slice(0, MAX_STORED_SUBMISSIONS)))
+      } catch (error) {
+        console.error('Failed to save RSVP submissions to localStorage', error)
+      }
+    }
+
     const formatDrinks = () => {
       const selected = []
 
@@ -356,6 +380,38 @@ export default defineComponent({
       }
 
       return selected.length > 0 ? selected.join(', ') : 'Не выбрано'
+    }
+
+    const buildSubmissionSignature = () =>
+      JSON.stringify({
+        name: normalizeText(formData.name),
+        attendance: formData.attendance || '',
+        familyMembers: normalizeText(formData.familyMembers || ''),
+        drinks: normalizeText(formatDrinks()),
+        allergy:
+          formData.allergy.hasAllergy === 'yes'
+            ? normalizeText(formData.allergy.allergyDetails || '')
+            : 'no',
+        favoriteTrack: normalizeText(formData.favoriteTrack || ''),
+        comment: normalizeText(formData.comment || ''),
+      })
+
+    const findDuplicateSubmission = () => {
+      const signature = buildSubmissionSignature()
+      return getStoredSubmissions().find((item) => item.signature === signature) || null
+    }
+
+    const rememberSubmission = () => {
+      const signature = buildSubmissionSignature()
+      const submissions = getStoredSubmissions().filter((item) => item.signature !== signature)
+
+      submissions.unshift({
+        signature,
+        name: formData.name.trim(),
+        submittedAt: new Date().toISOString(),
+      })
+
+      saveStoredSubmissions(submissions)
     }
 
     const submitToGoogleSheet = async () => {
@@ -380,6 +436,20 @@ export default defineComponent({
           message: 'Выберите, будете ли вы на свадьбе',
           position: 'top-right',
           timeout: 3000,
+        })
+        return
+      }
+
+      const duplicateSubmission = findDuplicateSubmission()
+
+      if (duplicateSubmission) {
+        const submittedAt = new Date(duplicateSubmission.submittedAt).toLocaleString('ru-RU')
+
+        $q.notify({
+          type: 'warning',
+          message: `Похоже, такая анкета уже была отправлена с этого устройства${submittedAt ? ` (${submittedAt})` : ''}.`,
+          position: 'top-right',
+          timeout: 5000,
         })
         return
       }
@@ -427,6 +497,8 @@ export default defineComponent({
           position: 'top-right',
           timeout: 5000,
         })
+
+        rememberSubmission()
 
         modalOpen.value = false
 
