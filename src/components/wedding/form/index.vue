@@ -141,8 +141,8 @@
 
                 <div class="drink-option">
                   <q-checkbox
-                    v-model="formData.drinks.whiteDry"
-                    label="Белое вино сухое"
+                    v-model="formData.drinks.whiteWine"
+                    label="Белое вино"
                     color="dark"
                     dense
                   />
@@ -150,26 +150,8 @@
 
                 <div class="drink-option">
                   <q-checkbox
-                    v-model="formData.drinks.whiteSemiSweet"
-                    label="Белое вино полусладкое"
-                    color="dark"
-                    dense
-                  />
-                </div>
-
-                <div class="drink-option">
-                  <q-checkbox
-                    v-model="formData.drinks.redSemiSweet"
-                    label="Красное вино полусладкое"
-                    color="dark"
-                    dense
-                  />
-                </div>
-
-                <div class="drink-option">
-                  <q-checkbox
-                    v-model="formData.drinks.redDry"
-                    label="Красное вино сухое"
+                    v-model="formData.drinks.redWine"
+                    label="Красное вино"
                     color="dark"
                     dense
                   />
@@ -181,22 +163,6 @@
 
                 <div class="drink-option">
                   <q-checkbox v-model="formData.drinks.vodka" label="Водка" color="dark" dense />
-                </div>
-
-                <div class="drink-option">
-                  <q-checkbox v-model="formData.drinks.cognac" label="Коньяк" color="dark" dense />
-                </div>
-
-                <div class="drink-option">
-                  <q-checkbox v-model="formData.drinks.other" label="Другое" color="dark" dense />
-                  <q-input
-                    v-if="formData.drinks.other"
-                    v-model="formData.drinks.otherText"
-                    outlined
-                    dense
-                    placeholder="Укажите ваш вариант"
-                    class="q-mt-sm q-mb-md"
-                  />
                 </div>
               </div>
 
@@ -305,15 +271,10 @@ export default defineComponent({
       familyMembers: '',
       drinks: {
         champagne: false,
-        whiteDry: false,
-        whiteSemiSweet: false,
-        redSemiSweet: false,
-        redDry: false,
+        whiteWine: false,
+        redWine: false,
         whiskey: false,
         vodka: false,
-        cognac: false,
-        other: false,
-        otherText: '',
       },
       allergy: {
         hasAllergy: null,
@@ -363,21 +324,10 @@ export default defineComponent({
       const selected = []
 
       if (formData.drinks.champagne) selected.push('Шампанское')
-      if (formData.drinks.whiteDry) selected.push('Белое вино сухое')
-      if (formData.drinks.whiteSemiSweet) selected.push('Белое вино полусладкое')
-      if (formData.drinks.redSemiSweet) selected.push('Красное вино полусладкое')
-      if (formData.drinks.redDry) selected.push('Красное вино сухое')
+      if (formData.drinks.whiteWine) selected.push('Белое вино')
+      if (formData.drinks.redWine) selected.push('Красное вино')
       if (formData.drinks.whiskey) selected.push('Виски')
       if (formData.drinks.vodka) selected.push('Водка')
-      if (formData.drinks.cognac) selected.push('Коньяк')
-
-      if (formData.drinks.other) {
-        if (formData.drinks.otherText.trim()) {
-          selected.push(`Другое: ${formData.drinks.otherText.trim()}`)
-        } else {
-          selected.push('Другое')
-        }
-      }
 
       return selected.length > 0 ? selected.join(', ') : 'Не выбрано'
     }
@@ -507,15 +457,10 @@ export default defineComponent({
         formData.familyMembers = ''
         formData.drinks = {
           champagne: false,
-          whiteDry: false,
-          whiteSemiSweet: false,
-          redSemiSweet: false,
-          redDry: false,
+          whiteWine: false,
+          redWine: false,
           whiskey: false,
           vodka: false,
-          cognac: false,
-          other: false,
-          otherText: '',
         }
         formData.allergy = {
           hasAllergy: null,
