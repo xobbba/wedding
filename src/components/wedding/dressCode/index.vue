@@ -80,11 +80,12 @@ export default defineComponent({
     let observer = null
 
     const colors = [
-      { name: 'Черный', hex: '#000000', needsBorder: false },
+      { name: 'Глубокий черный', hex: '#000000', needsBorder: false },
       { name: 'Темный шоколад', hex: '#26140C', needsBorder: false },
+      { name: 'Нежный олив', hex: '#808000', needsBorder: false },
       { name: 'Лесной орех', hex: '#644D42', needsBorder: false },
       { name: 'Пудровый беж', hex: '#D5C1B8', needsBorder: false },
-      { name: 'Песчаный мед', hex: '#FFF3DF', needsBorder: false },
+      { name: 'Песчаный мед', hex: '#FFF3DF', needsBorder: false }
     ]
 
     onMounted(() => {
@@ -255,6 +256,9 @@ export default defineComponent({
   .color-item[data-index='4'] {
     transition-delay: 1.8s;
   }
+  .color-item[data-index='5'] {
+    transition-delay: 2s;
+  }
 
   .color-item .color-name {
     opacity: 1;
@@ -275,6 +279,9 @@ export default defineComponent({
   }
   .color-item[data-index='4'] .color-name {
     transition-delay: 1.9s;
+  }
+  .color-item[data-index='5'] .color-name {
+    transition-delay: 2.1s;
   }
 }
 
@@ -367,6 +374,9 @@ export default defineComponent({
     .color-item[data-index='4'] {
       transition-delay: 0.9s;
     }
+    .color-item[data-index='5'] {
+      transition-delay: 1s;
+    }
     .color-item[data-index='0'] .color-name {
       transition-delay: 0.55s;
     }
@@ -381,6 +391,9 @@ export default defineComponent({
     }
     .color-item[data-index='4'] .color-name {
       transition-delay: 0.95s;
+    }
+    .color-item[data-index='5'] .color-name {
+      transition-delay: 1.05s;
     }
   }
 }
