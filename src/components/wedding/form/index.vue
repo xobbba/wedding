@@ -238,7 +238,7 @@
           <q-btn v-close-popup flat round dense icon="close" color="white" />
         </q-card-section>
         <q-card-section style="font-size: 16px; line-height: 1.4">
-          Обращаем ваше внимание, что мероприятие предназначено исключительно для взрослых гостей -
+          Обращаем ваше внимание, что программа мероприятия предназначена исключительно для взрослых гостей -
           детский стол и аниматоры не предусмотрены
         </q-card-section>
       </q-card>
