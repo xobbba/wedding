@@ -58,19 +58,25 @@
       </div>
 
       <div class="detail-block block-02">
-        <div
-          class="font-cormorant-infant text-white"
-          :class="!$q.screen.lt.sm ? 'text-h1' : 'text-h2'"
-        >
-          04
-        </div>
-        <div
-          class="font-cormorant-sc q-mt-sm text-white"
-          :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"
-        >
-          Обращаем ваше внимание, что программа мероприятия предназначена исключительно для взрослых гостей —
-          детский стол и аниматоры не предусмотрены
-        </div>
+<!--        <div-->
+<!--          class="font-cormorant-infant text-white"-->
+<!--          :class="!$q.screen.lt.sm ? 'text-h1' : 'text-h2'"-->
+<!--        >-->
+<!--          04-->
+<!--        </div>-->
+<!--        <div-->
+<!--          class="font-cormorant-sc q-mt-sm text-white"-->
+<!--          :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"-->
+<!--        >-->
+<!--          Обращаем ваше внимание, что детский стол и аниматоры не предусмотрены-->
+<!--        </div>-->
+<!--        <div-->
+<!--          class="font-cormorant-sc q-mt-sm text-white"-->
+<!--          :class="!$q.screen.lt.sm ? 'text-h4' : 'text-h6'"-->
+<!--        >-->
+<!--          Обращаем ваше внимание, что программа мероприятия предназначена для взрослых гостей —-->
+<!--          детский стол и аниматоры не предусмотрены-->
+<!--        </div>-->
       </div>
     </div>
   </div>

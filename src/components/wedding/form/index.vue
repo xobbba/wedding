@@ -87,31 +87,31 @@
               <div class="form-group">
                 <label class="font-cormorant-sc">
                   3. Если Вы придете с семьей, внесите все имена, а также возраст детей
-                  <q-icon
-                    name="info"
-                    size="18px"
-                    class="q-ml-xs text-grey-6 cursor-help"
-                    style="vertical-align: middle"
-                    @click="showTooltipDialog = true"
-                  >
-                    <q-tooltip
-                      v-if="!isMobile"
-                      anchor="center right"
-                      self="center left"
-                      :offset="[5, 5]"
-                      class="bg-dark text-white tooltip-text"
-                      style="
-                        font-size: 14px;
-                        width: 320px;
-                        white-space: normal;
-                        line-height: 1.3;
-                        word-break: break-word;
-                      "
-                    >
-                      Обращаем ваше внимание, что мероприятие предназначено исключительно для
-                      взрослых гостей - детский стол и аниматоры не предусмотрены
-                    </q-tooltip>
-                  </q-icon>
+<!--                  <q-icon-->
+<!--                    name="info"-->
+<!--                    size="18px"-->
+<!--                    class="q-ml-xs text-grey-6 cursor-help"-->
+<!--                    style="vertical-align: middle"-->
+<!--                    @click="showTooltipDialog = true"-->
+<!--                  >-->
+<!--                    <q-tooltip-->
+<!--                      v-if="!isMobile"-->
+<!--                      anchor="center right"-->
+<!--                      self="center left"-->
+<!--                      :offset="[5, 5]"-->
+<!--                      class="bg-dark text-white tooltip-text"-->
+<!--                      style="-->
+<!--                        font-size: 14px;-->
+<!--                        width: 320px;-->
+<!--                        white-space: normal;-->
+<!--                        line-height: 1.3;-->
+<!--                        word-break: break-word;-->
+<!--                      "-->
+<!--                    >-->
+<!--                      Обращаем ваше внимание, что мероприятие предназначено исключительно для-->
+<!--                      взрослых гостей - детский стол и аниматоры не предусмотрены-->
+<!--                    </q-tooltip>-->
+<!--                  </q-icon>-->
                 </label>
                 <q-input
                   v-model="formData.familyMembers"
@@ -231,18 +231,21 @@
       </q-card>
     </q-dialog>
 
-    <q-dialog v-model="showTooltipDialog">
-      <q-card class="bg-dark text-white" style="max-width: 90vw; border-radius: 12px">
-        <q-card-section class="row items-center justify-between">
-          <div class="text-h6">Внимание</div>
-          <q-btn v-close-popup flat round dense icon="close" color="white" />
-        </q-card-section>
-        <q-card-section style="font-size: 16px; line-height: 1.4">
-          Обращаем ваше внимание, что программа мероприятия предназначена исключительно для взрослых гостей -
-          детский стол и аниматоры не предусмотрены
-        </q-card-section>
-      </q-card>
-    </q-dialog>
+<!--    <q-dialog v-model="showTooltipDialog">-->
+<!--      <q-card class="bg-dark text-white" style="max-width: 90vw; border-radius: 12px">-->
+<!--        <q-card-section class="row items-center justify-between">-->
+<!--          <div class="text-h6">Внимание</div>-->
+<!--          <q-btn v-close-popup flat round dense icon="close" color="white" />-->
+<!--        </q-card-section>-->
+<!--        <q-card-section style="font-size: 16px; line-height: 1.4">-->
+<!--          Обращаем ваше внимание, что детский стол и аниматоры не предусмотрены-->
+<!--        </q-card-section>-->
+<!--&lt;!&ndash;        <q-card-section style="font-size: 16px; line-height: 1.4">&ndash;&gt;-->
+<!--&lt;!&ndash;          Обращаем ваше внимание, что программа мероприятия предназначена для взрослых гостей - &ndash;&gt;-->
+<!--&lt;!&ndash;          детский стол и аниматоры не предусмотрены&ndash;&gt;-->
+<!--&lt;!&ndash;        </q-card-section>&ndash;&gt;-->
+<!--      </q-card>-->
+<!--    </q-dialog>-->
   </div>
 </template>
 
